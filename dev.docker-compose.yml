@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  pytest:
+    image: python:${PYTHON_VERSION}
+    command: /bin/sh -c "pip install -r requirements.txt && tail -f /dev/null"
+    restart: no
+    environment:
+      TEST_BASEURL: ${TEST_BASEURL}
+      SELENIUM_HUB_URL: ${SELENIUM_HUB_URL}
+    depends_on:
+      - selenium-chrome
+    volumes:
+      - ./:/var/www/app
+    working_dir: /var/www/app
+
+  selenium-chrome:
+    image: selenium/node-chrome:${SELENIUM_VERSION}
+    restart: unless-stopped
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - '7900:7900'
+
+  selenium-hub:
+    image: selenium/hub:${SELENIUM_VERSION}
+    restart: unless-stopped
+    environment:
+      - SE_VNC_NO_PASSWORD=1
+    ports:
+      - '4442:4442'
+      - '4443:4443'
+      - '4444:4444'

@@ -7,17 +7,19 @@ import pytest
 from selenium.webdriver.common.keys import Keys
 import random
 from random import randint
+import os
 
-
-link = 'https://hemagon.com'
-link_tournament = 'https://hemagon.com/organizer/tournaments'
+link = os.environ["TEST_BASEURL"]
+link_tournament = link + '/organizer/tournaments'
 
 class TestTournamentCreation():
 
     @classmethod
     def setup_class(self):
         print("\nstart browser for test suite..")
-        self.browser = webdriver.Chrome()
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--window-size=1920,1080")
+        self.browser = webdriver.Remote(os.environ["SELENIUM_HUB_URL"], options=chrome_options)
         self.browser.implicitly_wait(15)
 
     @classmethod
@@ -224,4 +226,4 @@ class TestTournamentCreation():
         alert = self.browser.switch_to.alert
         alert.accept()
         assert self.browser.find_element(By.CLASS_NAME, 'vue-notification-template.vue-notification.success')
-    ''' 
+    '''

@@ -7,10 +7,15 @@ import pytest
 from selenium.webdriver.common.keys import Keys
 import random
 from random import randint
+import os
+
+link = os.environ["TEST_BASEURL"]
+link_tournament = link + '/organizer/tournaments'
 
 def test_create_nomination():
-    link_tournament = 'https://hemagon.com/organizer/tournaments'
-    browser = webdriver.Chrome()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--window-size=1920,1080")
+    self.browser = webdriver.Remote(os.environ["SELENIUM_HUB_URL"], options=chrome_options)
     browser.get(link_tournament)
     browser.implicitly_wait(15)
     

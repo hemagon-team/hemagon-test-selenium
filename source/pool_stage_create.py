@@ -4,10 +4,15 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
+import os
+
+link = os.environ["TEST_BASEURL"]
+link_tournament = link + '/organizer/tournaments'
 
 def test_stage_pool():
-    link_tournament = 'https://hemagon.com/organizer/tournaments'
-    browser = webdriver.Chrome()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--window-size=1920,1080")
+    self.browser = webdriver.Remote(os.environ["SELENIUM_HUB_URL"], options=chrome_options)
     browser.get(link_tournament)
     browser.implicitly_wait(15)
 
@@ -51,4 +56,3 @@ def test_stage_pool():
     save_btn.click()
 
     assert browser.find_element(By.CLASS_NAME, 'notification-content')
-
