@@ -1,7 +1,7 @@
 name: Tests
 on: [workflow_dispatch]
 jobs:
-  cypress-run:
+  pytest-run:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
