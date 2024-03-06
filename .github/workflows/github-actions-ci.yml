@@ -1,13 +1,11 @@
 name: Tests
 on: [workflow_dispatch]
-env:
-  SELENIUM_VERSION: 4.18
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: selenium/standalone-chrome:${{ env.SELENIUM_VERSION }}
+        image: selenium/standalone-chrome:4.18
         shm_size: 2gb
         ports:
           - '4444:4444'
