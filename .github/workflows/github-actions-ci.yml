@@ -1,8 +1,27 @@
 name: Tests
 on: [workflow_dispatch]
+env:
+  SELENIUM_VERSION: 4.18
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    services:
+      selenium-hub:
+        image: selenium/standalone-chrome:${{ env.SELENIUM_VERSION }}
+        shm_size: 2gb
+        ports:
+          - '4444:4444'
     steps:
-      - uses: actions/checkout@v3
-      - uses: cypress-io/github-action@v4
+      - uses: actions/checkout@v4
+      - run: cp .env.dist .env
+      - uses: falti/dotenv-action@v1
+        with:
+          export-variables: true
+          keys-case: upper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: |
+          pip install -r requirements.txt
+      - run: |
+          pytest -vv -s test_suits/test_suit_tournament_view.py
