@@ -1,21 +1,21 @@
 name: Tests
 on: [workflow_dispatch]
+env:
+  PYTHON_VERSION: '3.12'
+  SELENIUM_VERSION: '4.18'
+  TEST_BASEURL: 'https://hemagon.com'
+  SELENIUM_HUB_URL: 'http://127.0.0.1:4444/wd/hub'
 jobs:
   pytest-run:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: selenium/standalone-chrome:4.18
+        image: selenium/standalone-chrome:${{ env.SELENIUM_VERSION }}
         options: --shm-size=2gb
         ports:
           - '4444:4444'
     steps:
       - uses: actions/checkout@v4
-      - run: cp .env.dist .env
-      - uses: falti/dotenv-action@v1
-        with:
-          export-variables: true
-          keys-case: upper
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
