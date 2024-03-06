@@ -6,7 +6,7 @@
 
 2. Change `TEST_BASEURL` to your test target URL
 
-3. On `/hemagon-test` folder call:
+3. On `/hemagon-test-selenium` folder call:
    ```shell
    make up
    ```

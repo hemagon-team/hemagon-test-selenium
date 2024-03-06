@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: selenium/standalone-chrome:${{ env.SELENIUM_VERSION }}
+        image: selenium/standalone-chrome:$SELENIUM_VERSION
         options: --shm-size=2gb
         ports:
           - '4444:4444'
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: $PYTHON_VERSION
       - run: |
           pip install -r requirements.txt
       - run: |
