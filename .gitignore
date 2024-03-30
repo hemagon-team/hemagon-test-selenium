@@ -2,3 +2,4 @@
 .env
 /source/
 /test_suits/
+/__pycache__/
