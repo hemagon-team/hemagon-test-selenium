@@ -1,2 +1,4 @@
 .idea
 .env
+/source/
+/test_suits/
