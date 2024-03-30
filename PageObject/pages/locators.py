@@ -3,8 +3,8 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
-    USER_NAME = (By.CSS_SELECTOR, ".name")
-    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover .name")
+    USER_NAME = (By.CLASS_NAME, "name")
+    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover li:nth-child(4) a")
 
 
 class LoginPageLocators:

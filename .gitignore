@@ -1,5 +1,5 @@
 .idea
 .env
 /source/
-/test_suits/
+test_suits/
 /__pycache__/

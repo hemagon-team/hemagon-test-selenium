@@ -5,6 +5,10 @@ from .locators import OrganizerPageLocators
 
 
 class OrganizerPage(BasePage):
+
+    def should_be_organizer_url(self):
+        assert "organizer" in self.browser.current_url, "No 'organizer' in page URL"
+
     def create_tournament(self, title, start_date, end_date, country, city, description):
         # Create a new tournament
         create_tournament_button = self.browser.find_element(*OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
