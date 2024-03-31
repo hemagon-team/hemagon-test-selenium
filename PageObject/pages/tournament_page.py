@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 from .base_page import BasePage
 from .locators import TournamentPageLocators
 
@@ -70,6 +71,7 @@ class TournamentPage(BasePage):
         self.open_stages_tab()
         # Create stage
         # add_stage_button = self.browser.find_element(*TournamentPageLocators.ADD_STAGE_BUTTON)
+        time.sleep(1)
         add_stage_button = WebDriverWait(self.browser, 5).until(
             EC.presence_of_element_located(TournamentPageLocators.ADD_STAGE_BUTTON)
         )
@@ -86,16 +88,16 @@ class TournamentPage(BasePage):
         # Set fight time
         fight_time_field = self.browser.find_element(*TournamentPageLocators.FIGHT_TIME_FIELD)
         fight_time_field.send_keys(fight_time)
-        # Only for not finals: choose how many participants go to next stage
-        if not to_the_finals:
-            goes_next_stage_field = self.b
-        # ADD RADIO BUTTONS HANDLING
         # Choose option: to the finals or not
         if to_the_finals:
             to_the_finals_input = self.browser.find_element(*TournamentPageLocators.TO_THE_FINALS_TRUE)
         else:
             to_the_finals_input = self.browser.find_element(*TournamentPageLocators.TO_THE_FINALS_FALSE)
         to_the_finals_input.click()
+        # Only for not finals: choose how many participants go to next stage
+        if not to_the_finals:
+            goes_next_stage_field = self.browser.find_element(*TournamentPageLocators.GOES_NEXT_STAGE_FIELD)
+            goes_next_stage_field.send_keys(go_next_stage)
         # Set fight time
         fight_time_field = self.browser.find_element(*TournamentPageLocators.FIGHT_TIME_FIELD)
         fight_time_field.send_keys(fight_time)
@@ -106,30 +108,33 @@ class TournamentPage(BasePage):
         # Only for pools: unlimited pool option
         # ADD SLIDER HANDLING
         # Only for playoff: choose playoff size (4 / 8 / 16 / 32 / 64)
-        if playoff_size == 4:
-            playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_4)
-        elif playoff_size == 8:
-            playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_8)
-        elif playoff_size == 16:
-            playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_16)
-        elif playoff_size == 32:
-            playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_32)
-        elif playoff_size == 64:
-            playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_64)
-        else:
-            raise Exception("No such option: playoff size can only be 4 / 8 / 16 / 32 / 64")
-        playoff_size_input.click()
+        if type_id == 2:
+            if playoff_size == 4:
+                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_4)
+            elif playoff_size == 8:
+                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_8)
+            elif playoff_size == 16:
+                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_16)
+            elif playoff_size == 32:
+                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_32)
+            elif playoff_size == 64:
+                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_64)
+            else:
+                raise Exception("No such option: playoff size can only be 4 / 8 / 16 / 32 / 64")
+            playoff_size_input.click()
         # Only for Swiss system and Swiss system with hits: choose how to handle an empty fight
-        if swiss_empty_win:
-            swiss_empty_input = self.browser.find_element(*TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_WIN)
-        else:
-            swiss_empty_input = self.browser.find_element(*TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_DRAW)
-        swiss_empty_input.click()
+        if type_id == 3 or type_id == 4:
+            if swiss_empty_win:
+                swiss_empty_input = self.browser.find_element(*TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_WIN)
+            else:
+                swiss_empty_input = self.browser.find_element(*TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_DRAW)
+            swiss_empty_input.click()
         # Only for Swiss system with hits: set initial value and limit of HP
-        hits_initial_input = self.browser.find_element(*TournamentPageLocators.HITS_INITIAL_HP)
-        hits_initial_input.send_keys(hits_initial_hp)
-        hits_limit_input = self.browser.find_element(*TournamentPageLocators.HITS_LIMIT_HP)
-        hits_limit_input.send_keys(hits_limit_hp)
+        if type_id == 4:
+            hits_initial_input = self.browser.find_element(*TournamentPageLocators.HITS_INITIAL_HP)
+            hits_initial_input.send_keys(hits_initial_hp)
+            hits_limit_input = self.browser.find_element(*TournamentPageLocators.HITS_LIMIT_HP)
+            hits_limit_input.send_keys(hits_limit_hp)
         # Save stage
         save_stage_button = self.browser.find_element(*TournamentPageLocators.SAVE_STAGE_BUTTON)
         save_stage_button.click()
