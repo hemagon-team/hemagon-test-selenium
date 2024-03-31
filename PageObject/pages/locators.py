@@ -5,6 +5,7 @@ class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
     USER_NAME = (By.CLASS_NAME, "name")
     MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover li:nth-child(4) a")
+    CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
 
 
 class LoginPageLocators:
@@ -36,6 +37,8 @@ class TournamentPageLocators:
     CREATE_NOMINATION_BUTTON = (By.ID, "btn-nomination-add")
     NOMINATION_TITLE_FIELD = (By.ID, "input-nomination-title")
     WEAPON_SELECT = (By.ID, "input-nomination-weapon")
+    FIGHT_TIME_INPUT = (By.ID, "input-nomination-time-fight")
+    LAST_ROUND_TIME_INPUT = (By.ID, "input-nomination-time-last-round")
     SAVE_NOMINATION_BUTTON = (By.ID, "btn-nomination-save")
     # Opening nomination
     NOMINATION_LINK = (By.XPATH, "//button[@id='btn-nomination-add']/following-sibling::div[1]//div//a")

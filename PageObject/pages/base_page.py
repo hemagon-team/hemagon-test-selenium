@@ -40,3 +40,7 @@ class BasePage:
 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_NAME), "User is not authorized"
+
+    def close_cookies(self):
+        close_cookies_button = self.browser.find_element(*BasePageLocators.CLOSE_COOKIES_BUTTON)
+        close_cookies_button.click()
