@@ -25,6 +25,8 @@ go_next_stage = 8
 # hits_initial_hp
 # hits_limit_hp
 
+participants_number = "16"
+
 
 class TestUserCanModifyTournament:
     @pytest.fixture(scope="function", autouse=True)
@@ -56,3 +58,12 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         page.create_stage(type_id, to_the_finals, stage_fight_time, go_next_stage)
+
+    def test_user_can_add_participants(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.add_participants(participants_number)

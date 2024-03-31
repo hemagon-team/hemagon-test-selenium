@@ -1,5 +1,3 @@
-import time
-
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,6 +15,15 @@ class BasePage:
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
+        except NoSuchElementException:
+            return False
+        return True
+
+    def is_element_present_with_wait(self, how, what):
+        try:
+            WebDriverWait(self.browser, 5).until(
+                EC.presence_of_element_located((how, what))
+            )
         except NoSuchElementException:
             return False
         return True
@@ -39,7 +46,7 @@ class BasePage:
         my_tournaments_button.click()
 
     def should_be_authorized_user(self):
-        assert self.is_element_present(*BasePageLocators.USER_NAME), "User is not authorized"
+        assert self.is_element_present_with_wait(*BasePageLocators.USER_NAME), "User is not authorized"
 
     def close_cookies(self):
         close_cookies_button = self.browser.find_element(*BasePageLocators.CLOSE_COOKIES_BUTTON)

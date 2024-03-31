@@ -64,7 +64,9 @@ class TournamentPageLocators:
     PARTICIPANTS_TAB = (By.ID, "nomination-menu-participants")
     PARTICIPANTS_NUMBER_SELECT = (By.ID, "input-requests-test-enroll-number")
     ENROLL_TEST_PARTICIPANTS_BUTTON = (By.ID, "btn-requests-test-enroll")
+    PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
+    ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
     # Creating new pool
     ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
     # Adding random participants to pool

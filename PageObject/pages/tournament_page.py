@@ -38,9 +38,11 @@ class TournamentPage(BasePage):
         # ADD RADIO BUTTONS HANDLING
         # Set fight time
         fight_time_input = self.browser.find_element(*TournamentPageLocators.FIGHT_TIME_INPUT)
+        fight_time_input.clear()
         fight_time_input.send_keys(fight_time)
         # Set last round time
         last_round_time_input = self.browser.find_element(*TournamentPageLocators.LAST_ROUND_TIME_INPUT)
+        last_round_time_input.clear()
         last_round_time_input.send_keys(last_round_time)
         # Save nomination
         save_nomination_button = self.browser.find_element(*TournamentPageLocators.SAVE_NOMINATION_BUTTON)
@@ -97,13 +99,16 @@ class TournamentPage(BasePage):
         # Only for not finals: choose how many participants go to next stage
         if not to_the_finals:
             goes_next_stage_field = self.browser.find_element(*TournamentPageLocators.GOES_NEXT_STAGE_FIELD)
+            goes_next_stage_field.clear()
             goes_next_stage_field.send_keys(go_next_stage)
         # Set fight time
         fight_time_field = self.browser.find_element(*TournamentPageLocators.FIGHT_TIME_FIELD)
+        fight_time_field.clear()
         fight_time_field.send_keys(fight_time)
         # Only for not finals: choose how many participants go to next stage
         if not to_the_finals:
             goes_next_stage_field = self.browser.find_element(*TournamentPageLocators.GOES_NEXT_STAGE_FIELD)
+            goes_next_stage_field.clear()
             goes_next_stage_field.send_keys(go_next_stage)
         # Only for pools: unlimited pool option
         # ADD SLIDER HANDLING
@@ -142,17 +147,30 @@ class TournamentPage(BasePage):
     def add_participants(self, number):
         self.open_nomination()
         # Open tab Participants
-        participants_tab = self.browser.find_element(*TournamentPageLocators.PARTICIPANTS_TAB)
+        participants_tab = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.PARTICIPANTS_TAB)
+        )
         participants_tab.click()
+        time.sleep(1)
         # Choose number of test participants
         number_select = Select(self.browser.find_element(*TournamentPageLocators.PARTICIPANTS_NUMBER_SELECT))
-        number_select.select_by_value(number)
+        number_select.select_by_visible_text(number)
         # Enroll test participants
         enroll_test_participants = self.browser.find_element(*TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
         enroll_test_participants.click()
+        # Wait until test participants are added
+        WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.PARTICIPANT_LINE)
+        )
         # Full approve all participants
         full_approve_button = self.browser.find_element(*TournamentPageLocators.FULL_APPROVE_BUTTON)
         full_approve_button.click()
+        full_approve_alert = self.browser.switch_to_alert()
+        full_approve_alert.accept()
+        # Wait until all test participants are approved
+        WebDriverWait(self.browser, 5).until(
+            EC.text_to_be_present_in_element(TournamentPageLocators.ACCEPTED_NUMBER, number)
+        )
 
     def create_pool(self):
         self.open_nomination()
