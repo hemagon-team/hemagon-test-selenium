@@ -1,5 +1,7 @@
 from selenium.webdriver.common.keys import Keys
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .base_page import BasePage
 from .locators import OrganizerPageLocators
 
@@ -14,12 +16,24 @@ class OrganizerPage(BasePage):
         create_tournament_button = self.browser.find_element(*OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
         create_tournament_button.click()
         # Choose test tournament option: yes
-        test_tournament_input = self.browser.find_element(*OrganizerPageLocators.TEST_TOURNAMENT_INPUT)
+        test_tournament_input = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(OrganizerPageLocators.TEST_TOURNAMENT_INPUT)
+        )
         test_tournament_input.click()
         # Enter a title of the tournament
         title_field = self.browser.find_element(*OrganizerPageLocators.TITLE_FIELD)
         title_field.send_keys(title)
-        # ADD DATE CHOOSING (CALENDAR)
+        # FIX WORKING WITH DATE PICKERS
+        '''
+        # Set start date
+        start_date_picker = self.browser.find_element(*OrganizerPageLocators.START_DATE_PICKER)
+        start_date_picker.clear()
+        start_date_picker.send_keys(start_date + Keys.ENTER)
+        time.sleep(15)
+        # Set end date
+        end_date_picker = self.browser.find_element(*OrganizerPageLocators.END_DATE_PICKER)
+        end_date_picker.send_keys(end_date)
+        '''
         # Choose a country
         country_field = self.browser.find_element(*OrganizerPageLocators.COUNTRY_FIELD)
         country_field.send_keys(country + Keys.ENTER)

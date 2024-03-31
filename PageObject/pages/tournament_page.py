@@ -1,9 +1,18 @@
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .base_page import BasePage
 from .locators import TournamentPageLocators
 
 
 class TournamentPage(BasePage):
+    def should_be_tournament_title(self, title):
+        tournament_title = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.TOURNAMENT_TITLE)
+        )
+        actual_tournament_title = tournament_title.text
+        assert actual_tournament_title == title, f"Tournament title is {actual_tournament_title}, should be {title}"
+
     def create_nomination(self, title, weapon_id):
         # Switch tab to Nominations
         nominations_tab = self.browser.find_element(*TournamentPageLocators.NOMINATIONS_TAB)

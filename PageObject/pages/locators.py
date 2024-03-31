@@ -18,16 +18,19 @@ class OrganizerPageLocators:
     CREATE_TOURNAMENT_BUTTON = (By.ID, "btn-create-tournament")
     TEST_TOURNAMENT_INPUT = (By.ID, "input-tournament-test-true")
     TITLE_FIELD = (By.ID, "input-tournament-title")
+    START_DATE_PICKER = (By.CSS_SELECTOR, ".advanced-datepicker:nth-of-type(1)")
+    END_DATE_PICKER = (By.CSS_SELECTOR, ".advanced-datepicker:nth-of-type(2)")
     COUNTRY_FIELD = (By.CSS_SELECTOR, "#vs1__combobox > .vs__selected-options > input")
     CITY_FIELD = (By.CSS_SELECTOR, "#vs2__combobox > div.vs__selected-options > input")
     DESCRIPTION_FIELD = (By.ID, "input-tournament-description")
     SAVE_BUTTON = (By.ID, "btn-tournament-save")
     # Open tournament
-    TOURNAMENT_BANNER = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div"
-                                          "> div:nth-child(6) > div > div > div:nth-child(3) > button")
+    TOURNAMENT_BANNER = (By.CSS_SELECTOR, ".tournaments > div > a > div > div")
 
 
 class TournamentPageLocators:
+    # Verifying tournament name
+    TOURNAMENT_TITLE = (By.CSS_SELECTOR, "#app > div > div > div > h1")
     # Creating new nomination
     NOMINATIONS_TAB = (By.ID, "tournament-menu-nominations")
     CREATE_NOMINATION_BUTTON = (By.ID, "btn-nomination-add")
