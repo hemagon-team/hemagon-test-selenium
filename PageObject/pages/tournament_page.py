@@ -217,3 +217,40 @@ class TournamentPage(BasePage):
             EC.presence_of_element_located(TournamentPageLocators.RING_TITLE_FIELD)
         )
         nominations_ring_title.send_keys("Ring" + Keys.ENTER)
+
+    def delete_pool(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        delete_pool_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.REMOVE_POOL_BUTTON)
+        )
+        delete_pool_button.click()
+        delete_pool_alert = self.browser.switch_to.alert
+        delete_pool_alert.accept()
+
+    def delete_stage(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        delete_stage_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.REMOVE_STAGE_BUTTON)
+        )
+        delete_stage_button.click()
+        delete_stage_alert = self.browser.switch_to.alert
+        delete_stage_alert.accept()
+
+    def delete_nomination(self):
+        self.open_nomination()
+        delete_nomination_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.REMOVE_NOMINATION_BUTTON)
+        )
+        delete_nomination_button.click()
+        delete_nomination_alert = self.browser.switch_to.alert
+        delete_nomination_alert.accept()
+
+    def delete_ring(self):
+        delete_ring_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.REMOVE_RING_BUTTON)
+        )
+        delete_ring_button.click()
+        delete_ring_alert = self.browser.switch_to.alert
+        delete_ring_alert.accept()

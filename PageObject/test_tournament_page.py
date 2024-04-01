@@ -87,6 +87,7 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         page.create_pool()
+        # ADD FEATURE: CREATE ENOUGH POOLS FOR PARTICIPANTS NUMBER
 
     def test_user_can_add_participants_to_pool(self, browser):
         start_page = OrganizerPage(browser, link)
@@ -97,7 +98,7 @@ class TestUserCanModifyTournament:
         time.sleep(1)
         page.add_participants_to_pool()
 
-    def test_can_set_ring_for_pool(self, browser):
+    def test_user_can_set_ring_for_pool(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
         time.sleep(1)
@@ -105,3 +106,39 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         page.set_ring_for_pool()
+
+    def test_user_can_delete_pool(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.delete_pool()
+
+    def test_user_can_delete_stage(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.delete_stage()
+
+    def test_user_can_delete_nomination(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.delete_nomination()
+
+    def test_user_can_delete_ring(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.delete_ring()

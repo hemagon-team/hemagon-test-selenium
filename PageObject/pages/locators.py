@@ -77,3 +77,12 @@ class TournamentPageLocators:
     SET_RING_INPUT = (By.CSS_SELECTOR, "#vs1__combobox > div > input")
     # Adding random participants to pool
     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
+    # Deleting pool
+    REMOVE_POOL_BUTTON = (By.ID, "btn-stage-0-pool-0-remove")
+    # Deleting stage
+    REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
+    # Deleting nomination
+    REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
+                                                 "> div > div:nth-child(3) > div > div > div:nth-child(4) > button")
+    # Deleting ring
+    REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
