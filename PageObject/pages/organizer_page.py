@@ -52,5 +52,17 @@ class OrganizerPage(BasePage):
         save_button.click()
 
     def open_tournament(self):
-        tournament_banner = self.browser.find_element(*OrganizerPageLocators.TOURNAMENT_BANNER)
+        # tournament_banner = self.browser.find_element(*OrganizerPageLocators.TOURNAMENT_BANNER)
+        tournament_banner = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(OrganizerPageLocators.TOURNAMENT_BANNER)
+        )
         tournament_banner.click()
+
+    def delete_tournament(self):
+        self.open_tournament()
+        delete_tournament_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(OrganizerPageLocators.REMOVE_TOURNAMENT_BUTTON)
+        )
+        delete_tournament_button.click()
+        delete_tournament_alert = self.browser.switch_to.alert
+        delete_tournament_alert.accept()

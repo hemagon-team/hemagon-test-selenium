@@ -44,3 +44,9 @@ class TestUserCanCreateTournament:
         tournament_page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         tournament_page.should_be_tournament_title(title)
+
+    def test_user_can_delete_tournament(self, browser):
+        page = OrganizerPage(browser, link)
+        page.open()
+        time.sleep(1)
+        page.delete_tournament()
