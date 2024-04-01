@@ -3,6 +3,7 @@ from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
 from pages.organizer_page import OrganizerPage
 import time
+from datetime import date
 import pytest
 
 base_link = "https://hemagon.com/"
@@ -10,6 +11,13 @@ link = "https://hemagon.com/organizer/tournaments"
 
 test_email = "paulus.mair@mailfence.com"
 test_password = "HEMAhuema@1"
+
+title = "Test Tournament" + str(time.time())
+start_date = date.today().strftime("%d %B %Y")
+end_date = date.today().strftime("%d %B %Y")
+country = "Spain"
+city = "Barcelona"
+description = "Test tournament"
 
 nomination_title = "Nomination" + str(time.time())
 weapon_id = 1
@@ -42,6 +50,13 @@ class TestUserCanModifyTournament:
         page.should_be_authorized_user()
         # Close cookies
         page.close_cookies()
+
+    # Not the best way to organize setup
+    # THINK OF A BETTER LOGIC
+    def test_setup_create_tournament(self, browser):
+        page = OrganizerPage(browser, link)
+        page.open()
+        page.create_tournament(title, start_date, end_date, country, city, description)
 
     def test_user_can_create_nomination(self, browser):
         start_page = OrganizerPage(browser, link)
@@ -142,3 +157,10 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         page.delete_ring()
+
+    # Not the best way to organize teardown
+    # THINK OF A BETTER LOGIC
+    def test_teardown_delete_tournament(self, browser):
+        page = OrganizerPage(browser, link)
+        page.open()
+        page.delete_tournament()

@@ -13,7 +13,10 @@ class OrganizerPage(BasePage):
 
     def create_tournament(self, title, start_date, end_date, country, city, description):
         # Create a new tournament
-        create_tournament_button = self.browser.find_element(*OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
+        # create_tournament_button = self.browser.find_element(*OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
+        create_tournament_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
+        )
         create_tournament_button.click()
         # Choose test tournament option: yes
         test_tournament_input = WebDriverWait(self.browser, 5).until(
