@@ -62,11 +62,16 @@ class TournamentPage(BasePage):
         nomination_link.click()
 
     def open_stages_tab(self):
-        # stages_tab = self.browser.find_element(*TournamentPageLocators.STAGES_TAB)
         stages_tab = WebDriverWait(self.browser, 5).until(
             EC.presence_of_element_located(TournamentPageLocators.STAGES_TAB)
         )
         stages_tab.click()
+
+    def open_rings_tab(self):
+        rings_tab = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.RINGS_TAB)
+        )
+        rings_tab.click()
 
     def create_stage(self, type_id, to_the_finals, fight_time, go_next_stage,
                      playoff_size=None, swiss_empty_win=None, hits_initial_hp=None, hits_limit_hp=None):
@@ -175,8 +180,7 @@ class TournamentPage(BasePage):
 
     def create_ring(self, title):
         # Switch to tab Rings
-        rings_tab = self.browser.find_element(*TournamentPageLocators.RINGS_TAB)
-        rings_tab.click()
+        self.open_rings_tab()
         # Create ring
         add_ring_button = WebDriverWait(self.browser, 5).until(
             EC.presence_of_element_located(TournamentPageLocators.ADD_RING_BUTTON)
@@ -225,8 +229,7 @@ class TournamentPage(BasePage):
             EC.presence_of_element_located(TournamentPageLocators.REMOVE_POOL_BUTTON)
         )
         delete_pool_button.click()
-        delete_pool_alert = self.browser.switch_to.alert
-        delete_pool_alert.accept()
+        self.confirm_alert()
 
     def delete_stage(self):
         self.open_nomination()
@@ -235,8 +238,7 @@ class TournamentPage(BasePage):
             EC.presence_of_element_located(TournamentPageLocators.REMOVE_STAGE_BUTTON)
         )
         delete_stage_button.click()
-        delete_stage_alert = self.browser.switch_to.alert
-        delete_stage_alert.accept()
+        self.confirm_alert()
 
     def delete_nomination(self):
         self.open_nomination()
@@ -244,13 +246,15 @@ class TournamentPage(BasePage):
             EC.presence_of_element_located(TournamentPageLocators.REMOVE_NOMINATION_BUTTON)
         )
         delete_nomination_button.click()
-        delete_nomination_alert = self.browser.switch_to.alert
-        delete_nomination_alert.accept()
+        self.confirm_alert()
 
     def delete_ring(self):
+        self.open_rings_tab()
+        WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.ANY_RING_LINE)
+        )
         delete_ring_button = WebDriverWait(self.browser, 5).until(
             EC.presence_of_element_located(TournamentPageLocators.REMOVE_RING_BUTTON)
         )
         delete_ring_button.click()
-        delete_ring_alert = self.browser.switch_to.alert
-        delete_ring_alert.accept()
+        self.confirm_alert()

@@ -38,19 +38,19 @@ participants_number = "16"
 ring_title = "Ring" + str(time.time())
 
 
-class TestUserCanModifyTournament:
-    @pytest.fixture(scope="function", autouse=True)
-    def setup(self, browser):
-        page = MainPage(browser, base_link)
-        page.open()
-        page.go_to_login_page()
-        login_page = LoginPage(browser, browser.current_url)
-        login_page.login_user(test_email, test_password)
-        time.sleep(1)
-        page.should_be_authorized_user()
-        # Close cookies
-        page.close_cookies()
+@pytest.fixture(scope="function", autouse=True)
+def setup(browser):
+    page = MainPage(browser, base_link)
+    page.open()
+    page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.login_user(test_email, test_password)
+    time.sleep(1)
+    page.should_be_authorized_user()
+    # Close cookies
+    page.close_cookies()
 
+class TestUserCanModifyTournament:
     # Not the best way to organize setup
     # THINK OF A BETTER LOGIC
     def test_setup_create_tournament(self, browser):

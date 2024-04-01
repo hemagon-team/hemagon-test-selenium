@@ -88,4 +88,5 @@ class TournamentPageLocators:
     REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
                                                  "> div > div:nth-child(3) > div > div > div:nth-child(4) > button")
     # Deleting ring
+    ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")

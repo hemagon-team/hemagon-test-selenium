@@ -28,6 +28,12 @@ class BasePage:
             return False
         return True
 
+    def confirm_alert(self):
+        alert = WebDriverWait(self.browser, 5).until(
+            EC.alert_is_present()
+        )
+        alert.accept()
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_BUTTON), "Login link is not present"
 
