@@ -27,6 +27,8 @@ go_next_stage = 8
 
 participants_number = "16"
 
+ring_title = "Ring" + str(time.time())
+
 
 class TestUserCanModifyTournament:
     @pytest.fixture(scope="function", autouse=True)
@@ -67,3 +69,39 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         time.sleep(1)
         page.add_participants(participants_number)
+
+    def test_user_can_create_ring(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.create_ring(ring_title)
+
+    def test_user_can_create_pool(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.create_pool()
+
+    def test_user_can_add_participants_to_pool(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.add_participants_to_pool()
+
+    def test_can_set_ring_for_pool(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        time.sleep(1)
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        time.sleep(1)
+        page.set_ring_for_pool()

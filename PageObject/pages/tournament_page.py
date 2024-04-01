@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 import time
 from .base_page import BasePage
 from .locators import TournamentPageLocators
@@ -13,7 +14,7 @@ class TournamentPage(BasePage):
         )
         actual_tournament_title = tournament_title.text
         # This construction doesn't work if there's more than one tournament
-        # WHOLE LOGIC SHOULD BE REWROTE
+        # WHOLE LOGIC SHOULD BE REWRITTEN
         assert actual_tournament_title == title, f"Tournament title is {actual_tournament_title}, should be {title}"
 
     def create_nomination(self, title, weapon_id, fight_time, last_round_time):
@@ -172,30 +173,47 @@ class TournamentPage(BasePage):
             EC.text_to_be_present_in_element(TournamentPageLocators.ACCEPTED_NUMBER, number)
         )
 
+    def create_ring(self, title):
+        # Switch to tab Rings
+        rings_tab = self.browser.find_element(*TournamentPageLocators.RINGS_TAB)
+        rings_tab.click()
+        # Create ring
+        add_ring_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.ADD_RING_BUTTON)
+        )
+        add_ring_button.click()
+        # Set ring title
+        ring_title_field = self.browser.find_element(*TournamentPageLocators.RING_TITLE_FIELD)
+        ring_title_field.clear()
+        ring_title_field.send_keys(title)
+        # Save ring
+        save_ring_button = self.browser.find_element(*TournamentPageLocators.SAVE_RING_BUTTON)
+        save_ring_button.click()
+
     def create_pool(self):
         self.open_nomination()
         self.open_stages_tab()
         # Create pool
-        add_pool_button = self.browser.find_element(*TournamentPageLocators.ADD_POOL_BUTTON)
+        add_pool_button = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.ADD_POOL_BUTTON)
+        )
         add_pool_button.click()
 
     def add_participants_to_pool(self):
         self.open_nomination()
         self.open_stages_tab()
         # Seed random participants
-        seed_random_participants = self.browser.find_element(*TournamentPageLocators.SEED_RANDOM_PARTICIPANTS_BUTTON)
+        # seed_random_participants = self.browser.find_element(*TournamentPageLocators.SEED_RANDOM_PARTICIPANTS_BUTTON)
+        seed_random_participants = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.SEED_RANDOM_PARTICIPANTS_BUTTON)
+        )
         seed_random_participants.click()
 
-    def add_ring(self, title):
-        # Switch to tab Rings
-        rings_tab = self.browser.find_element(*TournamentPageLocators.RINGS_TAB)
-        rings_tab.click()
-        # Create ring
-        add_ring_button = self.browser.find_element(*TournamentPageLocators.ADD_RING_BUTTON)
-        add_ring_button.click()
-        # Set ring title
-        ring_title_field = self.browser.find_element(*TournamentPageLocators.RING_TITLE_FIELD)
-        ring_title_field.send_keys(title)
-        # Save ring
-        save_ring_button = self.browser.find_element(*TournamentPageLocators.SAVE_RING_BUTTON)
-        save_ring_button.click()
+    def set_ring_for_pool(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        # Set ring
+        nominations_ring_title = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(TournamentPageLocators.RING_TITLE_FIELD)
+        )
+        nominations_ring_title.send_keys("Ring" + Keys.ENTER)

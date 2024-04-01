@@ -67,12 +67,13 @@ class TournamentPageLocators:
     PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
     ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
-    # Creating new pool
-    ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
-    # Adding random participants to pool
-    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
     ADD_RING_BUTTON = (By.ID, "btn-area-add")
     RING_TITLE_FIELD = (By.CSS_SELECTOR, "input")
     SAVE_RING_BUTTON = (By.ID, "btn-area-save")
+    # Creating new pool
+    ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
+    SET_RING_INPUT = (By.CSS_SELECTOR, "#vs1__combobox > div > input")
+    # Adding random participants to pool
+    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
