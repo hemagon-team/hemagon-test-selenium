@@ -1,7 +1,8 @@
 .idea
 .env
-/source/
-test_suits/
-/__pycache__/
-test_suits/test_suit_tournament_creation.py
+
+source/
+__pycache__/
 pages/__pycache__/
+test_suits/__pycache__/
+*.pyc
