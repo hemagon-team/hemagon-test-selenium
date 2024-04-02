@@ -11,6 +11,8 @@ from random import randint
 link = 'https://hemagon.com'
 link_tournament = 'https://hemagon.com/organizer/tournaments'
 
+# test test
+
 #это переменная для количества участников. В силу убогости автора она нужна как глобальная
 num_accepted = 0
 #то же самое для пулов
