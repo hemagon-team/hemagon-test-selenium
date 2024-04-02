@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 import random
 from random import randint
 
+#Shalom, orthodoxals!
 link = 'https://hemagon.com'
 link_tournament = 'https://hemagon.com/organizer/tournaments'
 
