@@ -2,4 +2,5 @@
 .env
 
 __pycache__/
+test_suits/__pycache__/
 *.pyc
