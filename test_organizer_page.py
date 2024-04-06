@@ -28,13 +28,11 @@ class TestUserCanCreateTournament:
         page.go_to_login_page()
         login_page = LoginPage(browser, browser.current_url)
         login_page.login_user(test_email, test_password)
-        time.sleep(1)
         login_page.should_be_authorized_user()
 
     def test_user_can_create_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
-        time.sleep(1)
         page.create_tournament(title, start_date, end_date, country, city, description)
 
     def test_user_can_open_tournament(self, browser):
@@ -42,11 +40,9 @@ class TestUserCanCreateTournament:
         page.open()
         page.open_tournament()
         tournament_page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         tournament_page.should_be_tournament_title(title)
 
     def test_user_can_delete_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
-        time.sleep(1)
         page.delete_tournament()

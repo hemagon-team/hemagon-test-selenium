@@ -13,19 +13,14 @@ class OrganizerPage(BasePage):
 
     def create_tournament(self, title, start_date, end_date, country, city, description):
         # Create a new tournament
-        # create_tournament_button = self.browser.find_element(*OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
-        create_tournament_button = WebDriverWait(self.browser, 5).until(
-            EC.presence_of_element_located(OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
-        )
-        create_tournament_button.click()
+        self.click_button(OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
+
         # Choose test tournament option: yes
-        test_tournament_input = WebDriverWait(self.browser, 5).until(
-            EC.presence_of_element_located(OrganizerPageLocators.TEST_TOURNAMENT_INPUT)
-        )
-        test_tournament_input.click()
+        self.click_button(OrganizerPageLocators.TEST_TOURNAMENT_INPUT)
+
         # Enter a title of the tournament
-        title_field = self.browser.find_element(*OrganizerPageLocators.TITLE_FIELD)
-        title_field.send_keys(title)
+        self.fill_input(OrganizerPageLocators.TITLE_FIELD, title)
+
         # FIX WORKING WITH DATE PICKERS
         '''
         # Set start date
@@ -37,35 +32,29 @@ class OrganizerPage(BasePage):
         end_date_picker = self.browser.find_element(*OrganizerPageLocators.END_DATE_PICKER)
         end_date_picker.send_keys(end_date)
         '''
+
         # Choose a country
         country_field = self.browser.find_element(*OrganizerPageLocators.COUNTRY_FIELD)
         country_field.send_keys(country + Keys.ENTER)
         time.sleep(2)
         country_field.send_keys(Keys.ENTER)
+
         # Choose a city
         city_field = self.browser.find_element(*OrganizerPageLocators.CITY_FIELD)
         city_field.send_keys(city + Keys.ENTER)
         time.sleep(2)
         city_field.send_keys(Keys.ENTER)
+
         # Add description
-        description_field = self.browser.find_element(*OrganizerPageLocators.DESCRIPTION_FIELD)
-        description_field.send_keys(description)
+        self.fill_input(OrganizerPageLocators.DESCRIPTION_FIELD, description)
+
         # Save the tournament
-        save_button = self.browser.find_element(*OrganizerPageLocators.SAVE_BUTTON)
-        save_button.click()
+        self.click_button(OrganizerPageLocators.SAVE_BUTTON)
 
     def open_tournament(self):
-        # tournament_banner = self.browser.find_element(*OrganizerPageLocators.TOURNAMENT_BANNER)
-        tournament_banner = WebDriverWait(self.browser, 5).until(
-            EC.presence_of_element_located(OrganizerPageLocators.TOURNAMENT_BANNER)
-        )
-        tournament_banner.click()
+        self.click_button(OrganizerPageLocators.TOURNAMENT_BANNER)
 
     def delete_tournament(self):
         self.open_tournament()
-        delete_tournament_button = WebDriverWait(self.browser, 5).until(
-            EC.presence_of_element_located(OrganizerPageLocators.REMOVE_TOURNAMENT_BUTTON)
-        )
-        delete_tournament_button.click()
-        delete_tournament_alert = self.browser.switch_to.alert
-        delete_tournament_alert.accept()
+        self.click_button(OrganizerPageLocators.REMOVE_TOURNAMENT_BUTTON)
+        self.confirm_alert()

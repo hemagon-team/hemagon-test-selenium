@@ -48,7 +48,14 @@ class TournamentPageLocators:
     # Creating new stage
     STAGES_TAB = (By.ID, "nomination-menu-stages")
     ADD_STAGE_BUTTON = (By.ID, "btn-stage-add")
-    TYPE_RADIO_LIST = (By.XPATH, "//div[@class='stages'//div//div//div[@class='radio-blocks']")
+    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(1)")
+    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                          "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(2)")
+    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(3)")
+    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                             "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(4)")
     TO_THE_FINALS_TRUE = (By.ID, "input-stage-tillFinals-true")
     TO_THE_FINALS_FALSE = (By.ID, "input-stage-tillFinals-false")
     FIGHT_TIME_FIELD = (By.ID, "input-stage-fightTime")
@@ -84,6 +91,7 @@ class TournamentPageLocators:
     REMOVE_POOL_BUTTON = (By.ID, "btn-stage-0-pool-0-remove")
     # Deleting stage
     REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
+    NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     # Deleting nomination
     REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
                                                  "> div > div:nth-child(3) > div > div > div:nth-child(4) > button")
