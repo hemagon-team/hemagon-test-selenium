@@ -15,7 +15,7 @@ services:
     working_dir: /var/www/app
 
   selenium-chrome:
-    image: selenium/node-chrome:${SELENIUM_VERSION}
+    image: seleniarm/node-chromium:${SELENIUM_VERSION}
     restart: unless-stopped
     shm_size: 2gb
     depends_on:
@@ -28,7 +28,7 @@ services:
       - '7900:7900'
 
   selenium-hub:
-    image: selenium/hub:${SELENIUM_VERSION}
+    image: seleniarm/hub:${SELENIUM_VERSION}
     restart: unless-stopped
     environment:
       - SE_VNC_NO_PASSWORD=1
