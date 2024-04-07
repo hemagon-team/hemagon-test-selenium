@@ -1,0 +1,23 @@
+name: Tests
+on: [workflow_dispatch]
+env:
+  TEST_BASEURL: 'https://hemagon.com'
+  SELENIUM_HUB_URL: 'http://127.0.0.1:4444/wd/hub'
+jobs:
+  pytest-run:
+    runs-on: ubuntu-latest
+    services:
+      selenium-hub:
+        image: selenium/standalone-chrome:4.18
+        options: --shm-size=2gb
+        ports:
+          - '4444:4444'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - run: |
+          pip install -r requirements.txt
+      - run: |
+          pytest -vv -s test_suits/test_suit_tournament_view.py
