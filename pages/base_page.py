@@ -1,5 +1,5 @@
 import time
-
+from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -39,6 +39,12 @@ class BasePage:
     def fill_select_by_index(self, selector, index):
         select_field = Select(self.find_element_wait(selector))
         select_field.select_by_index(index)
+
+    def fill_search_input(self, selector, value):
+        search_field = self.find_element_wait(selector)
+        search_field.send_keys(value + Keys.ENTER)
+        time.sleep(2)
+        search_field.send_keys(Keys.ENTER)
 
     def click_button(self, selector):
         button = self.find_element_wait(selector)
