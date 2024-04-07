@@ -1,7 +1,3 @@
-from selenium.webdriver.common.keys import Keys
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from .base_page import BasePage
 from .locators import OrganizerPageLocators
 
@@ -34,16 +30,10 @@ class OrganizerPage(BasePage):
         '''
 
         # Choose a country
-        country_field = self.browser.find_element(*OrganizerPageLocators.COUNTRY_FIELD)
-        country_field.send_keys(country + Keys.ENTER)
-        time.sleep(2)
-        country_field.send_keys(Keys.ENTER)
+        self.fill_search_input(OrganizerPageLocators.COUNTRY_FIELD, country)
 
         # Choose a city
-        city_field = self.browser.find_element(*OrganizerPageLocators.CITY_FIELD)
-        city_field.send_keys(city + Keys.ENTER)
-        time.sleep(2)
-        city_field.send_keys(Keys.ENTER)
+        self.fill_search_input(OrganizerPageLocators.CITY_FIELD, city)
 
         # Add description
         self.fill_input(OrganizerPageLocators.DESCRIPTION_FIELD, description)
