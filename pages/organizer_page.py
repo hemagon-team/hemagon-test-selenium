@@ -1,7 +1,3 @@
-from selenium.webdriver.common.keys import Keys
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from .base_page import BasePage
 from .locators import OrganizerPageLocators
 
