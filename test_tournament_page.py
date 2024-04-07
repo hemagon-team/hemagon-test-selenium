@@ -1,13 +1,14 @@
+import os
+import time
+import pytest
+from datetime import date
 from pages.login_page import LoginPage
 from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
 from pages.organizer_page import OrganizerPage
-import time
-from datetime import date
-import pytest
 
-base_link = "https://hemagon.com/"
-link = "https://hemagon.com/organizer/tournaments"
+base_link = os.environ["TEST_BASEURL"]
+link = base_link + "/organizer/tournaments"
 
 test_email = "paulus.mair@mailfence.com"
 test_password = "HEMAhuema@1"

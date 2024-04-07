@@ -1,10 +1,11 @@
-import pytest
+import os
 import time
+import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.organizer_page import OrganizerPage
 
-link = "https://hemagon.com/"
+link = os.environ["TEST_BASEURL"]
 
 test_email = "paulus.mair@mailfence.com"
 test_password = "HEMAhuema@1"
