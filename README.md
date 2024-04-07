@@ -1,12 +1,34 @@
 # Welcome to the Hemagon Tests
 
-## Installation
+## Usage - Local
+
+1. Copy `.env.dist` to `.env`
+
+2. Change `TEST_BASEURL` to your test target URL and `DEV_ENV_MODE` to `local`
+
+3. Install [Chromium](https://www.chromium.org/Home/) and [Python3](https://www.python.org/downloads/) with [Pip](https://pip.pypa.io/en/stable/installation/)
+
+4. Install deps
+   ```shell
+   pip install -r requirements.txt
+   ```
+
+5. Run tests:
+   ```shell
+   pytest -vv -s %test_name%
+   ```
+   *replace `%test_name%` with path to tests, like: `test_main_page.py`
+
+
+## Usage - Docker
 
 1. Copy `.env.dist` to `.env`
 
 2. Change `TEST_BASEURL` to your test target URL
 
-3. On `/hemagon-test-selenium` folder call:
+3. Install [Docker](https://docs.docker.com/engine/install/)
+
+4. Prepare and run containers:
    ```shell
    make up
    ```
@@ -20,7 +42,7 @@
    ```shell
    docker compose -f dev.docker-compose.yml exec -iT pytest pytest -vv -s %test_name%
    ```
-   *replace `%test_name%` with path to tests, like: `test_suits/test_suit_tournament_view.py`  
+   *replace `%test_name%` with path to tests, like: `test_main_page.py`  
 
 5. After all things are done call:
    ```shell
