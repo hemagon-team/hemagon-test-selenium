@@ -3,12 +3,13 @@ on: [workflow_dispatch]
 env:
   TEST_BASEURL: 'https://hemagon.com'
   SELENIUM_HUB_URL: 'http://127.0.0.1:4444/wd/hub'
+  DEV_ENV_MODE: 'remote'
 jobs:
   pytest-run:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: selenium/standalone-chrome:4.19
+        image: seleniarm/standalone-chromium:4.19
         options: --shm-size=2gb
         ports:
           - '4444:4444'
