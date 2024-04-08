@@ -4,7 +4,10 @@
 
 1. Copy `.env.dist` to `.env`
 
-2. Change `TEST_BASEURL` to your test target URL and `DEV_ENV_MODE` to `local`
+2. Change:
+   - `TEST_BASEURL` to your test target URL
+   - `DEV_ENV_MODE` to `local`
+   - other ENVs related to your configuration
 
 3. Install [Chromium](https://www.chromium.org/Home/) and [Python3](https://www.python.org/downloads/) with [Pip](https://pip.pypa.io/en/stable/installation/)
 
@@ -24,7 +27,11 @@
 
 1. Copy `.env.dist` to `.env`
 
-2. Change `TEST_BASEURL` to your test target URL
+2. Change:
+    - `TEST_BASEURL` to your test target URL
+    - `DEV_ENV_MODE` to `remote`
+    - `SELENIUM_HUB_URL` to HUB Docker container name
+    - other ENVs related to your configuration
 
 3. Install [Docker](https://docs.docker.com/engine/install/)
 
