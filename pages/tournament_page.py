@@ -54,7 +54,8 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.RINGS_TAB)
 
     def create_stage(self, type_id=1, to_the_finals=False, fight_time=120, go_next_stage=8,
-                     playoff_size=None, swiss_empty_win=None, hits_initial_hp=None, hits_limit_hp=None):
+                     playoff_size=None, playoff_finals_mode=None, playoff_third_place=None,
+                     swiss_empty_win=None, swiss_win_points=None, hits_initial_hp=None, hits_limit_hp=None):
         self.open_nomination()
         self.open_stages_tab()
 
@@ -92,7 +93,6 @@ class TournamentPage(BasePage):
         # Only for playoff: choose playoff size (4 / 8 / 16 / 32 / 64)
         if type_id == 2:
             if playoff_size == 4:
-                playoff_size_input = self.browser.find_element(*TournamentPageLocators.PLAYOFF_SIZE_4)
                 self.click_button(TournamentPageLocators.PLAYOFF_SIZE_4)
             elif playoff_size == 8:
                 self.click_button(TournamentPageLocators.PLAYOFF_SIZE_8)
@@ -105,10 +105,25 @@ class TournamentPage(BasePage):
             else:
                 raise Exception("No such option: playoff size can only be 4 / 8 / 16 / 32 / 64")
 
+        if type_id == 2 and to_the_finals:
+            # Choose finals mode: best of 1 or best of 3
+            if playoff_finals_mode == 1:
+                self.click_button(TournamentPageLocators.PLAYOFF_FINALS_MODE_1)
+            elif playoff_finals_mode == 3:
+                self.click_button(TournamentPageLocators.PLAYOFF_FINALS_MODE_3)
+            else:
+                raise Exception("No such option: finals mode can be best of 1 or best of 3")
+            # Choose if there will be a fight for the 3rd place
+            if playoff_third_place:
+                self.click_button(TournamentPageLocators.PLAYOFF_THIRD_PLACE_TRUE)
+            else:
+                self.click_button(TournamentPageLocators.PLAYOFF_THIRD_PLACE_FALSE)
+
         # Only for Swiss system and Swiss system with hits: choose how to handle an empty fight
         if type_id == 3 or type_id == 4:
             if swiss_empty_win:
                 self.click_button(TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_WIN)
+                self.fill_input(TournamentPageLocators.SWISS_EMPTY_WIN_POINTS, swiss_win_points)
             else:
                 self.click_button(TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_DRAW)
 
@@ -186,6 +201,29 @@ class TournamentPage(BasePage):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
         self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
+
+    def create_playoff(self):
+        # Should create a playoff
+        # HOW TO SEED PARTICIPANTS?
+        pass
+
+    def delete_playoff(self):
+        pass
+
+    def add_participants_to_swiss(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        # Enroll all participants
+        self.click_button(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
+
+    # Add ring allocation and pairs changing
+    # WORK WITH DRAGGING
+
+    def delete_swiss(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        # Delete round
+        self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
 
     def delete_stage(self):
         self.open_nomination()

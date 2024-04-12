@@ -25,14 +25,16 @@ weapon_id = 1
 fight_time = "120"
 last_round_time = "0"
 
-type_id = 1             # Possible values: 1 (pools) / 2 (playoff) / 3 (swiss system) / 4 (swiss system with hits)
+type_id = 3             # Possible values: 1 (pools) / 2 (playoff) / 3 (swiss system) / 4 (swiss system with hits)
 to_the_finals = False
 stage_fight_time = 120
 
 go_next_stage = 8
 playoff_size = 8        # Possible values: 4 / 8 / 16 / 32 / 64
-finals_mode = 1         # Possible values: 1 (best of 1) or 2 (best of 3)
+finals_mode = 1         # Possible values: 1 (best of 1) or 3 (best of 3)
+third_place = True      # Possible values: True (there'll be a fight for the 3rd place) of False (no fight)
 swiss_empty_win = True  # Possible values: True (win) or False (draw)
+swiss_empty_points = 1
 hits_initial_hp = 10
 hits_limit_hp = 0
 
@@ -91,6 +93,7 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.create_ring(ring_title)
 
+    @pytest.mark.skipif(type_id != 1, reason="Stage type is not pools")
     def test_user_can_create_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
@@ -98,6 +101,7 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.create_pools(pools_number)
 
+    @pytest.mark.skipif(type_id != 1, reason="Stage type is not pools")
     def test_user_can_add_participants_to_pool(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
@@ -105,6 +109,7 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.add_participants_to_pool()
 
+    @pytest.mark.skipif(type_id != 1, reason="Stage type is not pools")
     def test_user_can_set_ring_for_pool(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
@@ -112,12 +117,29 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.set_ring_for_pool()
 
+    @pytest.mark.skipif(type_id != 1, reason="Stage type is not pools")
     def test_user_can_delete_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament()
         page = TournamentPage(browser, browser.current_url)
         page.delete_pools(pools_number)
+
+    @pytest.mark.skipif(type_id != 3 and type_id != 4, reason="Stage type is not swiss system")
+    def test_user_can_add_participants_to_swiss(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        page.add_participants_to_swiss()
+
+    @pytest.mark.skipif(type_id != 3 and type_id != 4, reason="Stage type is not swiss system")
+    def test_user_can_delete_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament()
+        page = TournamentPage(browser, browser.current_url)
+        page.delete_swiss()
 
     def test_user_can_delete_stage(self, browser):
         start_page = OrganizerPage(browser, link)
