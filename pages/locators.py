@@ -83,14 +83,14 @@ class TournamentPageLocators:
     RING_TITLE_FIELD = (By.CSS_SELECTOR, "input")
     SAVE_RING_BUTTON = (By.ID, "btn-area-save")
     # Creating new pool
-    ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
+    ADD_POOL_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(1)")
     SET_RING_INPUT = (By.CSS_SELECTOR, "#vs1__combobox > div > input")
     # Adding random participants to pool
-    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
+    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
     # Deleting pool
-    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".side > .pool > div > button:nth-of-type(3)")
+    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(3)")
     # Deleting stage
-    REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
+    REMOVE_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     # Deleting nomination
     REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
