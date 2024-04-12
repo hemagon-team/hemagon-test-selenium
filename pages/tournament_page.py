@@ -185,7 +185,7 @@ class TournamentPage(BasePage):
         for i in range(number):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
-            self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
+        self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
     def delete_stage(self):
         self.open_nomination()
