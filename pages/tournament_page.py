@@ -157,11 +157,15 @@ class TournamentPage(BasePage):
         # Save ring
         self.click_button(TournamentPageLocators.SAVE_RING_BUTTON)
 
-    def create_pool(self):
+    def create_pools(self, number):
         self.open_nomination()
         self.open_stages_tab()
-        # Create pool
-        self.click_button(TournamentPageLocators.ADD_POOL_BUTTON)
+        # Create pools
+        for i in range(number):
+            add_pool_button = WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
+                EC.element_to_be_clickable(TournamentPageLocators.ADD_POOL_BUTTON)
+            )
+            add_pool_button.click()
 
     def add_participants_to_pool(self):
         self.open_nomination()
@@ -175,12 +179,13 @@ class TournamentPage(BasePage):
         # Set ring
         self.fill_input(TournamentPageLocators.RING_TITLE_FIELD, "Ring" + Keys.ENTER)
 
-    def delete_pool(self):
+    def delete_pools(self, number):
         self.open_nomination()
         self.open_stages_tab()
-        self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
-        self.confirm_alert()
-        self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
+        for i in range(number):
+            self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
+            self.confirm_alert()
+            self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
     def delete_stage(self):
         self.open_nomination()

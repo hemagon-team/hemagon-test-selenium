@@ -36,9 +36,11 @@ swiss_empty_win = True  # Possible values: True (win) or False (draw)
 hits_initial_hp = 10
 hits_limit_hp = 0
 
-participants_number = "8"
+participants_number = 8
 
 ring_title = "Ring" + str(time.time())
+
+pools_number = (participants_number + 7 - 1) // 7
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -80,7 +82,7 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament()
         page = TournamentPage(browser, browser.current_url)
-        page.add_participants(participants_number)
+        page.add_participants(str(participants_number))
 
     def test_user_can_create_ring(self, browser):
         start_page = OrganizerPage(browser, link)
@@ -89,13 +91,12 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.create_ring(ring_title)
 
-    def test_user_can_create_pool(self, browser):
+    def test_user_can_create_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament()
         page = TournamentPage(browser, browser.current_url)
-        page.create_pool()
-        # ADD FEATURE: CREATE ENOUGH POOLS FOR PARTICIPANTS NUMBER
+        page.create_pools(pools_number)
 
     def test_user_can_add_participants_to_pool(self, browser):
         start_page = OrganizerPage(browser, link)
@@ -111,12 +112,12 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.set_ring_for_pool()
 
-    def test_user_can_delete_pool(self, browser):
+    def test_user_can_delete_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament()
         page = TournamentPage(browser, browser.current_url)
-        page.delete_pool()
+        page.delete_pools(pools_number)
 
     def test_user_can_delete_stage(self, browser):
         start_page = OrganizerPage(browser, link)

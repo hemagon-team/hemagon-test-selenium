@@ -88,7 +88,7 @@ class TournamentPageLocators:
     # Adding random participants to pool
     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
     # Deleting pool
-    REMOVE_POOL_BUTTON = (By.ID, "btn-stage-0-pool-0-remove")
+    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".side > .pool > div > button:nth-of-type(3)")
     # Deleting stage
     REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
