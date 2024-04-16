@@ -26,7 +26,8 @@ class OrganizerPageLocators:
     DESCRIPTION_FIELD = (By.ID, "input-tournament-description")
     SAVE_BUTTON = (By.ID, "btn-tournament-save")
     # Open tournament
-    TOURNAMENT_BANNER = (By.CSS_SELECTOR, ".tournaments > div > a > div > div")
+    TOURNAMENT_BANNERS = (By.CSS_SELECTOR, ".tournaments > div > a > .title")
+    TOURNAMENT_OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
     # Delete tournament
     REMOVE_TOURNAMENT_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) >"
                                                  "div > div > div:nth-child(3) > button")

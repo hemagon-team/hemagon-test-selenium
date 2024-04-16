@@ -1,3 +1,4 @@
+import time
 from .base_page import BasePage
 from .locators import OrganizerPageLocators
 
@@ -41,10 +42,15 @@ class OrganizerPage(BasePage):
         # Save the tournament
         self.click_button(OrganizerPageLocators.SAVE_BUTTON)
 
-    def open_tournament(self):
-        self.click_button(OrganizerPageLocators.TOURNAMENT_BANNER)
+    def open_tournament(self, title):
+        banners = self.find_multiple_elements_wait(OrganizerPageLocators.TOURNAMENT_BANNERS)
+        for banner in banners:
+            if banner.text == title:
+                banner.click()
+                break
+        self.wait_for_element(OrganizerPageLocators.TOURNAMENT_OVERVIEW_TAB)
 
-    def delete_tournament(self):
-        self.open_tournament()
+    def delete_tournament(self, title):
+        self.open_tournament(title)
         self.click_button(OrganizerPageLocators.REMOVE_TOURNAMENT_BUTTON)
         self.confirm_alert()

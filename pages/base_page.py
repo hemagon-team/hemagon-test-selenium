@@ -16,8 +16,13 @@ class BasePage:
         self.browser.get(self.url)
 
     def find_element_wait(self, selector):
-        return WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
+        return WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
             EC.presence_of_element_located(selector)
+        )
+
+    def find_multiple_elements_wait(self, selector):
+        return WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
+            EC.presence_of_all_elements_located(selector)
         )
 
     def is_element_present(self, selector):
@@ -47,7 +52,9 @@ class BasePage:
         search_field.send_keys(Keys.ENTER)
 
     def click_button(self, selector):
-        button = self.find_element_wait(selector)
+        button = WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
+            EC.element_to_be_clickable(selector)
+        )
         button.click()
         time.sleep(0.3)
 

@@ -181,6 +181,7 @@ class TournamentPage(BasePage):
                 EC.element_to_be_clickable(TournamentPageLocators.ADD_POOL_BUTTON)
             )
             add_pool_button.click()
+            self.browser.execute_script("window.scrollBy(0, 100)")
 
     def add_participants_to_pool(self):
         self.open_nomination()
@@ -200,6 +201,7 @@ class TournamentPage(BasePage):
         for i in range(number):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
+            time.sleep(0.3)
         self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
     def create_playoff(self):
