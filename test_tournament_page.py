@@ -1,41 +1,21 @@
+import os
+import json
+import pytest
 from pages.login_page import LoginPage
 from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
 from pages.organizer_page import OrganizerPage
-import time
-from datetime import date
-import pytest
 
-base_link = "https://hemagon.com/"
-link = "https://hemagon.com/organizer/tournaments"
+# Set links
+base_link = os.environ["TEST_BASEURL"]
+link = base_link + "/organizer/tournaments"
 
-test_email = "paulus.mair@mailfence.com"
-test_password = "HEMAhuema@1"
+# Set user data (modify in data.json)
+with open("data.json", "r") as f:
+    data = json.load(f)
 
-title = "Test Tournament" + str(time.time())
-start_date = date.today().strftime("%d %B %Y")
-end_date = date.today().strftime("%d %B %Y")
-country = "Spain"
-city = "Barcelona"
-description = "Test tournament"
-
-nomination_title = "Nomination" + str(time.time())
-weapon_id = 1
-fight_time = "120"
-last_round_time = "0"
-
-type_id = 1
-to_the_finals = False
-stage_fight_time = 120
-go_next_stage = 8
-# playoff_size
-# swiss_empty_win
-# hits_initial_hp
-# hits_limit_hp
-
-participants_number = "16"
-
-ring_title = "Ring" + str(time.time())
+# Calculate pools number based on participants number (from user data)
+pools_number = (data["participants_number"] + 7 - 1) // 7
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -44,11 +24,11 @@ def setup(browser):
     page.open()
     page.go_to_login_page()
     login_page = LoginPage(browser, browser.current_url)
-    login_page.login_user(test_email, test_password)
-    time.sleep(1)
+    login_page.login_user(data["test_email"], data["test_password"])
     page.should_be_authorized_user()
     # Close cookies
     page.close_cookies()
+
 
 class TestUserCanModifyTournament:
     # Not the best way to organize setup
@@ -56,106 +36,105 @@ class TestUserCanModifyTournament:
     def test_setup_create_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
-        page.create_tournament(title, start_date, end_date, country, city, description)
+        page.create_tournament(data["title"], data["start_date"], data["end_date"],
+                               data["country"], data["city"], data["description"])
 
     def test_user_can_create_nomination(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.create_nomination(nomination_title, weapon_id, fight_time, last_round_time)
+        page.create_nomination(data["nomination_title"], data["weapon_id"],
+                               data["fight_time"], data["last_round_time"])
 
     def test_user_can_create_stage(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.create_stage(type_id, to_the_finals, stage_fight_time, go_next_stage)
+        page.create_stage(data["type_id"], data["to_the_finals"], data["fight_time"], data["go_next_stage"])
 
     def test_user_can_add_participants(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.add_participants(participants_number)
+        page.add_participants(str(data["participants_number"]))
 
     def test_user_can_create_ring(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.create_ring(ring_title)
+        page.create_ring(data["ring_title"])
 
-    def test_user_can_create_pool(self, browser):
+    @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
+    def test_user_can_create_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.create_pool()
-        # ADD FEATURE: CREATE ENOUGH POOLS FOR PARTICIPANTS NUMBER
+        page.create_pools(pools_number)
 
+    @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
     def test_user_can_add_participants_to_pool(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         page.add_participants_to_pool()
 
+    @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
     def test_user_can_set_ring_for_pool(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         page.set_ring_for_pool()
 
-    def test_user_can_delete_pool(self, browser):
+    @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
+    def test_user_can_delete_pools(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
-        page.delete_pool()
+        page.delete_pools(pools_number)
+
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_add_participants_to_swiss(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.add_participants_to_swiss()
+
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_delete_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.delete_swiss()
 
     def test_user_can_delete_stage(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         page.delete_stage()
 
     def test_user_can_delete_nomination(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         page.delete_nomination()
 
     def test_user_can_delete_ring(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
-        time.sleep(1)
-        start_page.open_tournament()
+        start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        time.sleep(1)
         page.delete_ring()
 
     # Not the best way to organize teardown
@@ -163,4 +142,4 @@ class TestUserCanModifyTournament:
     def test_teardown_delete_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
-        page.delete_tournament()
+        page.delete_tournament(data["title"])

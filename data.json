@@ -1,0 +1,33 @@
+{
+    "test_email": "paulus.mair@mailfence.com",
+    "test_password": "HEMAhuema@1",
+
+    "title": "Test Tournament - Anna (16/04/2024)",
+    "start_date": "17 April 2024",
+    "end_date": "18 April 2024",
+    "country": "Spain",
+    "city": "Barcelona",
+    "description": "Test tournament",
+
+    "nomination_title": "Nomination",
+    "weapon_id": 5,
+    "fight_time": "120",
+    "last_round_time": "0",
+
+    "type_id": 1,
+    "to_the_finals": false,
+    "stage_fight_time": 120,
+
+    "go_next_stage": 8,
+    "playoff_size": 8,
+    "finals_mode": 1,
+    "third_place": true,
+    "swiss_empty_win": true,
+    "swiss_empty_points": 1,
+    "hits_initial_hp": 10,
+    "hits_limit_hp": 0,
+
+    "participants_number": 8,
+
+    "ring_title": "Ring"
+}

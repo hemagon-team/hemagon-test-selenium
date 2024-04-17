@@ -1,8 +1,5 @@
 .idea
 .env
-
-source/
-__pycache__/
+/source/
+/__pycache__/
 pages/__pycache__/
-test_suits/__pycache__/
-*.pyc

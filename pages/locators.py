@@ -26,7 +26,8 @@ class OrganizerPageLocators:
     DESCRIPTION_FIELD = (By.ID, "input-tournament-description")
     SAVE_BUTTON = (By.ID, "btn-tournament-save")
     # Open tournament
-    TOURNAMENT_BANNER = (By.CSS_SELECTOR, ".tournaments > div > a > div > div")
+    TOURNAMENT_BANNERS = (By.CSS_SELECTOR, ".tournaments > div > a > .title")
+    TOURNAMENT_OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
     # Delete tournament
     REMOVE_TOURNAMENT_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) >"
                                                  "div > div > div:nth-child(3) > button")
@@ -48,7 +49,14 @@ class TournamentPageLocators:
     # Creating new stage
     STAGES_TAB = (By.ID, "nomination-menu-stages")
     ADD_STAGE_BUTTON = (By.ID, "btn-stage-add")
-    TYPE_RADIO_LIST = (By.XPATH, "//div[@class='stages'//div//div//div[@class='radio-blocks']")
+    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(1)")
+    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                          "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(2)")
+    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(3)")
+    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
+                             "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(4)")
     TO_THE_FINALS_TRUE = (By.ID, "input-stage-tillFinals-true")
     TO_THE_FINALS_FALSE = (By.ID, "input-stage-tillFinals-false")
     FIGHT_TIME_FIELD = (By.ID, "input-stage-fightTime")
@@ -58,8 +66,13 @@ class TournamentPageLocators:
     PLAYOFF_SIZE_16 = (By.ID, "input-stage-playoffSize-16")
     PLAYOFF_SIZE_32 = (By.ID, "input-stage-playoffSize-32")
     PLAYOFF_SIZE_64 = (By.ID, "input-stage-playoffSize-64")
+    PLAYOFF_FINALS_MODE_1 = (By.ID, "input-stage-finalsMode-bo1")
+    PLAYOFF_FINALS_MODE_3 = (By.ID, "input-stage-finalsMode-bo3")
+    PLAYOFF_THIRD_PLACE_TRUE = (By.ID, "input-stage-fightForThirdPlace-true")
+    PLAYOFF_THIRD_PLACE_FALSE = (By.ID, "input-stage-fightForThirdPlace-false")
     SWISS_EMPTY_FIGHT_RESULT_WIN = (By.ID, "input-stage-byeMode-win")
     SWISS_EMPTY_FIGHT_RESULT_DRAW = (By.ID, "input-stage-byeMode-draw")
+    SWISS_EMPTY_WIN_POINTS = (By.ID, "input-stage-byeMode-win-points")
     HITS_INITIAL_HP = (By.ID, "input-stage-swiss-hits-initial")
     HITS_LIMIT_HP = (By.ID, "input-stage-swiss-hits-fight-limit")
     SAVE_STAGE_BUTTON = (By.ID, "btn-stage-editing-save")
@@ -76,14 +89,17 @@ class TournamentPageLocators:
     RING_TITLE_FIELD = (By.CSS_SELECTOR, "input")
     SAVE_RING_BUTTON = (By.ID, "btn-area-save")
     # Creating new pool
-    ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
+    ADD_POOL_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(1)")
     SET_RING_INPUT = (By.CSS_SELECTOR, "#vs1__combobox > div > input")
     # Adding random participants to pool
-    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
+    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
     # Deleting pool
-    REMOVE_POOL_BUTTON = (By.ID, "btn-stage-0-pool-0-remove")
+    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(3)")
+    # Adding all participants to swiss system
+    ENROLL_ALL_TO_SWISS = (By.CSS_SELECTOR, ".pool > button")
     # Deleting stage
-    REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
+    REMOVE_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button")
+    NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     # Deleting nomination
     REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
                                                  "> div > div:nth-child(3) > div > div > div:nth-child(4) > button")
