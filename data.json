@@ -1,6 +1,6 @@
 {
-    "test_email": "paulus.mair@mailfence.com",
-    "test_password": "HEMAhuema@1",
+    "test_email": "athena.tester@mail.com",
+    "test_password": "t3st@cc0unt#p4swd",
 
     "title": "Test Tournament - Anna (16/04/2024)",
     "start_date": "17 April 2024",
@@ -14,7 +14,7 @@
     "fight_time": "120",
     "last_round_time": "0",
 
-    "type_id": 1,
+    "type_id": 3,
     "to_the_finals": false,
     "stage_fight_time": 120,
 

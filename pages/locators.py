@@ -97,6 +97,12 @@ class TournamentPageLocators:
     REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(3)")
     # Adding all participants to swiss system
     ENROLL_ALL_TO_SWISS = (By.CSS_SELECTOR, ".pool > button")
+    # Pairs and rings for swiss system
+    ALLOCATE_RINGS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(1)")
+    CHANGE_PAIRS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(2)")
+    DRAG_ZONES = (By.CLASS_NAME, "drag-zone")
+    DRAG_ITEMS = (By.CLASS_NAME, "drag-item")
+    ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     # Deleting stage
     REMOVE_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")

@@ -2,6 +2,7 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
 from .locators import TournamentPageLocators
 
@@ -218,8 +219,23 @@ class TournamentPage(BasePage):
         # Enroll all participants
         self.click_button(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
-    # Add ring allocation and pairs changing
-    # WORK WITH DRAGGING
+    def set_ring_for_pairs(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        # ONLY WORKS WITH ONE RING, FIX NEEDED
+        self.click_button(TournamentPageLocators.ALLOCATE_RINGS_BUTTON)
+        self.click_button(TournamentPageLocators.ADD_UNALLOCATED_TO_RING)
+
+    def change_pairs(self):
+        self.open_nomination()
+        self.open_stages_tab()
+        self.click_button(TournamentPageLocators.CHANGE_PAIRS_BUTTON)
+        drag_zones = self.find_multiple_elements_wait(TournamentPageLocators.DRAG_ZONES)
+        drag_items = self.find_multiple_elements_wait(TournamentPageLocators.DRAG_ITEMS)
+        actions = ActionChains(self.browser)
+        # DOESN'T WORK, ONLY HIGHLIGHT TEXT FOR SOME REASON, FIX NEEDED
+        actions.drag_and_drop(drag_items[0], drag_zones[1]).perform()
+        time.sleep(10)
 
     def delete_swiss(self):
         self.open_nomination()

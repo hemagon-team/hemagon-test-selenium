@@ -116,6 +116,22 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.delete_swiss()
 
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_set_ring_for_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.set_ring_for_pairs()
+
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_set_ring_for_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.change_pairs()
+
     def test_user_can_delete_stage(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
