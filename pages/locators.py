@@ -8,6 +8,31 @@ class BasePageLocators:
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
 
 
+class MainPageLocators:
+    # Tabs
+    TOURNAMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(1) > a")
+    RATING_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(2) > a")
+    FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
+    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
+    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
+    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(7) > a")
+    # Tournament tab
+    TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
+    # Rating tab
+    RATING_TITLE = (By.XPATH, "//h1[text()='Rating']")
+    # Fighter tab
+    FIGHTERS_TITLE = (By.XPATH, "//h1[text()='Fighters']")
+    # Clubs tab
+    CLUBS_TITLE = (By.XPATH, "//h1[text()='Clubs']")
+    # Achievements tab
+    ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
+    # About tab
+    ABOUT_TITLE = (By.XPATH, "//h3[contains(text(), 'with HEMAGON you can')]")
+    # Contact tab
+    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
+
+
 class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")

@@ -1,14 +1,16 @@
 import os
 import time
 import pytest
+import json
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.organizer_page import OrganizerPage
 
 link = os.environ["TEST_BASEURL"]
 
-test_email = "paulus.mair@mailfence.com"
-test_password = "HEMAhuema@1"
+# Set user data (modify in data.json)
+with open("data.json", "r") as f:
+    data = json.load(f)
 
 
 def test_guest_can_go_to_login_page_from_main_page(browser):
@@ -27,7 +29,7 @@ class TestUserCanGoToOrganizerPage:
         page.open()
         page.go_to_login_page()
         login_page = LoginPage(browser, browser.current_url)
-        login_page.login_user(test_email, test_password)
+        login_page.login_user(data["test_email"], data["test_password"])
         time.sleep(1)
         login_page.should_be_authorized_user()
 
@@ -38,3 +40,38 @@ class TestUserCanGoToOrganizerPage:
         organizer_page = OrganizerPage(browser, browser.current_url)
         time.sleep(1)
         organizer_page.should_be_organizer_url()
+
+    def test_user_can_open_tournaments_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_tournaments_tab()
+
+    def test_user_can_open_rating_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_tab()
+
+    def test_user_can_open_fighters_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_fighters_tab()
+
+    def test_user_can_open_clubs_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_clubs_tab()
+
+    def test_user_can_open_achievements_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_achievements_tab()
+
+    def test_user_can_open_about_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_about_tab()
+
+    def test_user_can_open_contact_tab(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_contact_tab()
