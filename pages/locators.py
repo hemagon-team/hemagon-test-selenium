@@ -28,7 +28,7 @@ class MainPageLocators:
     # Achievements tab
     ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
     # About tab
-    ABOUT_TITLE = (By.XPATH, "//h3[contains(text(), 'with HEMAGON you can')]")
+    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
     # Contact tab
     CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
 
