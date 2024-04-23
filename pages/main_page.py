@@ -36,3 +36,48 @@ class MainPage(BasePage):
     def open_contact_tab(self):
         self.click_button(MainPageLocators.CONTACT_TAB)
         assert self.is_element_present(MainPageLocators.CONTACT_TITLE)
+
+    def open_rating_longsword(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_LONGSWORD)
+        assert self.is_element_present(MainPageLocators.RATING_LONGSWORD_TITLE)
+
+    def open_rating_saber(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_SABER)
+        assert self.is_element_present(MainPageLocators.RATING_SABER_TITLE)
+
+    def open_rating_rapier(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_RAPIER)
+        assert self.is_element_present(MainPageLocators.RATING_RAPIER_TITLE)
+
+    def open_rating_rapier_dagger(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_RAPIER_DAGGER)
+        assert self.is_element_present(MainPageLocators.RATING_RAPIER_DAGGER_TITLE)
+
+    def open_rating_dussak(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_DUSSAK)
+        assert self.is_element_present(MainPageLocators.RATING_DUSSAK_TITLE)
+
+    def open_rating_spear(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_SPEAR)
+        assert self.is_element_present(MainPageLocators.RATING_SPEAR_TITLE)
+
+    def open_rating_sword_buckler(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_SWORD_BUCKLER)
+        assert self.is_element_present(MainPageLocators.RATING_SWORD_BUCKLER_TITLE)
+
+    def open_rating_sidesword(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_SIDESWORD)
+        assert self.is_element_present(MainPageLocators.RATING_SIDESWORD_TITLE)
+
+    def open_rating_triathlon(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_TRIATHLON)
+        assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_TITLE)

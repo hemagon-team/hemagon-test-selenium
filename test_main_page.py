@@ -75,3 +75,48 @@ class TestUserCanGoToOrganizerPage:
         page = MainPage(browser, link)
         page.open()
         page.open_contact_tab()
+
+    def test_user_can_open_longsword_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_longsword()
+
+    def test_user_can_open_saber_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_saber()
+
+    def test_user_can_open_rapier_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_rapier()
+
+    def test_user_can_open_rapier_dagger_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_rapier_dagger()
+
+    def test_user_can_open_dussak_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_dussak()
+
+    def test_user_can_open_spear_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_spear()
+
+    def test_user_can_open_sword_buckler_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_sword_buckler()
+
+    def test_user_can_open_sidesword_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_sidesword()
+
+    def test_user_can_open_triathlon_rating(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_triathlon()
