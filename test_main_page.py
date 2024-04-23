@@ -120,3 +120,48 @@ class TestUserCanGoToOrganizerPage:
         page = MainPage(browser, link)
         page.open()
         page.open_rating_triathlon()
+
+    def test_user_can_open_longsword_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_longsword_overall_list()
+
+    def test_user_can_open_saber_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_saber_overall_list()
+
+    def test_user_can_open_rapier_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_rapier_overall_list()
+
+    def test_user_can_open_rapier_dagger_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_rapier_dagger_overall_list()
+
+    def test_user_can_open_dussak_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_dussak_overall_list()
+
+    def test_user_can_open_spear_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_spear_overall_list()
+
+    def test_user_can_open_sword_buckler_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_sword_buckler_overall_list()
+
+    def test_user_can_open_sidesword_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_sidesword_overall_list()
+
+    def test_user_can_open_triathlon_overall_list(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_triathlon_overall_list()
