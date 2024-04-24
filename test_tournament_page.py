@@ -10,6 +10,10 @@ from pages.organizer_page import OrganizerPage
 base_link = os.environ["TEST_BASEURL"]
 link = base_link + "/organizer/tournaments"
 
+# Set User
+email = os.environ["TEST_USER_EMAIL"]
+password = os.environ["TEST_USER_PASSWORD"]
+
 # Set user data (modify in data.json)
 with open("data.json", "r") as f:
     data = json.load(f)
@@ -24,7 +28,7 @@ def setup(browser):
     page.open()
     page.go_to_login_page()
     login_page = LoginPage(browser, browser.current_url)
-    login_page.login_user(data["test_email"], data["test_password"])
+    login_page.login_user(email, password)
     page.should_be_authorized_user()
     # Close cookies
     page.close_cookies()
@@ -115,6 +119,22 @@ class TestUserCanModifyTournament:
         start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
         page.delete_swiss()
+
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_set_ring_for_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.set_ring_for_pairs()
+
+    @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
+    def test_user_can_set_ring_for_swiss_round(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.change_pairs()
 
     def test_user_can_delete_stage(self, browser):
         start_page = OrganizerPage(browser, link)

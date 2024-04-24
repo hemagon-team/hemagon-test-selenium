@@ -8,6 +8,70 @@ class BasePageLocators:
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
 
 
+class MainPageLocators:
+    # Tabs
+    TOURNAMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(1) > a")
+    RATING_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(2) > a")
+    FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
+    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
+    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
+    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(7) > a")
+    # Tournament tab
+    TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
+    # Rating tab
+    RATING_TITLE = (By.XPATH, "//h1[text()='Rating']")
+    RATING_OVERALL_BUTTON = (By.CSS_SELECTOR, ".overall-rating > div > div > div > a")
+    RATING_FULL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
+    RATING_OVERALL_TABLE_USER = (By.XPATH, "//div[@class='column-title' and text()='User']")
+    # Longsword tab
+    RATING_LONGSWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(1)")
+    RATING_LONGSWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Longsword ']")
+    RATING_LONGSWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Longsword']")
+    # Saber tab
+    RATING_SABER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(2)")
+    RATING_SABER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Saber ']")
+    RATING_SABER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Saber']")
+    # Rapier tab
+    RATING_RAPIER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(3)")
+    RATING_RAPIER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier ']")
+    RATING_RAPIER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier']")
+    # Rapier and dagger tab
+    RATING_RAPIER_DAGGER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(4)")
+    RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier and Dagger ']")
+    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier & Dagger']")
+    # Dussak tab
+    RATING_DUSSAK = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
+    RATING_DUSSAK_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Dussak  ']")
+    RATING_DUSSAK_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Dussak']")
+    # Spear tab
+    RATING_SPEAR = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
+    RATING_SPEAR_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Spear ']")
+    RATING_SPEAR_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Spear']")
+    # Sword and buckler tab
+    RATING_SWORD_BUCKLER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(7)")
+    RATING_SWORD_BUCKLER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sword and Buckler - Open ']")
+    RATING_SWORD_BUCKLER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sword & Buckler']")
+    # Sidesword tab
+    RATING_SIDESWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(8)")
+    RATING_SIDESWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sidesword ']")
+    RATING_SIDESWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sidesword']")
+    # Triathlon tab
+    RATING_TRIATHLON = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(9)")
+    RATING_TRIATHLON_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Triathlon ']")
+    RATING_TRIATHLON_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Triathlon']")
+    # Fighter tab
+    FIGHTERS_TITLE = (By.XPATH, "//h1[text()='Fighters']")
+    # Clubs tab
+    CLUBS_TITLE = (By.XPATH, "//h1[text()='Clubs']")
+    # Achievements tab
+    ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
+    # About tab
+    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
+    # Contact tab
+    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
+
+
 class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")
@@ -97,6 +161,12 @@ class TournamentPageLocators:
     REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(3)")
     # Adding all participants to swiss system
     ENROLL_ALL_TO_SWISS = (By.CSS_SELECTOR, ".pool > button")
+    # Pairs and rings for swiss system
+    ALLOCATE_RINGS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(1)")
+    CHANGE_PAIRS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(2)")
+    DRAG_ZONES = (By.CLASS_NAME, "drag-zone")
+    DRAG_ITEMS = (By.CLASS_NAME, "drag-item")
+    ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     # Deleting stage
     REMOVE_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
