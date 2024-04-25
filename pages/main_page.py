@@ -135,3 +135,13 @@ class MainPage(BasePage):
         self.click_button(MainPageLocators.RATING_FULL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_OVERALL_TITLE)
         assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
+
+    def open_rating_about(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_ABOUT_LINK)
+        assert self.is_element_present(MainPageLocators.RATING_ABOUT_TITLE)
+
+    def open_rating_import(self):
+        self.open_rating_tab()
+        self.click_button(MainPageLocators.RATING_IMPORT_LINK)
+        assert self.is_element_present(MainPageLocators.RATING_IMPORT_TITLE)
