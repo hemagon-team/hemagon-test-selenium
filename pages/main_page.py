@@ -15,13 +15,13 @@ class MainPage(BasePage):
         self.click_button(MainPageLocators.RATING_TAB)
         assert self.is_element_present(MainPageLocators.RATING_TITLE)
 
-    def open_fighters_tab(self):
+    """def open_fighters_tab(self):
         self.click_button(MainPageLocators.FIGHTERS_TAB)
         assert self.is_element_present(MainPageLocators.FIGHTERS_TITLE)
 
     def open_clubs_tab(self):
         self.click_button(MainPageLocators.CLUBS_TAB)
-        assert self.is_element_present(MainPageLocators.CLUBS_TITLE)
+        assert self.is_element_present(MainPageLocators.CLUBS_TITLE)"""
 
     def open_achievements_tab(self):
         self.click_button(MainPageLocators.ACHIEVEMENTS_TAB)
@@ -57,7 +57,7 @@ class MainPage(BasePage):
         self.click_button(MainPageLocators.RATING_RAPIER_DAGGER)
         assert self.is_element_present(MainPageLocators.RATING_RAPIER_DAGGER_TITLE)
 
-    def open_rating_dussak(self):
+    """def open_rating_dussak(self):
         self.open_rating_tab()
         self.click_button(MainPageLocators.RATING_DUSSAK)
         assert self.is_element_present(MainPageLocators.RATING_DUSSAK_TITLE)
@@ -65,7 +65,7 @@ class MainPage(BasePage):
     def open_rating_spear(self):
         self.open_rating_tab()
         self.click_button(MainPageLocators.RATING_SPEAR)
-        assert self.is_element_present(MainPageLocators.RATING_SPEAR_TITLE)
+        assert self.is_element_present(MainPageLocators.RATING_SPEAR_TITLE)"""
 
     def open_rating_sword_buckler(self):
         self.open_rating_tab()
@@ -77,10 +77,10 @@ class MainPage(BasePage):
         self.click_button(MainPageLocators.RATING_SIDESWORD)
         assert self.is_element_present(MainPageLocators.RATING_SIDESWORD_TITLE)
 
-    def open_rating_triathlon(self):
+    """def open_rating_triathlon(self):
         self.open_rating_tab()
         self.click_button(MainPageLocators.RATING_TRIATHLON)
-        assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_TITLE)
+        assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_TITLE)"""
 
     def open_rating_longsword_overall_list(self):
         self.open_rating_longsword()
@@ -102,11 +102,11 @@ class MainPage(BasePage):
 
     def open_rating_rapier_dagger_overall_list(self):
         self.open_rating_rapier_dagger()
-        self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
+        self.click_button(MainPageLocators.RATING_FULL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_RAPIER_DAGGER_OVERALL_TITLE)
         assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
 
-    def open_rating_dussak_overall_list(self):
+    """def open_rating_dussak_overall_list(self):
         self.open_rating_dussak()
         self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_DUSSAK_OVERALL_TITLE)
@@ -116,7 +116,7 @@ class MainPage(BasePage):
         self.open_rating_spear()
         self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_SPEAR_OVERALL_TITLE)
-        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
+        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)"""
 
     def open_rating_sword_buckler_overall_list(self):
         self.open_rating_sword_buckler()
@@ -130,11 +130,11 @@ class MainPage(BasePage):
         assert self.is_element_present(MainPageLocators.RATING_SIDESWORD_OVERALL_TITLE)
         assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
 
-    def open_rating_triathlon_overall_list(self):
+    """def open_rating_triathlon_overall_list(self):
         self.open_rating_triathlon()
         self.click_button(MainPageLocators.RATING_FULL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_OVERALL_TITLE)
-        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
+        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)"""
 
     def open_rating_about(self):
         self.open_rating_tab()

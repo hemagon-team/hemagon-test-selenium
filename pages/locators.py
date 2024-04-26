@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
     USER_NAME = (By.CLASS_NAME, "name")
-    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover li:nth-child(4) a")
+    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover div:nth-of-type(2) ul li:nth-of-type(4) a")
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
 
 
@@ -12,11 +12,11 @@ class MainPageLocators:
     # Tabs
     TOURNAMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(1) > a")
     RATING_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(2) > a")
-    FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
-    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
-    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
-    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
-    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(7) > a")
+    """FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")"""
+    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
+    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
     # Tournament tab
     TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     # Rating tab
@@ -25,7 +25,7 @@ class MainPageLocators:
     RATING_IMPORT_LINK = (By.CSS_SELECTOR, ".description > div:nth-of-type(2) > span")
     # Rating tab - for all tabs
     RATING_OVERALL_BUTTON = (By.CSS_SELECTOR, ".overall-rating > div > div > div > a")
-    RATING_FULL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
+    RATING_FULL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > a")
     RATING_OVERALL_TABLE_USER = (By.XPATH, "//div[@class='column-title' and text()='User']")
     # Longsword tab
     RATING_LONGSWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(1)")
@@ -42,7 +42,7 @@ class MainPageLocators:
     # Rapier and dagger tab
     RATING_RAPIER_DAGGER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
     RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier and Dagger ']")
-    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier & Dagger']")
+    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Rapier and Dagger']")
     # Dussak tab
     """RATING_DUSSAK = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
     RATING_DUSSAK_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Dussak  ']")
@@ -58,7 +58,7 @@ class MainPageLocators:
     # Sidesword tab
     RATING_SIDESWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
     RATING_SIDESWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sidesword ']")
-    RATING_SIDESWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sidesword']")
+    RATING_SIDESWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Sidesword']")
     # Triathlon tab
     """RATING_TRIATHLON = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(9)")
     RATING_TRIATHLON_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Triathlon ']")
