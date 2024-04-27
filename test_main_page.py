@@ -16,6 +16,7 @@ password = os.environ["TEST_USER_PASSWORD"]
 with open("data.json", "r") as f:
     data = json.load(f)
 
+
 def test_guest_can_go_to_login_page_from_main_page(browser):
     page = MainPage(browser, link)
     page.open()

@@ -4,7 +4,8 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
     USER_NAME = (By.CLASS_NAME, "name")
-    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover div:nth-of-type(2) ul li:nth-of-type(4) a")
+    USER_POPOVER = (By.CSS_SELECTOR, ".user-block .popover")
+    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(4) a")
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
 
 
@@ -41,8 +42,8 @@ class MainPageLocators:
     RATING_RAPIER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier']")
     # Rapier and dagger tab
     RATING_RAPIER_DAGGER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
-    RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier and Dagger ']")
-    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Rapier and Dagger']")
+    RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier & Dagger ']")
+    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Rapier & Dagger']")
     # Dussak tab
     """RATING_DUSSAK = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
     RATING_DUSSAK_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Dussak  ']")
@@ -53,7 +54,7 @@ class MainPageLocators:
     RATING_SPEAR_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Spear']")"""
     # Sword and buckler tab
     RATING_SWORD_BUCKLER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(4)")
-    RATING_SWORD_BUCKLER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sword and Buckler - Open ']")
+    RATING_SWORD_BUCKLER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sword & Buckler - Open ']")
     RATING_SWORD_BUCKLER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sword & Buckler']")
     # Sidesword tab
     RATING_SIDESWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
