@@ -82,101 +82,10 @@ class TestUserCanGoToOrganizerPage:
         page.open()
         page.open_contact_tab()
 
-    def test_user_can_open_longsword_rating(self, browser):
+    def test_user_can_open_rating_weapon_tabs(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_longsword()
-
-    def test_user_can_open_saber_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_saber()
-
-    def test_user_can_open_rapier_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier()
-
-    def test_user_can_open_rapier_dagger_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier_dagger()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_dussak_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_dussak()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_spear_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_spear()
-
-    def test_user_can_open_sword_buckler_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sword_buckler()
-
-    def test_user_can_open_sidesword_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sidesword()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_triathlon_rating(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_triathlon()
-
-    def test_user_can_open_longsword_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_longsword_overall_list()
-
-    def test_user_can_open_saber_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_saber_overall_list()
-
-    def test_user_can_open_rapier_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier_overall_list()
-
-    def test_user_can_open_rapier_dagger_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier_dagger_overall_list()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_dussak_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_dussak_overall_list()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_spear_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_spear_overall_list()
-
-    def test_user_can_open_sword_buckler_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sword_buckler_overall_list()
-
-    def test_user_can_open_sidesword_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sidesword_overall_list()
-
-    @pytest.mark.skip(reason="No tab on the website now")
-    def test_user_can_open_triathlon_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_triathlon_overall_list()
+        page.open_rating_for_every_weapon()
 
     def test_user_can_open_about_rating(self, browser):
         page = MainPage(browser, link)

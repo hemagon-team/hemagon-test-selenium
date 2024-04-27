@@ -37,51 +37,20 @@ class MainPage(BasePage):
         self.click_button(MainPageLocators.CONTACT_TAB)
         assert self.is_element_present(MainPageLocators.CONTACT_TITLE)
 
-    def open_rating_longsword(self):
+    def open_rating_for_every_weapon(self):
         self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_LONGSWORD)
-        assert self.is_element_present(MainPageLocators.RATING_LONGSWORD_TITLE)
+        weapon_tabs = self.find_multiple_elements_wait(MainPageLocators.RATING_WEAPON_TABS)
+        for tab in weapon_tabs:
+            weapon_tab_name = tab.text
+            weapon_tab_name = " ".join(weapon_tab_name.split(" ")[:-1]).lower()
+            tab.click()
+            weapon_title = self.find_element_wait(MainPageLocators.RATING_WEAPON_TITLE)
+            weapon_title_name = weapon_title.text
+            weapon_title_name = weapon_title_name.lower()
+            assert weapon_tab_name in weapon_title_name, ("Incorrect title: should "
+                                                          f"be {weapon_tab_name}, is {weapon_title_name}")
 
-    def open_rating_saber(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_SABER)
-        assert self.is_element_present(MainPageLocators.RATING_SABER_TITLE)
-
-    def open_rating_rapier(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_RAPIER)
-        assert self.is_element_present(MainPageLocators.RATING_RAPIER_TITLE)
-
-    def open_rating_rapier_dagger(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_RAPIER_DAGGER)
-        assert self.is_element_present(MainPageLocators.RATING_RAPIER_DAGGER_TITLE)
-
-    """def open_rating_dussak(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_DUSSAK)
-        assert self.is_element_present(MainPageLocators.RATING_DUSSAK_TITLE)
-
-    def open_rating_spear(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_SPEAR)
-        assert self.is_element_present(MainPageLocators.RATING_SPEAR_TITLE)"""
-
-    def open_rating_sword_buckler(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_SWORD_BUCKLER)
-        assert self.is_element_present(MainPageLocators.RATING_SWORD_BUCKLER_TITLE)
-
-    def open_rating_sidesword(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_SIDESWORD)
-        assert self.is_element_present(MainPageLocators.RATING_SIDESWORD_TITLE)
-
-    """def open_rating_triathlon(self):
-        self.open_rating_tab()
-        self.click_button(MainPageLocators.RATING_TRIATHLON)
-        assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_TITLE)"""
-
+    """
     def open_rating_longsword_overall_list(self):
         self.open_rating_longsword()
         self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
@@ -106,7 +75,7 @@ class MainPage(BasePage):
         assert self.is_element_present(MainPageLocators.RATING_RAPIER_DAGGER_OVERALL_TITLE)
         assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
 
-    """def open_rating_dussak_overall_list(self):
+    def open_rating_dussak_overall_list(self):
         self.open_rating_dussak()
         self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_DUSSAK_OVERALL_TITLE)
@@ -116,7 +85,7 @@ class MainPage(BasePage):
         self.open_rating_spear()
         self.click_button(MainPageLocators.RATING_OVERALL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_SPEAR_OVERALL_TITLE)
-        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)"""
+        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
 
     def open_rating_sword_buckler_overall_list(self):
         self.open_rating_sword_buckler()
@@ -130,11 +99,12 @@ class MainPage(BasePage):
         assert self.is_element_present(MainPageLocators.RATING_SIDESWORD_OVERALL_TITLE)
         assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
 
-    """def open_rating_triathlon_overall_list(self):
+    def open_rating_triathlon_overall_list(self):
         self.open_rating_triathlon()
         self.click_button(MainPageLocators.RATING_FULL_BUTTON)
         assert self.is_element_present(MainPageLocators.RATING_TRIATHLON_OVERALL_TITLE)
-        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)"""
+        assert self.is_element_present(MainPageLocators.RATING_OVERALL_TABLE_USER)
+        """
 
     def open_rating_about(self):
         self.open_rating_tab()
