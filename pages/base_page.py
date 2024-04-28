@@ -94,3 +94,11 @@ class BasePage:
 
     def close_cookies(self):
         self.click_button(BasePageLocators.CLOSE_COOKIES_BUTTON)
+
+    def open_contact_tab_from_footer(self):
+        self.click_button(BasePageLocators.CONTACT_LINK_FOOTER)
+        assert self.is_element_present(BasePageLocators.CONTACT_TITLE)
+
+    def open_about_tab_from_footer(self):
+        self.click_button(BasePageLocators.ABOUT_LINK_FOOTER)
+        assert self.is_element_present(BasePageLocators.ABOUT_TITLE)

@@ -101,3 +101,13 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.open_rating_import()
+
+    def test_user_can_open_contact_tab_from_footer(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_contact_tab_from_footer()
+
+    def test_user_can_open_about_tab_from_footer(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_about_tab_from_footer()

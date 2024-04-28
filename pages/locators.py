@@ -7,6 +7,13 @@ class BasePageLocators:
     USER_POPOVER = (By.CSS_SELECTOR, ".user-block .popover")
     MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(4) a")
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
+    # Footer
+    CONTACT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(1)")
+    ABOUT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(2)")
+    # About tab
+    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
+    # Contact tab
+    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
 
 
 class MainPageLocators:
@@ -41,10 +48,6 @@ class MainPageLocators:
     CLUBS_TITLE = (By.XPATH, "//h1[text()='Clubs']")
     # Achievements tab
     ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
-    # About tab
-    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
-    # Contact tab
-    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
 
 
 class LoginPageLocators:
