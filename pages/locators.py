@@ -24,50 +24,13 @@ class MainPageLocators:
     RATING_TITLE = (By.XPATH, "//h1[text()='Rating']")
     RATING_WEAPON_TABS = (By.CSS_SELECTOR, ".weapon-type-selector > button")
     RATING_WEAPON_TITLE = (By.CSS_SELECTOR, ".weapon-block > div:nth-of-type(1) > div:nth-of-type(1).weapon-title")
+    RATING_OPEN_LIST_OVERALL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
+    RATING_OPEN_LIST_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > a")
+    RATING_LIST_INPUT = (By.CSS_SELECTOR, "div > input")
+    RATING_LIST_TITLE = (By.CSS_SELECTOR, "div > h1")
+    RATING_LIST_TABLE = (By.CSS_SELECTOR, "table > tbody > tr")
     RATING_ABOUT_LINK = (By.CSS_SELECTOR, ".description > div:nth-of-type(1) > a")
     RATING_IMPORT_LINK = (By.CSS_SELECTOR, ".description > div:nth-of-type(2) > span")
-    # Rating tab - for all tabs
-    RATING_OVERALL_BUTTON = (By.CSS_SELECTOR, ".overall-rating > div > div > div > a")
-    RATING_FULL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > a")
-    RATING_OVERALL_TABLE_USER = (By.XPATH, "//div[@class='column-title' and text()='User']")
-    """
-    # Longsword tab
-    RATING_LONGSWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(1)")
-    RATING_LONGSWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Longsword ']")
-    RATING_LONGSWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Longsword']")
-    # Saber tab
-    RATING_SABER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(3)")
-    RATING_SABER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Saber ']")
-    RATING_SABER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Saber']")
-    # Rapier tab
-    RATING_RAPIER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(2)")
-    RATING_RAPIER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier ']")
-    RATING_RAPIER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier']")
-    # Rapier and dagger tab
-    RATING_RAPIER_DAGGER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
-    RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier & Dagger ']")
-    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Rapier & Dagger']")
-    # Dussak tab
-    RATING_DUSSAK = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
-    RATING_DUSSAK_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Dussak  ']")
-    RATING_DUSSAK_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Dussak']")
-    # Spear tab
-    RATING_SPEAR = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
-    RATING_SPEAR_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Spear ']")
-    RATING_SPEAR_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Spear']")
-    # Sword and buckler tab
-    RATING_SWORD_BUCKLER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(4)")
-    RATING_SWORD_BUCKLER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sword & Buckler - Open ']")
-    RATING_SWORD_BUCKLER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sword & Buckler']")
-    # Sidesword tab
-    RATING_SIDESWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
-    RATING_SIDESWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sidesword ']")
-    RATING_SIDESWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Sidesword']")
-    # Triathlon tab
-    RATING_TRIATHLON = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(9)")
-    RATING_TRIATHLON_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Triathlon ']")
-    RATING_TRIATHLON_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Triathlon']")
-    """
     # How we calculate rating
     RATING_ABOUT_TITLE = (By.XPATH, "//h1[text()=' About rating ']")
     # Import tournament

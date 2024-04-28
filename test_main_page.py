@@ -26,7 +26,7 @@ def test_guest_can_go_to_login_page_from_main_page(browser):
     login_page.should_be_login_page()
 
 
-class TestUserCanGoToOrganizerPage:
+class TestUserCanGoToDifferentPagesFromMainPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         page = LoginPage(browser, link)
@@ -86,6 +86,11 @@ class TestUserCanGoToOrganizerPage:
         page = MainPage(browser, link)
         page.open()
         page.open_rating_for_every_weapon()
+
+    def test_user_can_open_rating_weapon_lists(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_rating_overall_list_for_every_weapon()
 
     def test_user_can_open_about_rating(self, browser):
         page = MainPage(browser, link)

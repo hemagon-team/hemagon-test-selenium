@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import MainPageLocators
+import time
 
 
 class MainPage(BasePage):
@@ -48,7 +49,32 @@ class MainPage(BasePage):
             weapon_title_name = weapon_title.text
             weapon_title_name = weapon_title_name.lower()
             assert weapon_tab_name in weapon_title_name, ("Incorrect title: should "
-                                                          f"be {weapon_tab_name}, is {weapon_title_name}")
+                                                          f"contain {weapon_tab_name}, is {weapon_title_name}")
+
+    def open_rating_overall_list_for_every_weapon(self):
+        self.open_rating_tab()
+        weapon_tabs = self.find_multiple_elements_wait(MainPageLocators.RATING_WEAPON_TABS)
+        tabs_number = len(weapon_tabs)
+        for i in range(tabs_number):
+            weapon_tabs = self.find_multiple_elements_wait(MainPageLocators.RATING_WEAPON_TABS)
+            tab = weapon_tabs[i]
+            weapon_tab_text = tab.text
+            weapon_tab_name = " ".join(weapon_tab_text.split(" ")[:-1]).lower()
+            noms_number = int(weapon_tab_text[-1])
+            tab.click()
+            if noms_number == 1:
+                self.click_button(MainPageLocators.RATING_OPEN_LIST_BUTTON)
+            else:
+                self.click_button(MainPageLocators.RATING_OPEN_LIST_OVERALL_BUTTON)
+            self.wait_for_element(MainPageLocators.RATING_LIST_INPUT)
+            nom_title = self.find_element_wait(MainPageLocators.RATING_LIST_TITLE)
+            nom_title_name = nom_title.text
+            nom_title_name = nom_title_name.lower()
+            assert weapon_tab_name in nom_title_name, (f"Incorrect title: should contain {weapon_tab_name}, "
+                                                       f"is {nom_title_name}")
+            assert self.is_element_present(MainPageLocators.RATING_LIST_TABLE), "No table"
+            self.browser.back()
+            i += 1
 
     """
     def open_rating_longsword_overall_list(self):
