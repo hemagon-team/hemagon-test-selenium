@@ -28,6 +28,7 @@ class MainPageLocators:
     ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
     ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
     CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
+    INSTANT_FIGHT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
     # Tournament tab
     TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     # Rating tab
@@ -51,6 +52,9 @@ class MainPageLocators:
     CLUBS_TITLE = (By.XPATH, "//h1[text()='Clubs']")
     # Achievements tab
     ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
+    # Instant fight tab
+    INSTANT_FIGHT_RUN_TIME_BUTTON = (By.CSS_SELECTOR, ".space-button > button")
+    INSTANT_FIGHT_CLOSE = (By.CSS_SELECTOR, ".bottom > button")
 
 
 class LoginPageLocators:

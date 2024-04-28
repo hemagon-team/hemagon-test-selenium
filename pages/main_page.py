@@ -85,3 +85,12 @@ class MainPage(BasePage):
         self.open_rating_tab()
         self.click_button(MainPageLocators.RATING_IMPORT_LINK)
         assert self.is_element_present(MainPageLocators.RATING_IMPORT_TITLE)
+
+    def open_instant_fight(self):
+        self.click_button(MainPageLocators.INSTANT_FIGHT_TAB)
+        assert self.is_element_present(MainPageLocators.INSTANT_FIGHT_RUN_TIME_BUTTON)
+
+    def close_instant_fight(self):
+        self.open_instant_fight()
+        self.click_button(MainPageLocators.INSTANT_FIGHT_CLOSE)
+        assert self.is_element_present(MainPageLocators.TOURNAMENTS_TAB), "Main page not opened"

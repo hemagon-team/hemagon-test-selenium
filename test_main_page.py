@@ -118,3 +118,13 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.open_terms_and_privacy_from_footer()
+
+    def test_user_can_open_instant_fight(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_instant_fight()
+
+    def test_user_can_close_instant_fight(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.close_instant_fight()
