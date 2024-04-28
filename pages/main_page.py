@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import MainPageLocators
+from .locators import BasePageLocators
 import time
 
 
@@ -14,7 +15,7 @@ class MainPage(BasePage):
 
     def open_rating_tab(self):
         self.click_button(MainPageLocators.RATING_TAB)
-        assert self.is_element_present(MainPageLocators.RATING_TITLE)
+        assert self.is_element_present(MainPageLocators.RATING_SELECTOR)
 
     """def open_fighters_tab(self):
         self.click_button(MainPageLocators.FIGHTERS_TAB)
@@ -32,11 +33,11 @@ class MainPage(BasePage):
         # For some reason doesn't work
         # FIX NEEDED
         self.click_button(MainPageLocators.ABOUT_TAB)
-        assert self.is_element_present(MainPageLocators.ABOUT_TITLE)
+        assert self.is_element_present(BasePageLocators.ABOUT_PRICES), "Incorrect page"
 
     def open_contact_tab(self):
         self.click_button(MainPageLocators.CONTACT_TAB)
-        assert self.is_element_present(MainPageLocators.CONTACT_TITLE)
+        assert self.is_element_present(BasePageLocators.CONTACT_ICON), "Incorrect page"
 
     def open_rating_for_every_weapon(self):
         self.open_rating_tab()
@@ -84,7 +85,7 @@ class MainPage(BasePage):
     def open_rating_import(self):
         self.open_rating_tab()
         self.click_button(MainPageLocators.RATING_IMPORT_LINK)
-        assert self.is_element_present(MainPageLocators.RATING_IMPORT_TITLE)
+        assert self.is_element_present(MainPageLocators.RATING_IMPORT_BUTTON)
 
     def open_instant_fight(self):
         self.click_button(MainPageLocators.INSTANT_FIGHT_TAB)

@@ -11,11 +11,13 @@ class BasePageLocators:
     CONTACT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(1)")
     ABOUT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(2)")
     # About tab
-    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
+    # ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
+    ABOUT_PRICES = (By.CLASS_NAME, "price-options")
     # Contact tab
-    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
+    CONTACT_ICON = (By.CLASS_NAME, "fa-facebook")
     # Terms and privacy policy
     TERMS_LINK = (By.CSS_SELECTOR, ".terms > a")
+    # NEED TO CHANGE FOR SOME LOCATOR WITHOUT TEXT
     TERMS_TITLE = (By.XPATH, "//h1[text()=' Terms and Privacy Policy ']")
 
 
@@ -32,7 +34,7 @@ class MainPageLocators:
     # Tournament tab
     TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     # Rating tab
-    RATING_TITLE = (By.XPATH, "//h1[text()='Rating']")
+    RATING_SELECTOR = (By.CLASS_NAME, "weapon-type-selector")
     RATING_WEAPON_TABS = (By.CSS_SELECTOR, ".weapon-type-selector > button")
     RATING_WEAPON_TITLE = (By.CSS_SELECTOR, ".weapon-block > div:nth-of-type(1) > div:nth-of-type(1).weapon-title")
     RATING_OPEN_LIST_OVERALL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
@@ -45,7 +47,7 @@ class MainPageLocators:
     # How we calculate rating
     RATING_ABOUT_TITLE = (By.XPATH, "//h1[text()=' About rating ']")
     # Import tournament
-    RATING_IMPORT_TITLE = (By.XPATH, "//h1[text()='Tournament import']")
+    RATING_IMPORT_BUTTON = (By.CSS_SELECTOR, ".collapse-block > .collapse-block-body > .wrapper > label > .btn")
     # Fighter tab
     FIGHTERS_TITLE = (By.XPATH, "//h1[text()='Fighters']")
     # Clubs tab

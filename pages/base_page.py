@@ -97,11 +97,11 @@ class BasePage:
 
     def open_contact_tab_from_footer(self):
         self.click_button(BasePageLocators.CONTACT_LINK_FOOTER)
-        assert self.is_element_present(BasePageLocators.CONTACT_TITLE), "Incorrect title"
+        assert self.is_element_present(BasePageLocators.CONTACT_ICON), "Incorrect page"
 
     def open_about_tab_from_footer(self):
         self.click_button(BasePageLocators.ABOUT_LINK_FOOTER)
-        assert self.is_element_present(BasePageLocators.ABOUT_TITLE), "Incorrect title"
+        assert self.is_element_present(BasePageLocators.ABOUT_PRICES), "Incorrect page"
 
     def open_terms_and_privacy_from_footer(self):
         self.click_button(BasePageLocators.TERMS_LINK)
