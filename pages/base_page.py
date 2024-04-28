@@ -62,7 +62,8 @@ class BasePage:
     def click_dropdown_element(self, trigger_selector, dropdown_selector, element_selector):
         trigger_element = self.find_element_wait(trigger_selector)
         ActionChains(self.browser).move_to_element(trigger_element).perform()
-        dropdown_element = WebDriverWait(self.browser, 5, poll_frequency=0.3).until(
+        trigger_element.click()
+        dropdown_element = WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
             EC.visibility_of_element_located(dropdown_selector)
         )
         element = dropdown_element.find_element(*element_selector)
@@ -85,12 +86,16 @@ class BasePage:
     def go_to_login_page(self):
         self.click_button(BasePageLocators.LOGIN_BUTTON)
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(BasePageLocators.USER_NAME), "User is not authorized"
+
+    def go_to_profile(self):
+        self.click_dropdown_element(BasePageLocators.USER_NAME, BasePageLocators.USER_POPOVER,
+                                    BasePageLocators.PROFILE_BUTTON)
+
     def go_to_organizer_page(self):
         self.click_dropdown_element(BasePageLocators.USER_NAME, BasePageLocators.USER_POPOVER,
                                     BasePageLocators.MY_TOURNAMENTS_BUTTON)
-
-    def should_be_authorized_user(self):
-        assert self.is_element_present(BasePageLocators.USER_NAME), "User is not authorized"
 
     def close_cookies(self):
         self.click_button(BasePageLocators.CLOSE_COOKIES_BUTTON)

@@ -5,6 +5,7 @@ import json
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.organizer_page import OrganizerPage
+from pages.profile_page import ProfilePage
 
 link = os.environ["TEST_BASEURL"]
 
@@ -39,6 +40,16 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         # Close cookies
         page.close_cookies()
 
+    @pytest.mark.issue
+    def test_user_can_go_to_profile_page(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.go_to_profile()
+        profile_page = ProfilePage(browser, browser.current_url)
+        time.sleep(1)
+        profile_page.should_be_profile_page()
+
+    @pytest.mark.issue
     def test_user_can_go_to_organizer_page(self, browser):
         page = MainPage(browser, link)
         page.open()

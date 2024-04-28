@@ -3,15 +3,16 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
+    # User popover
     USER_NAME = (By.CLASS_NAME, "name")
     USER_POPOVER = (By.CSS_SELECTOR, ".user-block .popover")
+    PROFILE_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(1) a")
     MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(4) a")
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
     # Footer
     CONTACT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(1)")
     ABOUT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(2)")
     # About tab
-    # ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
     ABOUT_PRICES = (By.CLASS_NAME, "price-options")
     # Contact tab
     CONTACT_ICON = (By.CLASS_NAME, "fa-facebook")
@@ -63,6 +64,12 @@ class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")
     LOGIN_BUTTON = (By.ID, "btn-login")
+
+
+class ProfilePageLocators:
+    USER_NAME = (By.CLASS_NAME, "user-view__title")
+    USER_CLUB = (By.CSS_SELECTOR, ".user-view__club > a")
+    FIGHTERS_HEADER = (By.CSS_SELECTOR, ".breadcrumbs > a")
 
 
 class OrganizerPageLocators:
