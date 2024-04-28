@@ -36,6 +36,8 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         login_page.login_user(email, password)
         time.sleep(1)
         login_page.should_be_authorized_user()
+        # Close cookies
+        page.close_cookies()
 
     def test_user_can_go_to_organizer_page(self, browser):
         page = MainPage(browser, link)
@@ -111,3 +113,8 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.open_about_tab_from_footer()
+
+    def test_user_can_open_terms_and_privacy_from_footer(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.open_terms_and_privacy_from_footer()

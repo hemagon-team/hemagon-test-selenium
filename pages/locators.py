@@ -14,6 +14,9 @@ class BasePageLocators:
     ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
     # Contact tab
     CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
+    # Terms and privacy policy
+    TERMS_LINK = (By.CSS_SELECTOR, ".terms > a")
+    TERMS_TITLE = (By.XPATH, "//h1[text()=' Terms and Privacy Policy ']")
 
 
 class MainPageLocators:
