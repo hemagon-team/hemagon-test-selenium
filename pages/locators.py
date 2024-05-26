@@ -192,3 +192,6 @@ class StagePageLocators:
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
     RIGHT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-1-build-next-playoff-round')
     FINALS_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-run-playoff-round')
+
+class PoolPageLocators:
+    FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')

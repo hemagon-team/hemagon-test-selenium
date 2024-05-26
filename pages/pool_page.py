@@ -13,6 +13,7 @@ from .fight_page import FightPage
 class PoolPage(BasePage):
 
     def run_pool(self):
+        #the numeration of the fight selectors starts from 3 
         x = 3
         numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_ROW)
         numberoffights = (len(numberoffights) + x)

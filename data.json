@@ -1,12 +1,12 @@
 {
-    "title": "Test Tournament - Anna (16/04/2024)",
+    "title": "ForAutoTestRunning",
     "start_date": "17 April 2024",
     "end_date": "18 April 2024",
     "country": "Spain",
     "city": "Barcelona",
     "description": "Test tournament",
 
-    "nomination_title": "Nomination",
+    "nomination_title": "qwerty",
     "weapon_id": 5,
     "fight_time": "120",
     "last_round_time": "0",

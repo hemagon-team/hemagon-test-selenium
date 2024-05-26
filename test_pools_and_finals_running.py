@@ -6,6 +6,7 @@ from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
 from pages.stages_page import StagesPage
 from pages.organizer_page import OrganizerPage
+from pages.locators import TournamentPageLocators
 
 
 # Set links
@@ -31,15 +32,16 @@ def setup(browser):
     page.close_cookies()
 
 class TestRunningTournamentWithPools:
-    def TestUserCanRunTournament(self, browser):
+    def test_user_can_run_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
 
-        self.click_button(TournamentPageLocators.NOMINATIONS_TAB)
-        self.click_button(TournamentPageLocators.NOMINATION_LINK)
-        self.click_button(TournamentPageLocators.STAGES_TAB)
+        page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
+        page.click_button(TournamentPageLocators.NOMINATION_LINK)
+        page.click_button(TournamentPageLocators.STAGES_TAB)
 
-        StagesPage.pools_running(self)
-        StagesPage.playoff_create(self)
-        StagesPage.playoff_running(self)       
+        stage = StagesPage(self, browser.current_url)
+        stage.pools_running()
+        stage.playoff_create()
+        stage.playoff_running()  
