@@ -65,7 +65,7 @@ class StagesPage(BasePage):
     def branches_order(self):
         choose_branch = randint(0, 1)
         if choose_branch == 0:
-            self.branch_running(self, StagePageLocators.LEFT_BRANCH_RUN_BUTTON) #должно быть self, не StagesPage
+            self.branch_running(self, StagePageLocators.LEFT_BRANCH_RUN_BUTTON)
             self.branch_running(self, StagePageLocators.RIGHT_BRANCH_RUN_BUTTON)
 
         else:
