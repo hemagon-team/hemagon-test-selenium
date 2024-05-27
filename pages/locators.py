@@ -170,3 +170,22 @@ class TournamentPageLocators:
     # Deleting ring
     ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
+
+class FightPageLocators:
+    HTML = (By.TAG_NAME, 'html')
+    SCORE_LEFT = (By.CSS_SELECTOR, 'div.sides > div:nth-child(1) > div.scores')
+    SCORE_RIGHT = (By.CSS_SELECTOR, 'div.sides > div:nth-child(2) > div.scores')
+    ADD_LEFT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-left > div:nth-child(1) > button')
+    ADD_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(1) > button')
+    FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button.btn.active')
+
+class StagePageLocators:
+    POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
+    NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
+    NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
+    LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
+    RIGHT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-1-build-next-playoff-round')
+    FINALS_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-run-playoff-round')
+
+class PoolPageLocators:
+    FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
