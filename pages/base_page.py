@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.action_chains import ActionChains
 from .locators import BasePageLocators
 
 
@@ -58,6 +59,16 @@ class BasePage:
         button.click()
         time.sleep(0.3)
 
+    def click_dropdown_element(self, trigger_selector, dropdown_selector, element_selector):
+        trigger_element = self.find_element_wait(trigger_selector)
+        ActionChains(self.browser).move_to_element(trigger_element).perform()
+        trigger_element.click()
+        dropdown_element = WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
+            EC.visibility_of_element_located(dropdown_selector)
+        )
+        element = dropdown_element.find_element(*element_selector)
+        element.click()
+
     def wait_for_element(self, selector):
         WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
             EC.presence_of_element_located(selector)
@@ -75,12 +86,28 @@ class BasePage:
     def go_to_login_page(self):
         self.click_button(BasePageLocators.LOGIN_BUTTON)
 
-    def go_to_organizer_page(self):
-        self.click_button(BasePageLocators.USER_NAME)
-        self.click_button(BasePageLocators.MY_TOURNAMENTS_BUTTON)
-
     def should_be_authorized_user(self):
         assert self.is_element_present(BasePageLocators.USER_NAME), "User is not authorized"
 
+    def go_to_profile(self):
+        self.click_dropdown_element(BasePageLocators.USER_NAME, BasePageLocators.USER_POPOVER,
+                                    BasePageLocators.PROFILE_BUTTON)
+
+    def go_to_organizer_page(self):
+        self.click_dropdown_element(BasePageLocators.USER_NAME, BasePageLocators.USER_POPOVER,
+                                    BasePageLocators.MY_TOURNAMENTS_BUTTON)
+
     def close_cookies(self):
         self.click_button(BasePageLocators.CLOSE_COOKIES_BUTTON)
+
+    def open_contact_tab_from_footer(self):
+        self.click_button(BasePageLocators.CONTACT_LINK_FOOTER)
+        assert self.is_element_present(BasePageLocators.CONTACT_ICON), "Incorrect page"
+
+    def open_about_tab_from_footer(self):
+        self.click_button(BasePageLocators.ABOUT_LINK_FOOTER)
+        assert self.is_element_present(BasePageLocators.ABOUT_PRICES), "Incorrect page"
+
+    def open_terms_and_privacy_from_footer(self):
+        self.click_button(BasePageLocators.TERMS_LINK)
+        assert self.is_element_present(BasePageLocators.TERMS_TITLE), "Incorrect title"

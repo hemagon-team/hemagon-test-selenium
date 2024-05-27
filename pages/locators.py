@@ -3,79 +3,73 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
+    # User popover
     USER_NAME = (By.CLASS_NAME, "name")
-    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, ".user-block .popover li:nth-child(4) a")
+    USER_POPOVER = (By.CSS_SELECTOR, ".user-block .popover")
+    PROFILE_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(1) a")
+    MY_TOURNAMENTS_BUTTON = (By.CSS_SELECTOR, "div:nth-of-type(2) ul li:nth-of-type(4) a")
     CLOSE_COOKIES_BUTTON = (By.CLASS_NAME, "cookies-alert__button")
+    # Footer
+    CONTACT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(1)")
+    ABOUT_LINK_FOOTER = (By.CSS_SELECTOR, ".links > a:nth-of-type(2)")
+    # About tab
+    ABOUT_PRICES = (By.CLASS_NAME, "price-options")
+    # Contact tab
+    CONTACT_ICON = (By.CLASS_NAME, "fa-facebook")
+    # Terms and privacy policy
+    TERMS_LINK = (By.CSS_SELECTOR, ".terms > a")
+    # NEED TO CHANGE FOR SOME LOCATOR WITHOUT TEXT
+    TERMS_TITLE = (By.XPATH, "//h1[text()=' Terms and Privacy Policy ']")
 
 
 class MainPageLocators:
     # Tabs
     TOURNAMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(1) > a")
     RATING_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(2) > a")
-    FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
-    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
-    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
-    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
-    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(7) > a")
+    """FIGHTERS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    CLUBS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")"""
+    ACHIEVEMENTS_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(3) > a")
+    ABOUT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(4) > a")
+    CONTACT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(5) > a")
+    INSTANT_FIGHT_TAB = (By.CSS_SELECTOR, ".menu-main > li:nth-of-type(6) > a")
     # Tournament tab
     TOURNAMENT_STATUS_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     # Rating tab
-    RATING_TITLE = (By.XPATH, "//h1[text()='Rating']")
-    RATING_OVERALL_BUTTON = (By.CSS_SELECTOR, ".overall-rating > div > div > div > a")
-    RATING_FULL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
-    RATING_OVERALL_TABLE_USER = (By.XPATH, "//div[@class='column-title' and text()='User']")
-    # Longsword tab
-    RATING_LONGSWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(1)")
-    RATING_LONGSWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Longsword ']")
-    RATING_LONGSWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Longsword']")
-    # Saber tab
-    RATING_SABER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(2)")
-    RATING_SABER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Saber ']")
-    RATING_SABER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Saber']")
-    # Rapier tab
-    RATING_RAPIER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(3)")
-    RATING_RAPIER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier ']")
-    RATING_RAPIER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier']")
-    # Rapier and dagger tab
-    RATING_RAPIER_DAGGER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(4)")
-    RATING_RAPIER_DAGGER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Rapier and Dagger ']")
-    RATING_RAPIER_DAGGER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Rapier & Dagger']")
-    # Dussak tab
-    RATING_DUSSAK = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(5)")
-    RATING_DUSSAK_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Dussak  ']")
-    RATING_DUSSAK_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Dussak']")
-    # Spear tab
-    RATING_SPEAR = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(6)")
-    RATING_SPEAR_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Spear ']")
-    RATING_SPEAR_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Spear']")
-    # Sword and buckler tab
-    RATING_SWORD_BUCKLER = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(7)")
-    RATING_SWORD_BUCKLER_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sword and Buckler - Open ']")
-    RATING_SWORD_BUCKLER_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sword & Buckler']")
-    # Sidesword tab
-    RATING_SIDESWORD = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(8)")
-    RATING_SIDESWORD_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Sidesword ']")
-    RATING_SIDESWORD_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Sidesword']")
-    # Triathlon tab
-    RATING_TRIATHLON = (By.CSS_SELECTOR, ".weapon-type-selector > button:nth-of-type(9)")
-    RATING_TRIATHLON_TITLE = (By.XPATH, "//div[@class='weapon-title' and text()='Triathlon ']")
-    RATING_TRIATHLON_OVERALL_TITLE = (By.XPATH, "//h1[text()='Overall rating: Triathlon']")
+    RATING_SELECTOR = (By.CLASS_NAME, "weapon-type-selector")
+    RATING_WEAPON_TABS = (By.CSS_SELECTOR, ".weapon-type-selector > button")
+    RATING_WEAPON_TITLE = (By.CSS_SELECTOR, ".weapon-block > div:nth-of-type(1) > div:nth-of-type(1).weapon-title")
+    RATING_OPEN_LIST_OVERALL_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > div > a")
+    RATING_OPEN_LIST_BUTTON = (By.CSS_SELECTOR, ".weapon-block > div > a")
+    RATING_LIST_INPUT = (By.CSS_SELECTOR, "div > input")
+    RATING_LIST_TITLE = (By.CSS_SELECTOR, "div > h1")
+    RATING_LIST_TABLE = (By.CSS_SELECTOR, "table > tbody > tr")
+    RATING_ABOUT_LINK = (By.CSS_SELECTOR, ".description > div:nth-of-type(1) > a")
+    RATING_IMPORT_LINK = (By.CSS_SELECTOR, ".description > div:nth-of-type(2) > span")
+    # How we calculate rating
+    RATING_ABOUT_TITLE = (By.XPATH, "//h1[text()=' About rating ']")
+    # Import tournament
+    RATING_IMPORT_BUTTON = (By.CSS_SELECTOR, ".collapse-block > .collapse-block-body > .wrapper > label > .btn")
     # Fighter tab
     FIGHTERS_TITLE = (By.XPATH, "//h1[text()='Fighters']")
     # Clubs tab
     CLUBS_TITLE = (By.XPATH, "//h1[text()='Clubs']")
     # Achievements tab
     ACHIEVEMENTS_TITLE = (By.XPATH, "//h1[text()='Achievements']")
-    # About tab
-    ABOUT_TITLE = (By.XPATH, "//h3[text()='Still have questions?']")
-    # Contact tab
-    CONTACT_TITLE = (By.XPATH, "//h1[text()='Contact us']")
+    # Instant fight tab
+    INSTANT_FIGHT_RUN_TIME_BUTTON = (By.CSS_SELECTOR, ".space-button > button")
+    INSTANT_FIGHT_CLOSE = (By.CSS_SELECTOR, ".bottom > button")
 
 
 class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")
     LOGIN_BUTTON = (By.ID, "btn-login")
+
+
+class ProfilePageLocators:
+    USER_NAME = (By.CLASS_NAME, "user-view__title")
+    USER_CLUB = (By.CSS_SELECTOR, ".user-view__club > a")
+    FIGHTERS_HEADER = (By.CSS_SELECTOR, ".breadcrumbs > a")
 
 
 class OrganizerPageLocators:
