@@ -5,6 +5,7 @@ import json
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.organizer_page import OrganizerPage
+from pages.profile_page import ProfilePage
 
 link = os.environ["TEST_BASEURL"]
 
@@ -16,6 +17,7 @@ password = os.environ["TEST_USER_PASSWORD"]
 with open("data.json", "r") as f:
     data = json.load(f)
 
+
 def test_guest_can_go_to_login_page_from_main_page(browser):
     page = MainPage(browser, link)
     page.open()
@@ -25,7 +27,7 @@ def test_guest_can_go_to_login_page_from_main_page(browser):
     login_page.should_be_login_page()
 
 
-class TestUserCanGoToOrganizerPage:
+class TestUserCanGoToDifferentPagesFromMainPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         page = LoginPage(browser, link)
@@ -35,7 +37,19 @@ class TestUserCanGoToOrganizerPage:
         login_page.login_user(email, password)
         time.sleep(1)
         login_page.should_be_authorized_user()
+        # Close cookies
+        page.close_cookies()
 
+    @pytest.mark.issue
+    def test_user_can_go_to_profile_page(self, browser):
+        page = MainPage(browser, link)
+        page.open()
+        page.go_to_profile()
+        profile_page = ProfilePage(browser, browser.current_url)
+        time.sleep(1)
+        profile_page.should_be_profile_page()
+
+    @pytest.mark.issue
     def test_user_can_go_to_organizer_page(self, browser):
         page = MainPage(browser, link)
         page.open()
@@ -54,11 +68,13 @@ class TestUserCanGoToOrganizerPage:
         page.open()
         page.open_rating_tab()
 
+    @pytest.mark.skip(reason="No tab on the website now")
     def test_user_can_open_fighters_tab(self, browser):
         page = MainPage(browser, link)
         page.open()
         page.open_fighters_tab()
 
+    @pytest.mark.skip(reason="No tab on the website now")
     def test_user_can_open_clubs_tab(self, browser):
         page = MainPage(browser, link)
         page.open()
@@ -79,92 +95,47 @@ class TestUserCanGoToOrganizerPage:
         page.open()
         page.open_contact_tab()
 
-    def test_user_can_open_longsword_rating(self, browser):
+    def test_user_can_open_rating_weapon_tabs(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_longsword()
+        page.open_rating_for_every_weapon()
 
-    def test_user_can_open_saber_rating(self, browser):
+    def test_user_can_open_rating_weapon_lists(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_saber()
+        page.open_rating_overall_list_for_every_weapon()
 
-    def test_user_can_open_rapier_rating(self, browser):
+    def test_user_can_open_about_rating(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_rapier()
+        page.open_rating_about()
 
-    def test_user_can_open_rapier_dagger_rating(self, browser):
+    def test_user_can_open_import_rating(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_rapier_dagger()
+        page.open_rating_import()
 
-    def test_user_can_open_dussak_rating(self, browser):
+    def test_user_can_open_contact_tab_from_footer(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_dussak()
+        page.open_contact_tab_from_footer()
 
-    def test_user_can_open_spear_rating(self, browser):
+    def test_user_can_open_about_tab_from_footer(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_spear()
+        page.open_about_tab_from_footer()
 
-    def test_user_can_open_sword_buckler_rating(self, browser):
+    def test_user_can_open_terms_and_privacy_from_footer(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_sword_buckler()
+        page.open_terms_and_privacy_from_footer()
 
-    def test_user_can_open_sidesword_rating(self, browser):
+    def test_user_can_open_instant_fight(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_sidesword()
+        page.open_instant_fight()
 
-    def test_user_can_open_triathlon_rating(self, browser):
+    def test_user_can_close_instant_fight(self, browser):
         page = MainPage(browser, link)
         page.open()
-        page.open_rating_triathlon()
-
-    def test_user_can_open_longsword_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_longsword_overall_list()
-
-    def test_user_can_open_saber_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_saber_overall_list()
-
-    def test_user_can_open_rapier_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier_overall_list()
-
-    def test_user_can_open_rapier_dagger_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_rapier_dagger_overall_list()
-
-    def test_user_can_open_dussak_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_dussak_overall_list()
-
-    def test_user_can_open_spear_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_spear_overall_list()
-
-    def test_user_can_open_sword_buckler_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sword_buckler_overall_list()
-
-    def test_user_can_open_sidesword_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_sidesword_overall_list()
-
-    def test_user_can_open_triathlon_overall_list(self, browser):
-        page = MainPage(browser, link)
-        page.open()
-        page.open_rating_triathlon_overall_list()
+        page.close_instant_fight()
