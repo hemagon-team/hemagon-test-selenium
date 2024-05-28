@@ -41,7 +41,7 @@ class TestRunningTournamentWithPools:
         page.click_button(TournamentPageLocators.NOMINATION_LINK)
         page.click_button(TournamentPageLocators.STAGES_TAB)
 
-        stage = StagesPage(self, browser.current_url)
+        stage = StagesPage(browser, link)
         stage.pools_running()
         stage.playoff_create()
         stage.playoff_running()  

@@ -21,11 +21,11 @@ class FightPage(BasePage):
         i = 0
         if sidechoise == 0:
             while i < scorerand:
-                self.click_button(FightPageLocators.SCORE_LEFT)
+                self.click_button(FightPageLocators.ADD_LEFT_BUTTON)
                 i += 1
         else:
             while i < scorerand:
-                self.click_button(FightPageLocators.SCORE_RIGHT)
+                self.click_button(FightPageLocators.ADD_RIGHT_BUTTON)
                 i += 1
         time.sleep(1)
 
@@ -33,7 +33,7 @@ class FightPage(BasePage):
         while True:
             redscore = self.find_element_wait(FightPageLocators.SCORE_LEFT)
             redscore = int(redscore.text)
-            bluescore = self.browser.find_element(FightPageLocators.SCORE_RIGHT)
+            bluescore = self.find_element_wait(FightPageLocators.SCORE_RIGHT)
             bluescore = int(bluescore.text)
 
             if bluescore >= 9 or redscore >= 9:

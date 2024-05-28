@@ -195,3 +195,8 @@ class StagePageLocators:
 
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
+    CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
+    
+
+    # def asd!!!!!!!!!!!!! (pool):
+    #     return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
