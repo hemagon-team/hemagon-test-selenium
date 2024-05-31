@@ -46,3 +46,7 @@ class TestUserCanCreateTournament:
         page = OrganizerPage(browser, link)
         page.open()
         page.delete_tournament(data["title"])
+
+
+if __name__ == "__main__":
+    pass

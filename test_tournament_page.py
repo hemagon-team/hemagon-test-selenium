@@ -22,19 +22,18 @@ with open("data.json", "r") as f:
 pools_number = (data["participants_number"] + 7 - 1) // 7
 
 
-@pytest.fixture(scope="function", autouse=True)
-def setup(browser):
-    page = MainPage(browser, base_link)
-    page.open()
-    page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
-    login_page.login_user(email, password)
-    page.should_be_authorized_user()
-    # Close cookies
-    page.close_cookies()
-
-
 class TestUserCanModifyTournament:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        page = MainPage(browser, base_link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.login_user(email, password)
+        page.should_be_authorized_user()
+        # Close cookies
+        page.close_cookies()
+
     # Not the best way to organize setup
     # THINK OF A BETTER LOGIC
     def test_setup_create_tournament(self, browser):
@@ -163,3 +162,7 @@ class TestUserCanModifyTournament:
         page = OrganizerPage(browser, link)
         page.open()
         page.delete_tournament(data["title"])
+
+
+if __name__ == "__main__":
+    pass

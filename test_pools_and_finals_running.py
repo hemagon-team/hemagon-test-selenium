@@ -21,17 +21,18 @@ password = os.environ["TEST_USER_PASSWORD"]
 with open("data.json", "r") as f:
     data = json.load(f)
 
-@pytest.fixture(scope="function", autouse=True)
-def setup(browser):
-    page = MainPage(browser, base_link)
-    page.open()
-    page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
-    login_page.login_user(email, password)
-    # Close cookies
-    page.close_cookies()
 
 class TestRunningTournamentWithPools:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        page = MainPage(browser, base_link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.login_user(email, password)
+        # Close cookies
+        page.close_cookies()
+
     def test_user_can_run_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
@@ -44,4 +45,8 @@ class TestRunningTournamentWithPools:
         stage = StagesPage(browser, link)
         stage.pools_running()
         stage.playoff_create()
-        stage.playoff_running()  
+        stage.playoff_running()
+
+
+if __name__ == "__main__":
+    pass
