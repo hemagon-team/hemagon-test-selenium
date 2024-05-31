@@ -111,3 +111,16 @@ class StagesPage(BasePage):
         self.branches_order()
         time.sleep(1)
         self.finals_running()
+
+    def swiss_running(self):
+        roundsnumber = self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER)
+        roundsnumber = int(roundsnumber.text)
+        x = 0
+        while True:
+            x += 1
+            self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
+            PoolPage.run_swiss_pool(self)
+            if x == roundsnumber:
+                break
+            self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
+            time.sleep(4)

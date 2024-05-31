@@ -186,6 +186,10 @@ class StagePageLocators:
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
     RIGHT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-1-build-next-playoff-round')
     FINALS_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-run-playoff-round')
+    RECOMMEND_SWISS_ROUNDS_NUMBER = (By.ID, 'stage-0-swiss-recommended-rounds')
+    BUILD_NEXT_SWISS_ROUND = (By.ID, 'btn-stage-0-build-next-round-swiss')
+    SWISS_RUN_POOL_BUTTON = (By.CSS_SELECTOR, "#btn-stage-0-pool-0-run[class='small active']")
+
 
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')

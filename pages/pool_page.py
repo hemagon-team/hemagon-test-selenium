@@ -35,3 +35,28 @@ class PoolPage(BasePage):
             #time.sleep(3)
             FightPage.fight(self)
             time.sleep(1)
+
+
+    def run_swiss_pool(self):
+        #the numeration of the fight selectors starts from 3 
+        x = 3
+        numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_ROW)
+        numberoffights = (len(numberoffights) + x)
+        while x < numberoffights:
+            x += 1
+            if x == numberoffights:
+                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1)'
+                fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
+                fightbutton.click()
+                time.sleep(3)
+                FightPage.fight(self)
+                self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+                break
+            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1)'
+            fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
+            fightbutton.click()            
+            #self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+            #x += 1
+            #time.sleep(3)
+            FightPage.fight(self)
+            time.sleep(1)
