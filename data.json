@@ -11,12 +11,11 @@
     "fight_time": "120",
     "last_round_time": "0",
 
-    "type_id": 3,
+    "type_id": 1,
     "to_the_finals": false,
     "stage_fight_time": 120,
 
     "go_next_stage": 8,
-    "playoff_size": 8,
     "finals_mode": 1,
     "third_place": true,
     "swiss_empty_win": true,

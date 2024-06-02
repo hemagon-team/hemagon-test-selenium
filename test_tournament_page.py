@@ -135,12 +135,33 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.change_pairs()
 
-    def test_user_can_delete_stage(self, browser):
+    def test_user_can_create_playoff_stage(self, browser):
         start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])
         page = TournamentPage(browser, browser.current_url)
-        page.delete_stage()
+        page.create_playoff(data["fight_time"], data["finals_mode"], data["third_place"])
+
+    def test_user_can_delete_playoffs(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.delete_playoff_stages(data["go_next_stage"])
+
+    def test_user_can_delete_pools_stage(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.delete_pools_stage()
+
+    def test_user_can_delete_playoff_stage(self, browser):
+        start_page = OrganizerPage(browser, link)
+        start_page.open()
+        start_page.open_tournament(data["title"])
+        page = TournamentPage(browser, browser.current_url)
+        page.delete_playoff()
 
     def test_user_can_delete_nomination(self, browser):
         start_page = OrganizerPage(browser, link)
@@ -162,7 +183,3 @@ class TestUserCanModifyTournament:
         page = OrganizerPage(browser, link)
         page.open()
         page.delete_tournament(data["title"])
-
-
-if __name__ == "__main__":
-    pass

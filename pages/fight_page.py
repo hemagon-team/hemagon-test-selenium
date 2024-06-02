@@ -12,9 +12,11 @@ class FightPage(BasePage):
         html = self.find_element_wait(FightPageLocators.HTML)
            
         timerrand = random.randint(2, 7)
+        # timerrand = 0
 
-        sidechoise = randint(0, 1)
+        # sidechoise = randint(0, 1)
         scorerand = randint(1, 2)
+        scorerand = 10
         html.send_keys(Keys.SPACE)
         time.sleep(timerrand)
         html.send_keys(Keys.SPACE)

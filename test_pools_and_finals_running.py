@@ -46,7 +46,3 @@ class TestRunningTournamentWithPools:
         stage.pools_running()
         stage.playoff_create()
         stage.playoff_running()
-
-
-if __name__ == "__main__":
-    pass

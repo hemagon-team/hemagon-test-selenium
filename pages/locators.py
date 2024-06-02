@@ -106,14 +106,10 @@ class TournamentPageLocators:
     # Creating new stage
     STAGES_TAB = (By.ID, "nomination-menu-stages")
     ADD_STAGE_BUTTON = (By.ID, "btn-stage-add")
-    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
-                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(1)")
-    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
-                          "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(2)")
-    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
-                        "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(3)")
-    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div > div >"
-                             "div:nth-child(3) > div > div > div > div:nth-child(2) > div > label:nth-child(4)")
+    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(1)")
+    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(2)")
+    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(3)")
+    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(4)")
     TO_THE_FINALS_TRUE = (By.ID, "input-stage-tillFinals-true")
     TO_THE_FINALS_FALSE = (By.ID, "input-stage-tillFinals-false")
     FIGHT_TIME_FIELD = (By.ID, "input-stage-fightTime")
@@ -151,7 +147,10 @@ class TournamentPageLocators:
     # Adding random participants to pool
     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
     # Deleting pool
-    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(3)")
+    REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(2)")
+    # Deleting playoff
+    REMOVE_PLAYOFF_BUTTON = (By.CSS_SELECTOR, ".eliminations > div > div > .pool > div > button:nth-of-type(1)")
+    REMOVE_ROUND_BUTTON = (By.CSS_SELECTOR, ".round > div > div > button")
     # Adding all participants to swiss system
     ENROLL_ALL_TO_SWISS = (By.CSS_SELECTOR, ".pool > button")
     # Pairs and rings for swiss system
@@ -161,14 +160,17 @@ class TournamentPageLocators:
     DRAG_ITEMS = (By.CLASS_NAME, "drag-item")
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     # Deleting stage
-    REMOVE_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button")
+    REMOVE_POOLS_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button:nth-of-type(1)")
+    # REMOVE_PLAYOFF_STAGE_BUTTON = (By.CSS_SELECTOR, "div.stage-content:nth-of-type(2) > div > button")
+    REMOVE_PLAYOFF_STAGE_BUTTON = (By.ID, "btn-stage-1-remove")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     # Deleting nomination
-    REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, "#app > div > div:nth-child(2) > div > div:nth-child(6) > div"
-                                                 "> div > div:nth-child(3) > div > div > div:nth-child(4) > button")
+    REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                 "div:nth-of-type(4) > button")
     # Deleting ring
     ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
+
 
 class FightPageLocators:
     HTML = (By.TAG_NAME, 'html')
@@ -178,6 +180,7 @@ class FightPageLocators:
     ADD_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(1) > button')
     FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button.btn.active')
 
+
 class StagePageLocators:
     POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
     NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
@@ -185,6 +188,7 @@ class StagePageLocators:
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
     RIGHT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-1-build-next-playoff-round')
     FINALS_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-run-playoff-round')
+
 
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
