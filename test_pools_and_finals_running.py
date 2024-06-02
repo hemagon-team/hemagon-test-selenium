@@ -46,3 +46,17 @@ class TestRunningTournamentWithPools:
         stage.pools_running()
         stage.playoff_create()
         stage.playoff_running()
+
+    def test_user_can_run_tournament_with_random_results(self, browser):
+        page = OrganizerPage(browser, link)
+        page.open()
+        page.open_tournament(data["title"])
+
+        page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
+        page.click_button(TournamentPageLocators.NOMINATION_LINK)
+        page.click_button(TournamentPageLocators.STAGES_TAB)
+
+        stage = StagesPage(browser, link)
+        stage.pools_running(full_mode=False)
+        stage.playoff_create()
+        stage.playoff_running(full_mode=False)

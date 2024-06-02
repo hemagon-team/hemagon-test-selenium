@@ -43,7 +43,7 @@ class TestCreateRunDeleteTournament:
         self.modify_tournament.test_user_can_create_playoff_stage(browser)
         self.modify_tournament.test_user_can_add_participants_to_pool(browser)
         self.modify_tournament.test_user_can_set_ring_for_pool(browser)
-        self.run_tournament.test_user_can_run_tournament(browser)
+        self.run_tournament.test_user_can_run_tournament_with_random_results(browser)
         self.modify_tournament.test_user_can_delete_playoffs(browser)
         self.modify_tournament.test_user_can_delete_playoff_stage(browser)
         self.modify_tournament.test_user_can_delete_pools(browser)
