@@ -13,9 +13,7 @@ link = base_link + "/organizer/tournaments"
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
-# Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
+# Currently not runnable, can only be used as a part of test case
 
 
 class TestUserCanCreateTournament:
@@ -29,24 +27,20 @@ class TestUserCanCreateTournament:
         login_page.login_user(email, password)
         login_page.should_be_authorized_user()
 
-    def test_user_can_create_tournament(self, browser):
+    def test_user_can_create_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.create_tournament(data["title"], data["start_date"], data["end_date"],
                                data["country"], data["city"], data["description"])
 
-    def test_user_can_open_tournament(self, browser):
+    def test_user_can_open_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
         tournament_page = TournamentPage(browser, browser.current_url)
         tournament_page.should_be_tournament_title(data["title"])
 
-    def test_user_can_delete_tournament(self, browser):
+    def test_user_can_delete_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.delete_tournament(data["title"])
-
-
-if __name__ == "__main__":
-    pass

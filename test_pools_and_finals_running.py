@@ -1,8 +1,6 @@
 import os
-import json
 import pytest
 from pages.login_page import LoginPage
-from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
 from pages.stages_page import StagesPage
 from pages.organizer_page import OrganizerPage
@@ -17,10 +15,6 @@ link = base_link + "/organizer/tournaments"
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
-# Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
-
 
 class TestRunningTournamentWithPools:
     @pytest.fixture(scope="function", autouse=True)
@@ -33,7 +27,7 @@ class TestRunningTournamentWithPools:
         # Close cookies
         page.close_cookies()
 
-    def test_user_can_run_tournament(self, browser):
+    def test_user_can_run_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
@@ -47,7 +41,7 @@ class TestRunningTournamentWithPools:
         stage.playoff_create()
         stage.playoff_running()
 
-    def test_user_can_run_tournament_with_random_results(self, browser):
+    def test_user_can_run_tournament_with_random_results(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])

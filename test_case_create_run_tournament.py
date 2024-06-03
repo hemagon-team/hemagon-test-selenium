@@ -1,5 +1,6 @@
 import pytest
 import os
+import json
 import test_organizer_page
 import test_tournament_page
 import test_pools_and_finals_running
@@ -13,6 +14,10 @@ link = base_link + "/organizer/tournaments"
 # Set User
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
+
+# Set user data (modify in data.json)
+with open("data.json", "r") as f:
+    data = json.load(f)
 
 
 class TestCreateRunDeleteTournament:
@@ -33,21 +38,22 @@ class TestCreateRunDeleteTournament:
         page.close_cookies()
 
     def test_create_run_delete_tournament(self, browser):
-        self.create_tournament.test_user_can_create_tournament(browser)
-        self.create_tournament.test_user_can_open_tournament(browser)
-        self.modify_tournament.test_user_can_create_nomination(browser)
-        self.modify_tournament.test_user_can_create_stage(browser)
-        self.modify_tournament.test_user_can_add_participants(browser)
-        self.modify_tournament.test_user_can_create_ring(browser)
-        self.modify_tournament.test_user_can_create_pools(browser)
-        self.modify_tournament.test_user_can_create_playoff_stage(browser)
-        self.modify_tournament.test_user_can_add_participants_to_pool(browser)
-        self.modify_tournament.test_user_can_set_ring_for_pool(browser)
-        self.run_tournament.test_user_can_run_tournament_with_random_results(browser)
-        self.modify_tournament.test_user_can_delete_playoffs(browser)
-        self.modify_tournament.test_user_can_delete_playoff_stage(browser)
-        self.modify_tournament.test_user_can_delete_pools(browser)
-        self.modify_tournament.test_user_can_delete_pools_stage(browser)
-        self.modify_tournament.test_user_can_delete_nomination(browser)
-        self.modify_tournament.test_user_can_delete_ring(browser)
-        self.create_tournament.test_user_can_delete_tournament(browser)
+        for dataset in data:
+            self.create_tournament.test_user_can_create_tournament(browser, dataset)
+            self.create_tournament.test_user_can_open_tournament(browser, dataset)
+            self.modify_tournament.test_user_can_create_nomination(browser, dataset)
+            self.modify_tournament.test_user_can_create_stage(browser, dataset)
+            self.modify_tournament.test_user_can_add_participants(browser, dataset)
+            self.modify_tournament.test_user_can_create_ring(browser, dataset)
+            self.modify_tournament.test_user_can_create_pools(browser, dataset)
+            self.modify_tournament.test_user_can_create_playoff_stage(browser, dataset)
+            self.modify_tournament.test_user_can_add_participants_to_pool(browser, dataset)
+            self.modify_tournament.test_user_can_set_ring_for_pool(browser, dataset)
+            self.run_tournament.test_user_can_run_tournament_with_random_results(browser, dataset)
+            self.modify_tournament.test_user_can_delete_playoffs(browser, dataset)
+            self.modify_tournament.test_user_can_delete_playoff_stage(browser, dataset)
+            self.modify_tournament.test_user_can_delete_pools(browser, dataset)
+            self.modify_tournament.test_user_can_delete_pools_stage(browser, dataset)
+            self.modify_tournament.test_user_can_delete_nomination(browser, dataset)
+            self.modify_tournament.test_user_can_delete_ring(browser, dataset)
+            self.create_tournament.test_user_can_delete_tournament(browser, dataset)

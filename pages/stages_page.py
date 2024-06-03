@@ -1,9 +1,5 @@
 import time
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import ElementClickInterceptedException
 from .base_page import BasePage
 from .locators import StagePageLocators
 from .pool_page import PoolPage
@@ -25,7 +21,11 @@ class StagesPage(BasePage):
                 break
             buttonlocator = (By.ID, 'btn-stage-0-pool-' + str(pool) + '-run')
             runbutton = self.find_element_wait(buttonlocator)
-            runbutton.click()
+            try:
+                runbutton.click()
+            except ElementClickInterceptedException:
+                time.sleep(3)
+                runbutton.click()
             time.sleep(1)
 
             pool_page = PoolPage(self.browser, self.url)

@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
@@ -166,8 +167,11 @@ class TournamentPage(BasePage):
             add_pool_button = WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
                 EC.element_to_be_clickable(TournamentPageLocators.ADD_POOL_BUTTON)
             )
-            add_pool_button.click()
-            self.browser.execute_script("window.scrollBy(0, 100)")
+            try:
+                add_pool_button.click()
+            except ElementClickInterceptedException:
+                time.sleep(3)
+                add_pool_button.click()
 
     def add_participants_to_pool(self):
         self.open_nomination()

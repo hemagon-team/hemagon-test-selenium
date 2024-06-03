@@ -1,5 +1,5 @@
 import time
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
@@ -53,11 +53,15 @@ class BasePage:
         search_field.send_keys(Keys.ENTER)
 
     def click_button(self, selector):
-        button = WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
-            EC.element_to_be_clickable(selector)
-        )
-        button.click()
-        time.sleep(0.3)
+        try:
+            button = WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
+                EC.element_to_be_clickable(selector)
+            )
+            button.click()
+            time.sleep(0.3)
+        except ElementClickInterceptedException:
+            time.sleep(3)
+            self.click_button(selector)
 
     def click_dropdown_element(self, trigger_selector, dropdown_selector, element_selector):
         trigger_element = self.find_element_wait(trigger_selector)
