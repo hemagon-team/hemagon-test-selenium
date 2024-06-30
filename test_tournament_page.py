@@ -66,7 +66,7 @@ class TestUserCanModifyTournament:
         page.create_pools(data["pools_number"])
 
     # @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
-    def test_user_can_add_participants_to_pool(self, browser, data):
+    def test_user_can_add_participants_to_pool(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -74,7 +74,7 @@ class TestUserCanModifyTournament:
         page.add_participants_to_pool()
 
     # @pytest.mark.skipif(data["type_id"] != 1, reason="Stage type is not pools")
-    def test_user_can_set_ring_for_pool(self, browser, data):
+    def test_user_can_set_ring_for_pool(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -90,7 +90,7 @@ class TestUserCanModifyTournament:
         page.delete_pools(data["pools_number"])
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
-    def test_user_can_add_participants_to_swiss(self, browser, data):
+    def test_user_can_add_participants_to_swiss(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -98,7 +98,7 @@ class TestUserCanModifyTournament:
         page.add_participants_to_swiss()
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
-    def test_user_can_delete_swiss_round(self, browser, data):
+    def test_user_can_delete_swiss_round(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -106,7 +106,7 @@ class TestUserCanModifyTournament:
         page.delete_swiss()
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
-    def test_user_can_set_ring_for_swiss_round(self, browser, data):
+    def test_user_can_set_ring_for_swiss_round(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -114,7 +114,7 @@ class TestUserCanModifyTournament:
         page.set_ring_for_pairs()
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
-    def test_user_can_set_pairs_for_swiss_round(self, browser, data):
+    def test_user_can_set_pairs_for_swiss_round(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
@@ -135,28 +135,28 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.delete_playoff_stages(data["go_next_stage"])
 
-    def test_user_can_delete_pools_stage(self, browser, data):
+    def test_user_can_delete_pools_stage(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
         page.delete_pools_stage()
 
-    def test_user_can_delete_playoff_stage(self, browser, data):
+    def test_user_can_delete_playoff_stage(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
         page.delete_playoff()
 
-    def test_user_can_delete_nomination(self, browser, data):
+    def test_user_can_delete_nomination(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
         page.delete_nomination()
 
-    def test_user_can_delete_ring(self, browser, data):
+    def test_user_can_delete_ring(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""

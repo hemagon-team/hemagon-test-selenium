@@ -58,5 +58,35 @@
     "pools_number": 4,
 
     "ring_title": "Ring"
+  },
+  {
+    "title": "MediumTournamentStandard",
+    "start_date": "2 June 2024",
+    "end_date": "3 June 2024",
+    "country": "Spain",
+    "city": "Barcelona",
+    "description": "Test tournament: small standard size",
+
+    "nomination_title": "Qwerty",
+    "weapon_id": 7,
+    "fight_time": "120",
+    "last_round_time": "0",
+
+    "type_id": 1,
+    "to_the_finals": false,
+    "stage_fight_time": 120,
+
+    "go_next_stage": 32,
+    "finals_mode": 1,
+    "third_place": true,
+    "swiss_empty_win": true,
+    "swiss_empty_points": 1,
+    "hits_initial_hp": 10,
+    "hits_limit_hp": 0,
+
+    "participants_number": 40,
+    "pools_number": 8,
+
+    "ring_title": "Ring"
   }
 ]
