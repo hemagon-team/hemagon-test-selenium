@@ -78,6 +78,11 @@ class BasePage:
             EC.presence_of_element_located(selector)
         )
 
+    def wait_for_element_to_disappear(self, selector):
+        WebDriverWait(self.browser, 5, poll_frequency=0.2).until(
+            EC.invisibility_of_element_located(selector)
+        )
+
     def confirm_alert(self):
         alert = WebDriverWait(self.browser, 5, poll_frequency=0.1).until(
             EC.alert_is_present()

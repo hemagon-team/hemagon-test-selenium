@@ -47,7 +47,7 @@ class StagesPage(BasePage):
             if rounds != roundsnumber:
                 roundlocator = ('div.rounds-container.eliminations > div:nth-child(' + str(rounds) +
                                 ')> div:nth-child(2) > div:nth-child(1)')
-                round_run = roundlocator + ' > a > button' 
+                round_run = roundlocator + '> div:nth-child(1) > a > button'
 
                 runbranch = self.browser.find_element(By.CSS_SELECTOR, round_run)
                 runbranch.click()
@@ -59,7 +59,7 @@ class StagesPage(BasePage):
             else:
                 roundlocator = ('div.rounds-container.eliminations > div:nth-child(' + str(rounds) +
                                 ')> div:nth-child(2) > div:nth-child(1)')
-                round_run = roundlocator + ' > a > button' 
+                round_run = roundlocator + '> div:nth-child(1) > a > button'
                 runbranch = self.browser.find_element(By.CSS_SELECTOR, round_run)
                 runbranch.click()
                 if full_mode:
@@ -82,7 +82,7 @@ class StagesPage(BasePage):
             if right_rounds != right_roundsnumber:
                 right_roundlocator = ('div.rounds-container.eliminations > div:nth-child(' + str(right_rounds) +
                                       ')> div:nth-child(3) > div:nth-child(1)')
-                right_round_run = right_roundlocator + ' > a > button' 
+                right_round_run = right_roundlocator + '> div:nth-child(1) > a > button'
 
                 right_runbranch = self.browser.find_element(By.CSS_SELECTOR, right_round_run)
                 right_runbranch.click()
@@ -94,7 +94,7 @@ class StagesPage(BasePage):
             else:
                 right_roundlocator = ('div.rounds-container.eliminations > div:nth-child(' + str(right_rounds) +
                                       ')> div:nth-child(3) > div:nth-child(1)')
-                right_round_run = right_roundlocator + ' > a > button' 
+                right_round_run = right_roundlocator + '> div:nth-child(1) > a > button'
                 right_runbranch = self.browser.find_element(By.CSS_SELECTOR, right_round_run)
                 right_runbranch.click()
                 if full_mode:
@@ -123,7 +123,7 @@ class StagesPage(BasePage):
         allfinalbuttons = self.find_multiple_elements_wait(StagePageLocators.FINALS_RUN_BUTTON)
         finalsrunbuttonposition = len(allfinalbuttons)
         finalsrunbuttonselector = ('div.rounds-container.eliminations > div:nth-child(' + str(finalsrunbuttonposition)
-                                   + ') > div:nth-child(2) > div:nth-child(1) > a >'
+                                   + ') > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a >'
                                      '#btn-stage-1-side-0-run-playoff-round')
         finalsrunbutton = self.browser.find_element(By.CSS_SELECTOR, finalsrunbuttonselector)
         finalsrunbutton.click()

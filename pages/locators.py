@@ -195,6 +195,7 @@ class PoolPageLocators:
     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
     SEED_RANDOM_RESULTS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button")
     SUCCESS_NOTIFICATION = (By.CLASS_NAME, "notification-content")
+    RUN_FIGHT_BUTTON_ACTIVE = (By.CSS_SELECTOR, ".row > div:nth-of-type(3) > div > button.active")
 
     # def asd!!!!!!!!!!!!! (pool):
     #     return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
