@@ -159,6 +159,7 @@ class TournamentPageLocators:
     DRAG_ZONES = (By.CLASS_NAME, "drag-zone")
     DRAG_ITEMS = (By.CLASS_NAME, "drag-item")
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
+    CLOSE_SWISS_SETTINGS_BUTTON = (By.CSS_SELECTOR, 'button.round')
     # Deleting stage
     REMOVE_POOLS_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button:nth-of-type(1)")
     # REMOVE_PLAYOFF_STAGE_BUTTON = (By.CSS_SELECTOR, "div.stage-content:nth-of-type(2) > div > button")

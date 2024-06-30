@@ -42,18 +42,31 @@ class TestCreateRunDeleteTournament:
             self.create_tournament.test_user_can_create_tournament(browser, dataset)
             self.create_tournament.test_user_can_open_tournament(browser, dataset)
             self.modify_tournament.test_user_can_create_nomination(browser, dataset)
-            self.modify_tournament.test_user_can_create_stage(browser, dataset)
             self.modify_tournament.test_user_can_add_participants(browser, dataset)
             self.modify_tournament.test_user_can_create_ring(browser, dataset)
-            self.modify_tournament.test_user_can_create_pools(browser, dataset)
-            self.modify_tournament.test_user_can_create_playoff_stage(browser, dataset)
-            self.modify_tournament.test_user_can_add_participants_to_pool(browser)
-            self.modify_tournament.test_user_can_set_ring_for_pool(browser)
-            self.run_tournament.test_user_can_run_tournament_with_random_results(browser, dataset)
-            self.modify_tournament.test_user_can_delete_playoffs(browser, dataset)
-            self.modify_tournament.test_user_can_delete_playoff_stage(browser)
-            self.modify_tournament.test_user_can_delete_pools(browser, dataset)
-            self.modify_tournament.test_user_can_delete_pools_stage(browser)
+
+            if dataset["type_id"] == 1:
+                self.modify_tournament.test_user_can_create_pools_stage(browser, dataset)
+                self.modify_tournament.test_user_can_create_pools(browser, dataset)
+                self.modify_tournament.test_user_can_create_playoff_stage(browser, dataset)
+                self.modify_tournament.test_user_can_add_participants_to_pool(browser)
+                self.modify_tournament.test_user_can_set_ring_for_pool(browser)
+                self.run_tournament.test_user_can_run_tournament_with_random_results(browser, dataset)
+                self.modify_tournament.test_user_can_delete_playoffs(browser, dataset)
+                self.modify_tournament.test_user_can_delete_playoff_stage(browser)
+                self.modify_tournament.test_user_can_delete_pools(browser, dataset)
+                self.modify_tournament.test_user_can_delete_pools_stage(browser)
+
+            if dataset["type_id"] == 3:
+                self.modify_tournament.test_user_can_create_swiss_stage(browser, dataset)
+                self.modify_tournament.test_user_can_add_participants_to_swiss(browser)
+                self.modify_tournament.test_user_can_set_ring_for_swiss_round(browser)
+                self.modify_tournament.test_user_can_set_pairs_for_swiss_round(browser)
+                # RUN SWISS
+                self.modify_tournament.test_user_can_delete_swiss_round(browser)
+                self.modify_tournament.test_user_can_delete_pools_stage(browser)
+
             self.modify_tournament.test_user_can_delete_nomination(browser)
             self.modify_tournament.test_user_can_delete_ring(browser)
             self.create_tournament.test_user_can_delete_tournament(browser, dataset)
+

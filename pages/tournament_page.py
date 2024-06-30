@@ -122,6 +122,10 @@ class TournamentPage(BasePage):
         # Save stage
         self.click_button(TournamentPageLocators.SAVE_STAGE_BUTTON)
 
+        if type_id == 3 or type_id == 4:
+            self.browser.refresh()
+            self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
+
     def add_participants(self, number):
         self.open_nomination()
 
@@ -172,6 +176,7 @@ class TournamentPage(BasePage):
             except ElementClickInterceptedException:
                 time.sleep(3)
                 add_pool_button.click()
+            time.sleep(0.2)
 
     def add_participants_to_pool(self):
         """self.open_nomination()
@@ -227,6 +232,7 @@ class TournamentPage(BasePage):
         # ONLY WORKS WITH ONE RING, FIX NEEDED
         self.click_button(TournamentPageLocators.ALLOCATE_RINGS_BUTTON)
         self.click_button(TournamentPageLocators.ADD_UNALLOCATED_TO_RING)
+        self.click_button(TournamentPageLocators.CLOSE_SWISS_SETTINGS_BUTTON)
 
     def change_pairs(self):
         """self.open_nomination()
@@ -237,13 +243,7 @@ class TournamentPage(BasePage):
         actions = ActionChains(self.browser)
         # DOESN'T WORK, ONLY HIGHLIGHT TEXT FOR SOME REASON, FIX NEEDED
         actions.drag_and_drop(drag_items[0], drag_zones[1]).perform()
-        time.sleep(10)
-
-    def delete_swiss(self):
-        """self.open_nomination()
-        self.open_stages_tab()"""
-        # Delete round
-        self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
+        self.click_button(TournamentPageLocators.CLOSE_SWISS_SETTINGS_BUTTON)
 
     def delete_pools_stage(self):
         """self.open_nomination()

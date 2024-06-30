@@ -36,12 +36,17 @@ class TestUserCanModifyTournament:
         page.create_nomination(data["nomination_title"], data["weapon_id"],
                                data["fight_time"], data["last_round_time"])
 
-    def test_user_can_create_stage(self, browser, data):
+    def test_user_can_create_pools_stage(self, browser, data):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.create_stage(data["type_id"], data["to_the_finals"], data["fight_time"], data["go_next_stage"])
+        page.create_stage(type_id=data["type_id"], fight_time=data["fight_time"], go_next_stage=data["go_next_stage"])
+
+    def test_user_can_create_swiss_stage(self, browser, data):
+        page = TournamentPage(browser, browser.current_url)
+        page.create_stage(data["type_id"], data["to_the_finals"], data["fight_time"], data["go_next_stage"],
+                          swiss_empty_win=data["swiss_empty_win"], swiss_win_points=data["swiss_empty_points"])
 
     def test_user_can_add_participants(self, browser, data):
         """start_page = OrganizerPage(browser, link)
@@ -103,7 +108,7 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_swiss()
+        page.delete_pools(1)
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
     def test_user_can_set_ring_for_swiss_round(self, browser):
