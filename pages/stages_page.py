@@ -3,13 +3,33 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from .base_page import BasePage
 from .locators import StagePageLocators
 from .pool_page import PoolPage
+from .fight_page import FightPage
+from .pool_page import PoolPageLocators
+from .fight_page import FightPageLocators
 from selenium.webdriver.common.by import By
 import random
 from random import randint
+from selenium.webdriver.common.keys import Keys
 
 class StagesPage(BasePage):
-    def pools_running(self, full_mode=True):
 
+    def check_fight_pool_buttons(self):
+        runbutton = self.browser.find_element(By.ID, 'btn-stage-0-pool-0-run')
+        runbutton.click()
+        time.sleep(1)
+        fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > button')
+        fightbutton.click()
+        FightPage.button_checking(self)
+
+    def check_fight_swiss_buttons(self):
+        runbutton = self.browser.find_element(By.ID, 'btn-stage-0-pool-0-run')
+        runbutton.click()
+        time.sleep(1)
+        fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(4) > div:nth-child(1) > button')
+        fightbutton.click()
+        FightPage.button_checking(self)
+
+    def pools_running(self, full_mode=True):
         allpools = self.find_multiple_elements_wait(StagePageLocators.POOLS_NUMBER)
         numberofpools = len(allpools)
 
@@ -149,3 +169,8 @@ class StagesPage(BasePage):
                 break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
             time.sleep(4)
+
+            #poolpage = PoolPage(url = any)
+            PoolPage.run_swiss_pool(self)
+            pool += 1
+            time.sleep(3)

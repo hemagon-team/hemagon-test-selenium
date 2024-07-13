@@ -180,7 +180,12 @@ class FightPageLocators:
     SCORE_RIGHT = (By.CSS_SELECTOR, 'div.sides > div:nth-child(2) > div.scores')
     ADD_LEFT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-left > div:nth-child(1) > button')
     ADD_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(1) > button')
-    FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button.btn.active')
+    MINUS_LEFT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-left > div:nth-child(2) > button')
+    MINUS_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(2) > button')
+    ADD_5SECONDS_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(3)')
+    TECHNICAL_DEFEAT_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(4)')
+    FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(5)')
+    CLOSE_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(6)')
 
 
 class StagePageLocators:
@@ -202,6 +207,11 @@ class PoolPageLocators:
     SEED_RANDOM_RESULTS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button")
     SUCCESS_NOTIFICATION = (By.CLASS_NAME, "notification-content")
     RUN_FIGHT_BUTTON_ACTIVE = (By.CSS_SELECTOR, ".row > div:nth-of-type(3) > div > button.active")
+
+
+class SwissPoolPageLocators:
+    FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row > div:nth-child(4) > div:nth-child(1) > button')
+    CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
 
     # def asd!!!!!!!!!!!!! (pool):
     #     return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
