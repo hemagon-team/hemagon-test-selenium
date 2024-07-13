@@ -177,7 +177,12 @@ class FightPageLocators:
     SCORE_RIGHT = (By.CSS_SELECTOR, 'div.sides > div:nth-child(2) > div.scores')
     ADD_LEFT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-left > div:nth-child(1) > button')
     ADD_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(1) > button')
-    FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button.btn.active')
+    MINUS_LEFT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-left > div:nth-child(2) > button')
+    MINUS_RIGHT_BUTTON = (By.CSS_SELECTOR, 'div.scores-buttons-right > div:nth-child(2) > button')
+    ADD_5SECONDS_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(3)')
+    TECHNICAL_DEFEAT_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(4)')
+    FINISH_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(5)')
+    CLOSE_BUTTON = (By.CSS_SELECTOR, 'div.bottom > button:nth-child(6)')
 
 class StagePageLocators:
     POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
@@ -193,6 +198,11 @@ class StagePageLocators:
 
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
+    CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
+
+
+class SwissPoolPageLocators:
+    FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row > div:nth-child(4) > div:nth-child(1) > button')
     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
     
 

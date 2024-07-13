@@ -7,11 +7,32 @@ from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
 from .locators import StagePageLocators
 from .pool_page import PoolPage
+from .fight_page import FightPage
+from .pool_page import PoolPageLocators
+from .fight_page import FightPageLocators
 from selenium.webdriver.common.by import By
 import random
 from random import randint
+from selenium.webdriver.common.keys import Keys
 
 class StagesPage(BasePage):
+
+    def check_fight_pool_buttons(self):
+        runbutton = self.browser.find_element(By.ID, 'btn-stage-0-pool-0-run')
+        runbutton.click()
+        time.sleep(1)
+        fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > button')
+        fightbutton.click()
+        FightPage.button_checking(self)
+    
+    def check_fight_swiss_buttons(self):
+        runbutton = self.browser.find_element(By.ID, 'btn-stage-0-pool-0-run')
+        runbutton.click()
+        time.sleep(1)
+        fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(4) > div:nth-child(1) > button')
+        fightbutton.click()
+        FightPage.button_checking(self)
+
     def pools_running(self):
 
         allpools = self.find_multiple_elements_wait(StagePageLocators.POOLS_NUMBER)
@@ -42,7 +63,7 @@ class StagesPage(BasePage):
             roundsnumber = len(roundsnumber)
             if rounds != roundsnumber:
                 roundlocator = 'div.rounds-container.eliminations > div:nth-child(' + str(rounds) + ')> div:nth-child(2) > div:nth-child(1)'
-                round_run = roundlocator + ' > a > button' 
+                round_run = roundlocator + ' > div:nth-child(1) > a > button' 
 
                 runbranch = self.browser.find_element(By.CSS_SELECTOR, round_run)
                 runbranch.click()
@@ -50,7 +71,7 @@ class StagesPage(BasePage):
                 break
             else:
                 roundlocator = 'div.rounds-container.eliminations > div:nth-child(' + str(rounds) + ')> div:nth-child(2) > div:nth-child(1)'
-                round_run = roundlocator + ' > a > button' 
+                round_run = roundlocator + ' > div:nth-child(1) > a > button' 
                 runbranch = self.browser.find_element(By.CSS_SELECTOR, round_run)
                 runbranch.click()
                 PoolPage.run_pool(self)
@@ -68,7 +89,7 @@ class StagesPage(BasePage):
             right_roundsnumber = len(right_roundsnumber)
             if right_rounds != right_roundsnumber:
                 right_roundlocator = 'div.rounds-container.eliminations > div:nth-child(' + str(right_rounds) + ')> div:nth-child(3) > div:nth-child(1)'
-                right_round_run = right_roundlocator + ' > a > button' 
+                right_round_run = right_roundlocator + ' > div:nth-child(1) > a > button' 
 
                 right_runbranch = self.browser.find_element(By.CSS_SELECTOR, right_round_run)
                 right_runbranch.click()
@@ -76,7 +97,7 @@ class StagesPage(BasePage):
                 break
             else:
                 right_roundlocator = 'div.rounds-container.eliminations > div:nth-child(' + str(right_rounds) + ')> div:nth-child(3) > div:nth-child(1)'
-                right_round_run = right_roundlocator + ' > a > button' 
+                right_round_run = right_roundlocator + ' > div:nth-child(1) > a > button' 
                 right_runbranch = self.browser.find_element(By.CSS_SELECTOR, right_round_run)
                 right_runbranch.click()
                 PoolPage.run_pool(self)
@@ -90,19 +111,21 @@ class StagesPage(BasePage):
     def branches_order(self):
         choose_branch = randint(0, 1)
         if choose_branch == 0:
-            self.left_branch_running()
+            #self.left_branch_running()
             self.right_branch_running()
+            self.left_branch_running()
             
         else:
             self.right_branch_running()
             self.left_branch_running()
+            #self.right_branch_running()
         self.click_button(StagePageLocators.NEXT_PLAYOFF_STAGE_BUTTON)
 
         
     def finals_running(self):
         allfinalbuttons = self.find_multiple_elements_wait(StagePageLocators.FINALS_RUN_BUTTON)
         finalsrunbuttonposition = len(allfinalbuttons)
-        finalsrunbuttonselector = 'div.rounds-container.eliminations > div:nth-child(' + str(finalsrunbuttonposition) + ') > div:nth-child(2) > div:nth-child(1) > a > #btn-stage-1-side-0-run-playoff-round'
+        finalsrunbuttonselector = 'div.rounds-container.eliminations > div:nth-child(' + str(finalsrunbuttonposition) + ') > div:nth-child(2) > div:nth-child(1)  > div:nth-child(1) > a > #btn-stage-1-side-0-run-playoff-round'
         finalsrunbutton = self.browser.find_element(By.CSS_SELECTOR, finalsrunbuttonselector)
         finalsrunbutton.click()
         PoolPage.run_pool(self)
@@ -123,4 +146,9 @@ class StagesPage(BasePage):
             if x == roundsnumber:
                 break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
-            time.sleep(4)
+            time.sleep(4)          
+
+            #poolpage = PoolPage(url = any)
+            PoolPage.run_swiss_pool(self)
+            pool += 1
+            time.sleep(3)

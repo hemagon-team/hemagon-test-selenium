@@ -33,7 +33,7 @@ def setup(browser):
     # Close cookies
     page.close_cookies()
 
-class TestRunningTournamentSwissSystem:
+class TestRunningSwissPooled:
     def test_user_can_run_tournament(self, browser):
         page = OrganizerPage(browser, link)
         page.open()
@@ -42,9 +42,8 @@ class TestRunningTournamentSwissSystem:
         page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
         page.click_button(TournamentPageLocators.NOMINATION_LINK)
         page.click_button(TournamentPageLocators.STAGES_TAB)
-        time.sleep(2)
 
-        stage = StagesPage(browser, link)
-        stage.check_fight_swiss_buttons()
         time.sleep(2)
-        stage.swiss_running()
+        stage = StagesPage(browser, link)
+        stage.swiss_pools_running()
+        

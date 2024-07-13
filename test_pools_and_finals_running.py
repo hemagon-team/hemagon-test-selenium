@@ -7,6 +7,7 @@ from pages.main_page import MainPage
 from pages.stages_page import StagesPage
 from pages.organizer_page import OrganizerPage
 from pages.locators import TournamentPageLocators
+import time
 
 
 # Set links
@@ -41,7 +42,9 @@ class TestRunningTournamentWithPools:
         page.click_button(TournamentPageLocators.NOMINATION_LINK)
         page.click_button(TournamentPageLocators.STAGES_TAB)
 
+        time.sleep(2)
         stage = StagesPage(browser, link)
+        stage.check_fight_pool_buttons()
         stage.pools_running()
         stage.playoff_create()
         stage.playoff_running()  

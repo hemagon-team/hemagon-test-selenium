@@ -20,14 +20,14 @@ class PoolPage(BasePage):
         while x < numberoffights:
             x += 1
             if x == numberoffights:
-                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(3) > div:nth-child(1)'
+                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(3) > div:nth-child(1) > button'
                 fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
                 fightbutton.click()
                 time.sleep(3)
                 FightPage.fight(self)
                 self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
                 break
-            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(3) > div:nth-child(1)'
+            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(3) > div:nth-child(1) > button'
             fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
             fightbutton.click()            
             #self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
@@ -45,14 +45,14 @@ class PoolPage(BasePage):
         while x < numberoffights:
             x += 1
             if x == numberoffights:
-                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1)'
+                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
                 fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
                 fightbutton.click()
                 time.sleep(3)
                 FightPage.fight(self)
                 self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
                 break
-            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1)'
+            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
             fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
             fightbutton.click()            
             #self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
