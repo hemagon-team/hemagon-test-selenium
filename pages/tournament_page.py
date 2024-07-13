@@ -1,4 +1,5 @@
 import time
+import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
@@ -123,7 +124,6 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.SAVE_STAGE_BUTTON)
 
         if type_id == 3 or type_id == 4:
-            self.browser.refresh()
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
@@ -133,7 +133,7 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
 
         # Choose number of test participants
-        self.fill_select_by_text(TournamentPageLocators.PARTICIPANTS_NUMBER_SELECT, number)
+        self.fill_input(TournamentPageLocators.PARTICIPANTS_NUMBER_INPUT, number)
 
         # Enroll test participants
         self.click_button(TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
@@ -208,7 +208,11 @@ class TournamentPage(BasePage):
     def delete_playoff_stages(self, number):
         """self.open_nomination()
         self.open_stages_tab()"""
-        for i in range(number):
+        fights_number = 2 ** math.ceil(math.log2(number))
+        print("calculated fights number:", fights_number)
+        fights = self.find_multiple_elements_wait(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)
+        print("real fights number:", len(fights))
+        for i in range(fights_number):
             self.click_button(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)
             self.confirm_alert()
             time.sleep(0.3)
