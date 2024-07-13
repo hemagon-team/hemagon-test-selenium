@@ -131,7 +131,8 @@ class TournamentPageLocators:
     SAVE_STAGE_BUTTON = (By.ID, "btn-stage-editing-save")
     # Adding participants
     PARTICIPANTS_TAB = (By.ID, "nomination-menu-participants")
-    PARTICIPANTS_NUMBER_SELECT = (By.ID, "input-requests-test-enroll-number")
+    # PARTICIPANTS_NUMBER_SELECT = (By.ID, "input-requests-test-enroll-number")
+    PARTICIPANTS_NUMBER_INPUT = (By.ID, "input-requests-test-enroll-number-alt")
     ENROLL_TEST_PARTICIPANTS_BUTTON = (By.ID, "btn-requests-test-enroll")
     PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
