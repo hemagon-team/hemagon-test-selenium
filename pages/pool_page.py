@@ -34,7 +34,7 @@ class PoolPage(BasePage):
             fight_page.fight()
             time.sleep(1)
 
-   def run_pool_with_random_results(self):
+    def run_pool_with_random_results(self):
         self.click_button(PoolPageLocators.SEED_RANDOM_RESULTS_BUTTON)
         self.confirm_alert()
         self.wait_for_element_to_disappear(PoolPageLocators.RUN_FIGHT_BUTTON_ACTIVE)
