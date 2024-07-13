@@ -11,7 +11,7 @@ class FightPage(BasePage):
     def encounter(self):
         html = self.find_element_wait(FightPageLocators.HTML)
            
-        timerrand = random.randint(2, 7)
+        timerrand = random.randint(1, 1)
 
         sidechoise = randint(0, 1)
         scorerand = randint(1, 2)
@@ -38,7 +38,7 @@ class FightPage(BasePage):
             bluescore = self.find_element_wait(FightPageLocators.SCORE_RIGHT)
             bluescore = int(bluescore.text)
 
-            if bluescore >= 9 or redscore >= 9:
+            if bluescore >= 2 or redscore >= 2:
                 self.click_button(FightPageLocators.FINISH_BUTTON)
                 break
             FightPage.encounter(self)

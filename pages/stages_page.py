@@ -7,7 +7,6 @@ from selenium.webdriver.common.by import By
 import random
 from random import randint
 
-
 class StagesPage(BasePage):
     def pools_running(self, full_mode=True):
 
@@ -76,7 +75,7 @@ class StagesPage(BasePage):
     def right_branch_running(self, full_mode=True):
         right_rounds = 1
         pool_page = PoolPage(self.browser, self.url)
-        while True: 
+        while True:
             right_roundsnumber = self.find_multiple_elements_wait(StagePageLocators.RIGHT_BRANCH_RUN_BUTTON)
             right_roundsnumber = len(right_roundsnumber)
             if right_rounds != right_roundsnumber:
@@ -137,3 +136,16 @@ class StagesPage(BasePage):
         self.branches_order(full_mode=full_mode)
         time.sleep(1)
         self.finals_running(full_mode=full_mode)
+
+    def swiss_running(self):
+        roundsnumber = self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER)
+        roundsnumber = int(roundsnumber.text)
+        x = 0
+        while True:
+            x += 1
+            self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
+            PoolPage.run_swiss_pool(self)
+            if x == roundsnumber:
+                break
+            self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
+            time.sleep(4)
