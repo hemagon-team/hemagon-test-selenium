@@ -13,19 +13,18 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 
-@pytest.fixture(scope="function", autouse=True)
-def setup(browser):
-    page = MainPage(browser, base_link)
-    page.open()
-    page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
-    login_page.login_user(email, password)
-    page.should_be_authorized_user()
-    # Close cookies
-    page.close_cookies()
-
-
 class TestUserCanOpenProfile:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        page = MainPage(browser, base_link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.login_user(email, password)
+        page.should_be_authorized_user()
+        # Close cookies
+        page.close_cookies()
+
     def test_user_can_open_profile(self, browser):
         page = ProfilePage(browser, link)
         page.open()
