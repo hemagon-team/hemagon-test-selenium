@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: seleniarm/standalone-chromium:4.19
+        image: selenium/standalone-chromium:4.22
         options: --shm-size=2gb
         ports:
           - '4444:4444'

@@ -45,13 +45,13 @@
    make pull
    ```
    
-4. Run tests:
+5. Run tests:
    ```shell
    docker compose -f dev.docker-compose.yml exec -iT pytest pytest -vv -s %test_name%
    ```
    *replace `%test_name%` with path to tests, like: `test_main_page.py`  
 
-5. After all things are done call:
+6. After all things are done call:
    ```shell
    make down
    ```
