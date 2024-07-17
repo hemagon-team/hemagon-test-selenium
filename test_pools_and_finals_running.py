@@ -45,6 +45,7 @@ class TestRunningTournamentWithPools:
         time.sleep(2)
         stage = StagesPage(browser, link)
         stage.check_fight_pool_buttons()
+        time.sleep(2)
         stage.pools_running()
         stage.playoff_create()
         stage.playoff_running()  

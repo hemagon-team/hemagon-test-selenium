@@ -55,8 +55,5 @@ class PoolPage(BasePage):
             currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
             fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
             fightbutton.click()            
-            #self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
-            #x += 1
-            #time.sleep(3)
             FightPage.fight(self)
             time.sleep(1)

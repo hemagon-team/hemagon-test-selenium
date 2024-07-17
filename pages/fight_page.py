@@ -41,6 +41,23 @@ class FightPage(BasePage):
         self.click_button(FightPageLocators.MINUS_RIGHT_BUTTON)
         self.click_button(FightPageLocators.ADD_5SECONDS_BUTTON)
         self.click_button(FightPageLocators.TECHNICAL_DEFEAT_BUTTON)
+        resetbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(3) > div > button:nth-child(1)')
+        resetbutton.click()
+        confirm = self.browser.switch_to.alert
+        confirm.accept()
+        self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+        time.sleep(1)
+
+    def swiss_button_checking(self):
+        html = self.find_element_wait(FightPageLocators.HTML)
+        html.send_keys(Keys.SPACE)
+        html.send_keys(Keys.SPACE)       
+        self.click_button(FightPageLocators.ADD_LEFT_BUTTON)
+        self.click_button(FightPageLocators.MINUS_LEFT_BUTTON)
+        self.click_button(FightPageLocators.ADD_RIGHT_BUTTON)
+        self.click_button(FightPageLocators.MINUS_RIGHT_BUTTON)
+        self.click_button(FightPageLocators.ADD_5SECONDS_BUTTON)
+        self.click_button(FightPageLocators.TECHNICAL_DEFEAT_BUTTON)
         resetbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(4) > div > button:nth-child(1)')
         resetbutton.click()
         confirm = self.browser.switch_to.alert

@@ -31,7 +31,7 @@ class StagesPage(BasePage):
         time.sleep(1)
         fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.pool > div:nth-child(4) > div:nth-child(4) > div:nth-child(1) > button')
         fightbutton.click()
-        FightPage.button_checking(self)
+        FightPage.swiss_button_checking(self)
 
     def pools_running(self):
 
@@ -136,19 +136,17 @@ class StagesPage(BasePage):
         self.finals_running()
 
     def swiss_running(self):
+        html = self.find_element_wait(FightPageLocators.HTML)
         roundsnumber = self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER)
         roundsnumber = int(roundsnumber.text)
         x = 0
         while True:
-            x += 1
             self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
+            x += 1
+            
             PoolPage.run_swiss_pool(self)
             if x == roundsnumber:
                 break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
-            time.sleep(4)          
-
-            #poolpage = PoolPage(url = any)
-            PoolPage.run_swiss_pool(self)
-            pool += 1
-            time.sleep(3)
+            html.send_keys(Keys.PAGE_DOWN)
+            time.sleep(2)          
