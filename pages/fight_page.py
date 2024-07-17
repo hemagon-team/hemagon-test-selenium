@@ -17,9 +17,11 @@ class FightPage(BasePage):
 
         sidechoise = randint(0, 1)
         scorerand = randint(1, 2)
+
         html.send_keys(Keys.SPACE)
         time.sleep(timerrand)
         html.send_keys(Keys.SPACE)
+
         i = 0
         if sidechoise == 0:
             while i < scorerand:
