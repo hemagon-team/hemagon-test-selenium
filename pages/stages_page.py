@@ -172,7 +172,3 @@ class StagesPage(BasePage):
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
             time.sleep(4)          
 
-            #poolpage = PoolPage(url = any)
-            PoolPage.run_swiss_pool(self)
-            pool += 1
-            time.sleep(3)
