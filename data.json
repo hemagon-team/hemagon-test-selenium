@@ -139,5 +139,30 @@
     "pools_number": 2,
 
     "ring_title": "Ring"
+  },
+  {
+    "title": "SwissTournamentOdd",
+    "start_date": "2 June 2024",
+    "end_date": "3 June 2024",
+    "country": "Spain",
+    "city": "Barcelona",
+    "description": "Test tournament: swiss system, odd size",
+
+    "nomination_title": "Qwerty",
+    "weapon_id": 4,
+    "fight_time": "120",
+    "last_round_time": "0",
+
+    "type_id": 3,
+    "to_the_finals": true,
+    "stage_fight_time": 120,
+
+    "go_next_stage": null,
+    "swiss_empty_win": true,
+    "swiss_empty_points": 1,
+
+    "participants_number": 9,
+
+    "ring_title": "Ring"
   }
 ]

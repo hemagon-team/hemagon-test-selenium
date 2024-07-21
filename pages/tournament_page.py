@@ -6,7 +6,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
-from .locators import TournamentPageLocators
+from .locators import TournamentPageLocators, StagePageLocators
 
 
 class TournamentPage(BasePage):
@@ -248,6 +248,16 @@ class TournamentPage(BasePage):
         # DOESN'T WORK, ONLY HIGHLIGHT TEXT FOR SOME REASON, FIX NEEDED
         actions.drag_and_drop(drag_items[0], drag_zones[1]).perform()
         self.click_button(TournamentPageLocators.CLOSE_SWISS_SETTINGS_BUTTON)
+
+    def delete_swiss_rounds(self):
+        """self.open_nomination()
+        self.open_stages_tab()"""
+        number = int(self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER).text)
+        for i in range(number):
+            self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
+            self.confirm_alert()
+            time.sleep(0.3)
+        self.wait_for_element(TournamentPageLocators.REMOVE_POOLS_STAGE_BUTTON)
 
     def delete_pools_stage(self):
         """self.open_nomination()

@@ -4,6 +4,7 @@ import json
 import test_organizer_page
 import test_tournament_page
 import test_pools_and_finals_running
+import test_swiss
 from pages.login_page import LoginPage
 
 
@@ -26,6 +27,7 @@ class TestCreateRunDeleteTournament:
         self.create_tournament = test_organizer_page.TestUserCanCreateTournament()
         self.modify_tournament = test_tournament_page.TestUserCanModifyTournament()
         self.run_tournament = test_pools_and_finals_running.TestRunningTournamentWithPools()
+        self.run_swiss = test_swiss.TestRunningTournamentSwissSystem()
 
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
@@ -62,8 +64,8 @@ class TestCreateRunDeleteTournament:
                 self.modify_tournament.test_user_can_add_participants_to_swiss(browser)
                 self.modify_tournament.test_user_can_set_ring_for_swiss_round(browser)
                 self.modify_tournament.test_user_can_set_pairs_for_swiss_round(browser)
-                # RUN SWISS
-                self.modify_tournament.test_user_can_delete_swiss_round(browser)
+                self.run_swiss.test_user_can_run_tournament(browser, dataset)
+                self.modify_tournament.test_user_can_delete_swiss_rounds(browser)
                 self.modify_tournament.test_user_can_delete_pools_stage(browser)
 
             self.modify_tournament.test_user_can_delete_nomination(browser)

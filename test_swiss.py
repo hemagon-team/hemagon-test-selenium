@@ -19,8 +19,9 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
+"""with open("data.json", "r") as f:
+    data = json.load(f)"""
+
 
 @pytest.fixture(scope="function", autouse=True)
 def setup(browser):
@@ -33,8 +34,9 @@ def setup(browser):
     # Close cookies
     page.close_cookies()
 
+
 class TestRunningTournamentSwissSystem:
-    def test_user_can_run_tournament(self, browser):
+    def test_user_can_run_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
