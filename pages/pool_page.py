@@ -47,12 +47,20 @@ class PoolPage(BasePage):
         numberoffights = (len(numberoffights) + x)
         while x < numberoffights:
             x += 1
-            if x == numberoffights:
+            if x == numberoffights and x % 2 == 0:
                 currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
                 fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
                 fightbutton.click()
                 time.sleep(3)
                 FightPage.fight(self)
+                self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+                break
+            elif x == numberoffights:
+                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
+                fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
+                fightbutton.click()
+                time.sleep(3)
+                #FightPage.fight(self)
                 self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
                 break
             currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
