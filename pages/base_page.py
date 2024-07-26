@@ -1,5 +1,5 @@
 import time
-from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
@@ -29,7 +29,7 @@ class BasePage:
     def is_element_present(self, selector):
         try:
             self.find_element_wait(selector)
-        except NoSuchElementException:
+        except (NoSuchElementException, TimeoutException):
             return False
         return True
 
