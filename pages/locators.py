@@ -194,19 +194,25 @@ class StagePageLocators:
     NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
     RIGHT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-1-build-next-playoff-round')
+    LEFT_BRANCH_BUILD_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-0-build-next-playoff-round.small.active')
+    RIGHT_BRANCH_BUILD_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-1-build-next-playoff-round.small.active')
     FINALS_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-run-playoff-round')
     RECOMMEND_SWISS_ROUNDS_NUMBER = (By.ID, 'stage-0-swiss-recommended-rounds')
     BUILD_NEXT_SWISS_ROUND = (By.ID, 'btn-stage-0-build-next-round-swiss')
     SWISS_RUN_POOL_BUTTON = (By.CSS_SELECTOR, "#btn-stage-0-pool-0-run[class='small active']")
+    LEFT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-0-run-playoff-round.active')
+    RIGHT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-1-run-playoff-round.active')
 
 
 
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
+    FIGHT_BUTTON = (By.CSS_SELECTOR, 'div.row button.small.active')
     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
     SEED_RANDOM_RESULTS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button")
     SUCCESS_NOTIFICATION = (By.CLASS_NAME, "notification-content")
     RUN_FIGHT_BUTTON_ACTIVE = (By.CSS_SELECTOR, ".row > div:nth-of-type(3) > div > button.active")
+    BYE_BUTTON = (By.CSS_SELECTOR, "#btn-pass-bye")
 
 
 class SwissPoolPageLocators:

@@ -3,8 +3,16 @@ from selenium.webdriver.common.by import By
 from .base_page import BasePage
 from .locators import PoolPageLocators
 from .fight_page import FightPage
+from selenium.common.exceptions import NoSuchElementException
 
 class PoolPage(BasePage):
+
+    def is_element(browser, by, value):
+        try:
+                element = browser.find_element(by, value)
+                return True
+        except NoSuchElementException:
+            return False
 
     def run_pool(self):
         x = 0
@@ -14,7 +22,7 @@ class PoolPage(BasePage):
         fight_page = FightPage(self.browser, self.url)
 
         for x in range(0, numberoffights):
-            fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'button.small.active')
+            fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
             fightbutton.click()            
             fight_page.fight()
             time.sleep(1)
@@ -26,34 +34,48 @@ class PoolPage(BasePage):
         self.wait_for_element_to_disappear(PoolPageLocators.RUN_FIGHT_BUTTON_ACTIVE)
         self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
 
-    def run_swiss_pool(self):
-        #the numeration of the fight selectors starts from 3
+    def run_swiss_odd_pool(self):
+        byebutton = self.find_element_wait(PoolPageLocators.BYE_BUTTON)
+        byebutton.click()
+        #the numeration of the fight selectors starts from 3 
         x = 3
         numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_ROW)
         numberoffights = (len(numberoffights) + x)
         while x < numberoffights:
             x += 1
-            if x == numberoffights and x % 2 == 0:
-                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
+            if x == numberoffights:
+                self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+                break
+            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1) > button'
+            fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
+            fightbutton.click()            
+            FightPage.fight(self)
+            time.sleep(1)
+
+    def run_swiss_pool(self):
+        #the numeration of the fight selectors starts from 3 
+        x = 3
+        numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_ROW)
+        numberoffights = (len(numberoffights) + x)
+        while x < numberoffights:
+            x += 1
+            if x == numberoffights:
+                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1) > button'
                 fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
                 fightbutton.click()
                 time.sleep(3)
                 FightPage.fight(self)
                 self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
                 break
-            elif x == numberoffights:
-                currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
-                fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
-                fightbutton.click()
-                time.sleep(3)
-                #FightPage.fight(self)
-                self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
-                break
-            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div > button:nth-child(1)'
+            currentfight = 'div.pool > div:nth-child(' + str(x) + ') > div:nth-child(4) > div:nth-child(1) > button'
             fightbutton = self.browser.find_element(By.CSS_SELECTOR, currentfight)
             fightbutton.click()            
-            #self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
-            #x += 1
-            #time.sleep(3)
             FightPage.fight(self)
             time.sleep(1)
+
+    def run_swiss(self):
+        check_bye = self.is_element_present(PoolPageLocators.BYE_BUTTON)
+        if not check_bye:
+            PoolPage.run_swiss_pool(self)
+        else:
+            PoolPage.run_swiss_odd_pool(self)
