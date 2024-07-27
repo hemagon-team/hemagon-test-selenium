@@ -22,7 +22,7 @@ class PoolPage(BasePage):
         fight_page = FightPage(self.browser, self.url)
 
         for x in range(0, numberoffights):
-            fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'button.small.active')
+            fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
             fightbutton.click()            
             fight_page.fight()
             time.sleep(1)
