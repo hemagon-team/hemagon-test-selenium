@@ -233,7 +233,7 @@ class StagesPage(BasePage):
             self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
             x += 1
             
-            PoolPage.run_swiss_pool(self)
+            PoolPage.run_swiss(self)
             if x == roundsnumber:
                 break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
