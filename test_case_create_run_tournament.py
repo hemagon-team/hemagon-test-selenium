@@ -53,7 +53,7 @@ class TestCreateRunDeleteTournament:
                 self.modify_tournament.test_user_can_create_playoff_stage(browser, dataset)
                 self.modify_tournament.test_user_can_add_participants_to_pool(browser)
                 self.modify_tournament.test_user_can_set_ring_for_pool(browser)
-                self.run_tournament.test_user_can_run_tournament_with_random_results(browser, dataset)
+                self.run_tournament.test_user_can_run_tournament(browser, dataset, full_mode=False)
                 self.modify_tournament.test_user_can_delete_playoffs(browser, dataset)
                 self.modify_tournament.test_user_can_delete_playoff_stage(browser)
                 self.modify_tournament.test_user_can_delete_pools(browser, dataset)
@@ -64,7 +64,7 @@ class TestCreateRunDeleteTournament:
                 self.modify_tournament.test_user_can_add_participants_to_swiss(browser)
                 self.modify_tournament.test_user_can_set_ring_for_swiss_round(browser)
                 self.modify_tournament.test_user_can_set_pairs_for_swiss_round(browser)
-                self.run_swiss.test_user_can_run_tournament(browser, dataset)
+                self.run_swiss.test_user_can_run_tournament(browser, dataset, full_mode=False)
                 self.modify_tournament.test_user_can_delete_swiss_rounds(browser)
                 self.modify_tournament.test_user_can_delete_pools_stage(browser)
 

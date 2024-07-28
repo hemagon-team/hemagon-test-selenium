@@ -209,9 +209,6 @@ class TournamentPage(BasePage):
         """self.open_nomination()
         self.open_stages_tab()"""
         fights_number = 2 ** math.ceil(math.log2(number))
-        print("calculated fights number:", fights_number)
-        fights = self.find_multiple_elements_wait(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)
-        print("real fights number:", len(fights))
         for i in range(fights_number):
             self.click_button(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)
             self.confirm_alert()

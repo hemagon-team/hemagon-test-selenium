@@ -212,6 +212,7 @@ class PoolPageLocators:
     SEED_RANDOM_RESULTS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button")
     SUCCESS_NOTIFICATION = (By.CLASS_NAME, "notification-content")
     RUN_FIGHT_BUTTON_ACTIVE = (By.CSS_SELECTOR, ".row > div:nth-of-type(3) > div > button.active")
+    RUN_FIGHT_BUTTON_ACTIVE_SWISS = (By.CSS_SELECTOR, ".row > div:nth-of-type(4) > div > button.active")
     BYE_BUTTON = (By.CSS_SELECTOR, "#btn-pass-bye")
 
 
