@@ -42,6 +42,9 @@ class OrganizerPage(BasePage):
         # Save the tournament
         self.click_button(OrganizerPageLocators.SAVE_BUTTON)
 
+        # Wait so that name check don't handle creating page title
+        time.sleep(0.3)
+
     def open_tournament(self, title):
         banners = self.find_multiple_elements_wait(OrganizerPageLocators.TOURNAMENT_BANNERS)
         for banner in banners:

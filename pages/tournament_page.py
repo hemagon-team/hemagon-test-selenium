@@ -168,14 +168,7 @@ class TournamentPage(BasePage):
         self.open_stages_tab()
         # Create pools
         for i in range(number):
-            add_pool_button = WebDriverWait(self.browser, 5, poll_frequency=0.5).until(
-                EC.element_to_be_clickable(TournamentPageLocators.ADD_POOL_BUTTON)
-            )
-            try:
-                add_pool_button.click()
-            except ElementClickInterceptedException:
-                time.sleep(3)
-                add_pool_button.click()
+            self.click_button(TournamentPageLocators.ADD_POOL_BUTTON)
             time.sleep(0.2)
 
     def add_participants_to_pool(self):

@@ -17,7 +17,7 @@ class PoolPage(BasePage):
             fight_button = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
             fight_button.click()
             fight_page.fight()
-            time.sleep(1)
+            time.sleep(0.3)
         self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
 
     def run_pool_with_random_results(self):
@@ -49,7 +49,7 @@ class PoolPage(BasePage):
                                      ') > div:nth-child(4) > div:nth-child(1) > button')
                     fight_button = self.browser.find_element(By.CSS_SELECTOR, current_fight)
                     fight_button.click()
-                    time.sleep(3)
+                    time.sleep(0.3)
                     fight_page.fight()
                 self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
                 break

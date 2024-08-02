@@ -131,4 +131,4 @@ class StagesPage(BasePage):
             self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
             pool_page.run_swiss(full_mode)
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
-            time.sleep(4)          
+            time.sleep(1)

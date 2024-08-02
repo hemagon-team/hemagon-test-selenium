@@ -44,10 +44,10 @@ class TestRunningTournamentSwissSystem:
         page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
         page.click_button(TournamentPageLocators.NOMINATION_LINK)
         page.click_button(TournamentPageLocators.STAGES_TAB)
-        time.sleep(2)
+        time.sleep(0.3)
 
         stage = StagesPage(browser, link)
         if full_mode:
             stage.check_fight_swiss_buttons()
-        time.sleep(2)
+        time.sleep(0.3)
         stage.swiss_running(full_mode)
