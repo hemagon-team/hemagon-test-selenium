@@ -45,10 +45,10 @@ class StagesPage(BasePage):
                 pool_page.run_pool()
             else:
                 pool_page.run_pool_with_random_results()
-    
+
     def playoff_create(self):
         self.click_button(StagePageLocators.NEXT_STAGE_BUTTON)
-  
+
     def left_branch_running(self, full_mode):
         pool_page = PoolPage(self.browser, self.url)
         while True:
@@ -86,7 +86,7 @@ class StagesPage(BasePage):
                     self.click_button(StagePageLocators.RIGHT_BRANCH_BUILD_BUTTON)
                 else:
                     break
-    
+
     def branches_order(self, full_mode):
         choose_branch = randint(0, 1)
         if choose_branch == 0:
@@ -102,8 +102,8 @@ class StagesPage(BasePage):
         finals_buttons_list = self.find_multiple_elements_wait(StagePageLocators.FINALS_RUN_BUTTON)
         finals_buttons_number = len(finals_buttons_list)
         finals_button_selector = ('div.rounds-container.eliminations > div:nth-child(' + str(finals_buttons_number)
-                                   + ') > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a >'
-                                     '#btn-stage-1-side-0-run-playoff-round')
+                                  + ') > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a >'
+                                    '#btn-stage-1-side-0-run-playoff-round')
         finals_run_button = self.browser.find_element(By.CSS_SELECTOR, finals_button_selector)
         finals_run_button.click()
 
@@ -113,7 +113,7 @@ class StagesPage(BasePage):
             pool_page.run_pool()
         else:
             pool_page.run_pool_with_random_results()
-    
+
     def playoff_running(self, full_mode):
         self.branches_order(full_mode)
         time.sleep(1)
@@ -130,5 +130,7 @@ class StagesPage(BasePage):
         for x in range(rounds_number):
             self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
             pool_page.run_swiss(full_mode)
+            if x == rounds_number - 1:
+                break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)
-            time.sleep(1)
+            time.sleep(0.5)

@@ -1,11 +1,9 @@
 [
   {
-    "title": "SmallTournamentStandard",
-    "start_date": "2 June 2024",
-    "end_date": "3 June 2024",
+    "title": "PoolsWithFinals",
     "country": "Spain",
     "city": "Barcelona",
-    "description": "Test tournament: small odd size",
+    "description": "Test tournament: pools with finals",
 
     "nomination_title": "Qwerty",
     "weapon_id": 7,
@@ -15,55 +13,41 @@
     "type_id": 1,
     "stage_fight_time": 120,
 
-    "go_next_stage": 16,
+    "go_next_stage": 8,
     "finals_mode": 1,
     "third_place": true,
-    "swiss_empty_win": true,
-    "swiss_empty_points": 1,
-    "hits_initial_hp": 10,
-    "hits_limit_hp": 0,
 
-    "participants_number": 20,
-    "pools_number": 4,
+    "participants_number": 10,
+    "pools_number": 2,
 
     "ring_title": "Ring"
   },
   {
-    "title": "SmallTournamentOdd",
-    "start_date": "2 June 2024",
-    "end_date": "3 June 2024",
+    "title": "PoolsWithoutFinals",
     "country": "Spain",
     "city": "Barcelona",
-    "description": "Test tournament: small odd size",
+    "description": "Test tournament: pools without finals",
 
     "nomination_title": "Qwerty",
-    "weapon_id": 7,
+    "weapon_id": 5,
     "fight_time": "120",
     "last_round_time": "0",
 
     "type_id": 1,
     "stage_fight_time": 120,
 
-    "go_next_stage": 17,
-    "finals_mode": 1,
-    "third_place": true,
-    "swiss_empty_win": true,
-    "swiss_empty_points": 1,
-    "hits_initial_hp": 10,
-    "hits_limit_hp": 0,
+    "go_next_stage": null,
 
-    "participants_number": 17,
-    "pools_number": 4,
+    "participants_number": 10,
+    "pools_number": 2,
 
     "ring_title": "Ring"
   },
   {
-    "title": "SwissTournamentStandard",
-    "start_date": "2 June 2024",
-    "end_date": "3 June 2024",
+    "title": "SwissWithFinals",
     "country": "Spain",
     "city": "Barcelona",
-    "description": "Test tournament: swiss system, standard size",
+    "description": "Test tournament: swiss system with finals",
 
     "nomination_title": "Qwerty",
     "weapon_id": 4,
@@ -71,10 +55,12 @@
     "last_round_time": "0",
 
     "type_id": 3,
-    "to_the_finals": true,
     "stage_fight_time": 120,
 
-    "go_next_stage": null,
+    "go_next_stage": 8,
+    "finals_mode": 1,
+    "third_place": true,
+
     "swiss_empty_win": true,
     "swiss_empty_points": 1,
 
@@ -83,27 +69,25 @@
     "ring_title": "Ring"
   },
   {
-    "title": "SwissTournamentOdd",
-    "start_date": "2 June 2024",
-    "end_date": "3 June 2024",
+    "title": "SwissWithoutFinals",
     "country": "Spain",
     "city": "Barcelona",
-    "description": "Test tournament: swiss system, standard size",
+    "description": "Test tournament: swiss system without finals",
 
     "nomination_title": "Qwerty",
-    "weapon_id": 4,
+    "weapon_id": 8,
     "fight_time": "120",
     "last_round_time": "0",
 
     "type_id": 3,
-    "to_the_finals": true,
     "stage_fight_time": 120,
 
     "go_next_stage": null,
+
     "swiss_empty_win": true,
     "swiss_empty_points": 1,
 
-    "participants_number": 9,
+    "participants_number": 10,
 
     "ring_title": "Ring"
   }

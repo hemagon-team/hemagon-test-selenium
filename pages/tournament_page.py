@@ -56,7 +56,7 @@ class TournamentPage(BasePage):
     def open_rings_tab(self):
         self.click_button(TournamentPageLocators.RINGS_TAB)
 
-    def create_stage(self, type_id=1, to_the_finals=False, fight_time=120, go_next_stage=8,
+    def create_stage(self, type_id=1, fight_time=120, go_next_stage=None,
                      playoff_finals_mode=None, playoff_third_place=None,
                      swiss_empty_win=None, swiss_win_points=None, hits_initial_hp=None, hits_limit_hp=None):
         self.open_nomination()
@@ -78,7 +78,7 @@ class TournamentPage(BasePage):
             raise Exception("No such option: type id can only be 1 / 2 / 3 / 4")
 
         # Choose option: to the finals or not
-        if to_the_finals:
+        if not go_next_stage:
             self.click_button(TournamentPageLocators.TO_THE_FINALS_TRUE)
         else:
             self.click_button(TournamentPageLocators.TO_THE_FINALS_FALSE)
@@ -87,13 +87,13 @@ class TournamentPage(BasePage):
         self.fill_input(TournamentPageLocators.FIGHT_TIME_FIELD, fight_time)
 
         # Only for not finals: choose how many participants go to next stage
-        if not to_the_finals:
+        if go_next_stage:
             self.fill_input(TournamentPageLocators.GOES_NEXT_STAGE_FIELD, go_next_stage)
 
         # Only for pools: unlimited pool option
         # ADD SLIDER HANDLING
 
-        if type_id == 2 and to_the_finals:
+        if type_id == 2:
             # Choose finals mode: best of 1 or best of 3
             if playoff_finals_mode == 1:
                 self.click_button(TournamentPageLocators.PLAYOFF_FINALS_MODE_1)
@@ -195,7 +195,7 @@ class TournamentPage(BasePage):
     def create_playoff(self, fight_time, finals_mode, third_place):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.create_stage(type_id=2, to_the_finals=True, fight_time=fight_time,
+        self.create_stage(type_id=2, fight_time=fight_time,
                           playoff_finals_mode=finals_mode, playoff_third_place=third_place)
 
     def delete_playoff_stages(self, number):

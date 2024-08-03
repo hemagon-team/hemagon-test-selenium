@@ -17,31 +17,30 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 
-class TestRunningTournamentWithPools:
-    @pytest.fixture(scope="function", autouse=True)
-    def setup(self, browser):
-        page = MainPage(browser, base_link)
-        page.open()
-        page.go_to_login_page()
-        login_page = LoginPage(browser, browser.current_url)
-        login_page.login_user(email, password)
-        # Close cookies
-        page.close_cookies()
+@pytest.fixture(scope="function", autouse=True)
+def setup(browser):
+    page = MainPage(browser, base_link)
+    page.open()
+    page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.login_user(email, password)
+    # Close cookies
+    page.close_cookies()
 
-    def test_user_can_run_tournament(self, browser, data, full_mode=True):
-        page = OrganizerPage(browser, link)
+
+class TestRunningPools:
+    def test_user_can_run_pools_stage(self, browser, full_mode=True):
+        """page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
 
         page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
         page.click_button(TournamentPageLocators.NOMINATION_LINK)
-        page.click_button(TournamentPageLocators.STAGES_TAB)
+        page.click_button(TournamentPageLocators.STAGES_TAB)"""
 
-        stage = StagesPage(browser, link)
+        stage = StagesPage(browser, browser.current_url)
 
         if full_mode:
             stage.check_fight_pool_buttons()
 
         stage.pools_running(full_mode)
-        stage.playoff_create()
-        stage.playoff_running(full_mode)
