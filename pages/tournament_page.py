@@ -2,7 +2,6 @@ import time
 import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
@@ -269,3 +268,35 @@ class TournamentPage(BasePage):
         # Delete ring
         self.click_button(TournamentPageLocators.REMOVE_RING_BUTTON)
         self.confirm_alert()
+
+    def open_overview_tab(self):
+        self.click_button(TournamentPageLocators.OVERVIEW_TAB)
+
+    def change_tournament_status(self, mode):
+        self.open_overview_tab()
+        if mode == 1:
+            self.click_button(TournamentPageLocators.STATUS_DEVELOPMENT)
+            self.wait_for_element(TournamentPageLocators.STATUS_DEVELOPMENT_ACTIVE)
+        if mode == 2:
+            self.click_button(TournamentPageLocators.STATUS_UPCOMING)
+            self.wait_for_element(TournamentPageLocators.STATUS_UPCOMING_ACTIVE)
+        if mode == 3:
+            self.click_button(TournamentPageLocators.STATUS_REG_OPEN)
+            self.wait_for_element(TournamentPageLocators.STATUS_REG_OPEN_ACTIVE)
+        if mode == 4:
+            self.click_button(TournamentPageLocators.STATUS_REG_CLOSED)
+            self.wait_for_element(TournamentPageLocators.STATUS_REG_CLOSED_ACTIVE)
+        if mode == 5:
+            self.click_button(TournamentPageLocators.STATUS_ONGOING)
+            self.wait_for_element(TournamentPageLocators.STATUS_ONGOING_ACTIVE)
+        if mode == 6:
+            self.click_button(TournamentPageLocators.STATUS_FINISHED)
+            self.wait_for_element(TournamentPageLocators.STATUS_UPCOMING_ACTIVE)
+
+    def open_reg_tab(self):
+        self.click_button(TournamentPageLocators.REG_TAB)
+
+    def enable_hemagon_reg(self):
+        self.open_reg_tab()
+        self.click_button(TournamentPageLocators.ENABLE_HEMAGON_REG)
+        self.click_button(TournamentPageLocators.SAVE_REG_BUTTON)

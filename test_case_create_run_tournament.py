@@ -45,6 +45,7 @@ class TestCreateRunDeleteTournament:
         for dataset in data:
             self.create_tournament.test_user_can_create_tournament(browser, dataset)
             self.create_tournament.test_user_can_open_tournament(browser, dataset)
+            self.modify_tournament.test_user_can_open_registration(browser)
             self.modify_tournament.test_user_can_create_nomination(browser, dataset)
             self.modify_tournament.test_user_can_add_participants(browser, dataset)
             self.modify_tournament.test_user_can_create_ring(browser, dataset)

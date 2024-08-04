@@ -172,6 +172,24 @@ class TournamentPageLocators:
     # Deleting ring
     ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
+    # Changing status
+    STATUS_DEVELOPMENT = (By.ID, "btn-set-status-DEVELOPING")
+    STATUS_UPCOMING = (By.ID, "btn-set-status-UPCOMING")
+    STATUS_REG_OPEN = (By.ID, "btn-set-status-REG_OPEN")
+    STATUS_REG_CLOSED = (By.ID, "btn-set-status-REG_CLOSED")
+    STATUS_ONGOING = (By.ID, "btn-set-status-ONGOING")
+    STATUS_FINISHED = (By.ID, "btn-set-status-FINISHED")
+    STATUS_DEVELOPMENT_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-DEVELOPING.active")
+    STATUS_UPCOMING_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-UPCOMING.active")
+    STATUS_REG_OPEN_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-REG_OPEN.active")
+    STATUS_REG_CLOSED_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-REG_CLOSED.active")
+    STATUS_ONGOING_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-ONGOING.active")
+    STATUS_FINISHED_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-FINISHED.active")
+    # Registration
+    OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
+    REG_TAB = (By.ID, "tournament-menu-registration")
+    ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
+    SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
 
 
 class FightPageLocators:
