@@ -41,13 +41,13 @@ class StagesPage(BasePage):
         while True:
             if pool == numberofpools:
                 break
-            buttonlocator = (By.ID, 'btn-stage-0-pool-' + str(pool) + '-run')
-            runbutton = self.find_element_wait(buttonlocator)
+            buttonlocator = StagePageLocators.POOL_START_BUTTON(pool)
+            #runbutton = self.find_element_wait(buttonlocator)
             try:
-                runbutton.click()
+                self.click_button(buttonlocator)
             except ElementClickInterceptedException:
                 time.sleep(3)
-                runbutton.click()
+                self.click_button(buttonlocator)
             time.sleep(1)
 
             pool_page = PoolPage(self.browser, self.url)
@@ -144,7 +144,7 @@ class StagesPage(BasePage):
             self.click_button(StagePageLocators.SWISS_RUN_POOL_BUTTON)
             x += 1
             
-            PoolPage.run_swiss(self)
+            PoolPage.run_pool(self)
             if x == roundsnumber:
                 break
             self.click_button(StagePageLocators.BUILD_NEXT_SWISS_ROUND)

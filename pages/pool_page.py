@@ -6,27 +6,29 @@ from .fight_page import FightPage
 from selenium.common.exceptions import NoSuchElementException
 
 class PoolPage(BasePage):
-
-    def is_element(browser, by, value):
-        try:
-                element = browser.find_element(by, value)
-                return True
-        except NoSuchElementException:
-            return False
-
     def run_pool(self):
         x = 0
         numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_BUTTON)
         numberoffights = (len(numberoffights))
-
         fight_page = FightPage(self.browser, self.url)
-
+        
+        check_bye = self.is_element_present(PoolPageLocators.BYE_BUTTON)
+        if check_bye:
+            numberoffights = numberoffights - 1
+            self.click_button(PoolPageLocators.BYE_BUTTON)
+            #byebutton.click()
         for x in range(0, numberoffights):
-            fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
-            fightbutton.click()            
+            self.click_button(PoolPageLocators.FIGHT_BUTTON)
             fight_page.fight()
             time.sleep(1)
         self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+        # else:    
+        #     for x in range(0, numberoffights):
+        #         fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
+        #         fightbutton.click()            
+        #         fight_page.fight()
+        #         time.sleep(1)
+        #     self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
 
     def run_pool_with_random_results(self):
         self.click_button(PoolPageLocators.SEED_RANDOM_RESULTS_BUTTON)
@@ -72,10 +74,3 @@ class PoolPage(BasePage):
             fightbutton.click()            
             FightPage.fight(self)
             time.sleep(1)
-
-    def run_swiss(self):
-        check_bye = self.is_element_present(PoolPageLocators.BYE_BUTTON)
-        if not check_bye:
-            PoolPage.run_swiss_pool(self)
-        else:
-            PoolPage.run_swiss_odd_pool(self)
