@@ -171,3 +171,7 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.enable_hemagon_reg()
         page.change_tournament_status(3)
+
+    def test_user_can_register_for_the_tournament(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.register_for_the_tournament()

@@ -300,3 +300,10 @@ class TournamentPage(BasePage):
         self.open_reg_tab()
         self.click_button(TournamentPageLocators.ENABLE_HEMAGON_REG)
         self.click_button(TournamentPageLocators.SAVE_REG_BUTTON)
+
+    def register_for_the_tournament(self):
+        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE)
+        self.click_button(TournamentPageLocators.APPLY_BUTTON)
+        self.click_button(TournamentPageLocators.CATEGORY_RADIO)
+        self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
+        self.wait_for_element(TournamentPageLocators.REG_SUCCESS)

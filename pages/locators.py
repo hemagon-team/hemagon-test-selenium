@@ -190,6 +190,11 @@ class TournamentPageLocators:
     REG_TAB = (By.ID, "tournament-menu-registration")
     ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
     SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
+    GO_TO_PUBLIC_PAGE = (By.CSS_SELECTOR, "#app > div > div:nth-of-type(2) > div.flex > div:nth-of-type(3) > a > span")
+    APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
+    CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
+    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div:nth-of-type(3) > button")
+    REG_SUCCESS = (By.CLASS_NAME, "registration-success")
 
 
 class FightPageLocators:
@@ -220,7 +225,6 @@ class StagePageLocators:
     SWISS_RUN_POOL_BUTTON = (By.CSS_SELECTOR, "#btn-stage-0-pool-0-run[class='small active']")
     LEFT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-0-run-playoff-round.active')
     RIGHT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-1-run-playoff-round.active')
-
 
 
 class PoolPageLocators:
