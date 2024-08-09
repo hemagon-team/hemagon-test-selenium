@@ -307,3 +307,11 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.CATEGORY_RADIO)
         self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
         self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
+        self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
+
+    def change_application(self):
+        self.click_button(TournamentPageLocators.CHANGE_APPLICATION_BUTTON)
+        # Here should be some changes, but I currently only create one category per tournament
+        self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
+        self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
+        self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)

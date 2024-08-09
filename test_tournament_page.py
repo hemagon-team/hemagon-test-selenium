@@ -175,3 +175,7 @@ class TestUserCanModifyTournament:
     def test_user_can_register_for_the_tournament(self, browser):
         page = TournamentPage(browser, browser.current_url)
         page.register_for_the_tournament()
+
+    def test_user_can_change_application(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.change_application()

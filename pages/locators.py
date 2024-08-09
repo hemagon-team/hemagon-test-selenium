@@ -195,6 +195,8 @@ class TournamentPageLocators:
     CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
     CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div:nth-of-type(3) > button")
     REG_SUCCESS = (By.CLASS_NAME, "registration-success")
+    GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > a")
+    CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
 
 
 class FightPageLocators:
