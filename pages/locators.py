@@ -106,10 +106,11 @@ class TournamentPageLocators:
     # Creating new stage
     STAGES_TAB = (By.ID, "nomination-menu-stages")
     ADD_STAGE_BUTTON = (By.ID, "btn-stage-add")
-    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(1)")
-    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(2)")
-    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(3)")
-    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(4)")
+    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, ".stages .temp > div:nth-of-type(2) > .radio-blocks > label:nth-of-type(1)")
+    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, ".stages .temp > div:nth-of-type(2) > .radio-blocks > label:nth-of-type(2)")
+    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, ".stages .temp >  div:nth-of-type(2) > .radio-blocks > label:nth-of-type(3)")
+    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, ".stages .temp > div:nth-of-type(2)"
+                                              "> .radio-blocks > label:nth-of-type(4)")
     TO_THE_FINALS_TRUE = (By.ID, "input-stage-tillFinals-true")
     TO_THE_FINALS_FALSE = (By.ID, "input-stage-tillFinals-false")
     FIGHT_TIME_FIELD = (By.ID, "input-stage-fightTime")
@@ -131,12 +132,24 @@ class TournamentPageLocators:
     SAVE_STAGE_BUTTON = (By.ID, "btn-stage-editing-save")
     # Adding participants
     PARTICIPANTS_TAB = (By.ID, "nomination-menu-participants")
-    # PARTICIPANTS_NUMBER_SELECT = (By.ID, "input-requests-test-enroll-number")
     PARTICIPANTS_NUMBER_INPUT = (By.ID, "input-requests-test-enroll-number-alt")
     ENROLL_TEST_PARTICIPANTS_BUTTON = (By.ID, "btn-requests-test-enroll")
     PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
     ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
+    # Handling participants
+    PARTICIPANT_HANDLING_BUTTON_FIRST = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                          "td:nth-of-type(9) > button:nth-of-type(1)")
+    PARTICIPANT_HANDLING_BUTTON_SECOND = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                           "td:nth-of-type(9) > button:nth-of-type(2)")
+    PARTICIPANT_HANDLING_BUTTON_THIRD = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                          "td:nth-of-type(9) > button:nth-of-type(3)")
+    PARTICIPANT_HANDLING_BUTTON_FOURTH = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                           "td:nth-of-type(9) > button:nth-of-type(4)")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
     ADD_RING_BUTTON = (By.ID, "btn-area-add")

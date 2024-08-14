@@ -179,3 +179,7 @@ class TestUserCanModifyTournament:
     def test_user_can_change_application(self, browser):
         page = TournamentPage(browser, browser.current_url)
         page.change_application()
+
+    def test_user_can_handle_participants(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.handle_participants()

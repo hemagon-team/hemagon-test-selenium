@@ -50,6 +50,7 @@ class TestCreateRunDeleteTournament:
             self.modify_tournament.test_user_can_register_for_the_tournament(browser)
             self.modify_tournament.test_user_can_change_application(browser)
             self.create_tournament.test_user_can_open_tournament(browser, dataset)
+            self.modify_tournament.test_user_can_handle_participants(browser)
             self.modify_tournament.test_user_can_add_participants(browser, dataset)
             self.modify_tournament.test_user_can_create_ring(browser, dataset)
 

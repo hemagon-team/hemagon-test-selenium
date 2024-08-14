@@ -126,11 +126,6 @@ class TournamentPage(BasePage):
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
-        self.open_nomination()
-
-        # Open tab Participants
-        self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
-
         # Choose number of test participants
         self.fill_input(TournamentPageLocators.PARTICIPANTS_NUMBER_INPUT, number)
 
@@ -315,3 +310,24 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
         self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
         self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
+
+    def handle_participants(self):
+        self.open_nomination()
+        # Open tab Participants
+        self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
+        # Confirm participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
+        # Set payment
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        # Set presence
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        # Cancel presence
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        # Cancel payment
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        # Refuse participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
+        # Delete participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FOURTH)
+        self.confirm_alert()
+        time.sleep(0.5)
