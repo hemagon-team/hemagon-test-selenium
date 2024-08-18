@@ -64,9 +64,14 @@ class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")
     LOGIN_BUTTON = (By.ID, "btn-login")
-    PASSWORD_RECOVERY = (By.LINK_TEXT, 'password-recovery')
+    PASSWORD_RECOVERY = (By.CSS_SELECTOR, 'div.sub-link > a')
     ACCOUNT_REGISTRATION = (By.LINK_TEXT, 'registration')
     GET_CODE_BUTTON = (By.CSS_SELECTOR, 'form.form > button')
+    PASSWORD_RECOVERY_EMAIL_FIELD = (By.CSS_SELECTOR, 'input#input-email')
+    SEND_CODE_BUTTON = (By.CSS_SELECTOR, 'button.active')
+    ENTER_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new')
+    CONFIRM_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new-re')
+    SAVE_PASSWORD_BUTTON = (By.CSS_SELECTOR, 'form > button')
 
 
 class ProfilePageLocators:
@@ -225,9 +230,10 @@ class PoolPageLocators:
 #     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
 
 class PostalPageLocators:
-    LOGIN_PAGE_BUTTON = (By.ID, 'signin')
-    LOGIN_FIELD = (By.ID, 'UserID')
-    LOGIN_PASSWORD = (By.ID, 'password')
+    LOGIN_PAGE_BUTTON = (By.CSS_SELECTOR, 'button#signin')
+    LOGIN_EMAIL = (By.CSS_SELECTOR, 'input#UserID')
+    LOGIN_PASSWORD = (By.CSS_SELECTOR, 'input#Password')
     LOGIN_BUTTON = (By.CSS_SELECTOR, 'input.btn')
-    MAIL_CHOISE = (By.PARTIAL_LINK_TEXT, 'listUnread  trow')
-    MESSAGE = (By.PARTIAL_LINK_TEXT, 'mail-html-content')
+    LETTERS = (By.CSS_SELECTOR, '#nav-mail > div')
+    LETTER_CHOISE = (By.CLASS_NAME, 'GCSDBRWBCU.GCSDBRWBEU.listUnread.trow')
+    MESSAGE = (By.CLASS_NAME, "GCSDBRWBCRC.mail-html-content.not-dark")
