@@ -72,6 +72,7 @@ class LoginPageLocators:
     ENTER_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new')
     CONFIRM_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new-re')
     SAVE_PASSWORD_BUTTON = (By.CSS_SELECTOR, 'form > button')
+    INCORRECT_CODE_ALERT = (By.XPATH, '//*[text()="Incorrect recovery code"]')
 
 
 class ProfilePageLocators:
@@ -237,3 +238,4 @@ class PostalPageLocators:
     LETTERS = (By.CSS_SELECTOR, '#nav-mail > div')
     LETTER_CHOISE = (By.CLASS_NAME, 'GCSDBRWBCU.GCSDBRWBEU.listUnread.trow')
     MESSAGE = (By.CLASS_NAME, "GCSDBRWBCRC.mail-html-content.not-dark")
+    MESSAGES_LIST = (By.CSS_SELECTOR, 'div.listSubject')

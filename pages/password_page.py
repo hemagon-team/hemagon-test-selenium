@@ -58,8 +58,11 @@ class PasswordPage(BasePage):
 
         passwd_file = open('/home/thatsme/Git_working/hemagon-test-selenium/.env', 'r+')
         content = passwd_file.readlines()
+
+        #число должно быть таким, чтобы вызывалась именно строка, содержащая текущий пароль от Хемагона
         password = content[17]
 
+        #пароли надо выставить в соответствии со своим настоящим паролем
         if 'TEST_USER_PASSWORD=HEMAhuema@1' in password:         
             pass_field1.send_keys('HEMAhuema@2')
             pass_field2.send_keys('HEMAhuema@2')
@@ -76,3 +79,9 @@ class PasswordPage(BasePage):
         self.click_button(LoginPageLocators.SAVE_PASSWORD_BUTTON)
 
         time.sleep(3)
+
+    def should_be_incorrect_code_alert(self, recovery_code):
+        self.fill_input(LoginPageLocators.PASSWORD_RECOVERY_EMAIL_FIELD, recovery_code)
+        self.click_button(LoginPageLocators.SEND_CODE_BUTTON)
+        time.sleep(3)
+        assert self.is_element_present(LoginPageLocators.INCORRECT_CODE_ALERT)

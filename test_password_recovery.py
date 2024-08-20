@@ -3,12 +3,7 @@ import json
 import pytest
 from pages.login_page import LoginPage
 from pages.password_page import PasswordPage
-from pages.tournament_page import TournamentPage
 from pages.main_page import MainPage
-from pages.stages_page import StagesPage
-from pages.organizer_page import OrganizerPage
-from pages.locators import TournamentPageLocators
-from pages.locators import PostalPageLocators
 import time
 
 
@@ -33,18 +28,27 @@ def setup(browser):
     page.go_to_login_page()
     # Close cookies
     page.close_cookies()
-    #time.sleep(3)
+
+old_code = ''
 
 class TestPasswordRecovery:
     
     def test_user_can_recover_the_password(self, browser):
         
+        global old_code
         page = PasswordPage(browser, link)
         page.open()
-
         page.ask_password_recovery_code(current_email)
         the_code = page.get_recovery_code(post_link, current_email, postal_password)
+        old_code = the_code
         time.sleep(2)
         page.set_new_password(the_code)
-
         time.sleep(3)
+
+    def test_user_cannot_use_one_code_twice(self, browser):
+
+        page = PasswordPage(browser, link)
+        page.open()
+        page.ask_password_recovery_code(current_email)
+        time.sleep(3)
+        page.should_be_incorrect_code_alert(old_code)
