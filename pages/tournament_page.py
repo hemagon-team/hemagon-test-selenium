@@ -45,10 +45,20 @@ class TournamentPage(BasePage):
 
     def open_nomination(self):
         # Switch tab to Nominations
+
+        try:
+            self.back_to_tournament_categories()
+        except:
+            print('already on tournament level')
+
+        # Switch tab to Nominations
         self.click_button(TournamentPageLocators.NOMINATIONS_TAB)
 
         # Open nomination
         self.click_button(TournamentPageLocators.NOMINATION_LINK)
+
+    def back_to_tournament_categories(self):
+        self.click_button(TournamentPageLocators.BREADCRUMBS_TOURNAMENT_CATEGORIES)
 
     def open_stages_tab(self):
         self.click_button(TournamentPageLocators.STAGES_TAB)
@@ -59,6 +69,7 @@ class TournamentPage(BasePage):
     def create_stage(self, type_id=1, fight_time=120, go_next_stage=None,
                      playoff_finals_mode=None, playoff_third_place=None,
                      swiss_empty_win=None, swiss_win_points=None, hits_initial_hp=None, hits_limit_hp=None):
+
         self.open_nomination()
         self.open_stages_tab()
 
@@ -127,7 +138,7 @@ class TournamentPage(BasePage):
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
-        self.open_nomination()
+#         self.open_nomination()
 
         # Open tab Participants
         self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
@@ -147,10 +158,13 @@ class TournamentPage(BasePage):
 
         # Wait until all test participants are approved
         WebDriverWait(self.browser, 10).until(
-            EC.text_to_be_present_in_element(TournamentPageLocators.ACCEPTED_NUMBER, number)
+            EC.text_to_be_present_in_element(TournamentPageLocators.PRESENT_NUMBER, number)
         )
 
     def create_ring(self, title):
+        # Go back to the tournament page
+        self.back_to_tournament_categories()
+
         # Switch to tab Rings
         self.open_rings_tab()
 
@@ -164,8 +178,8 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.SAVE_RING_BUTTON)
 
     def create_pools(self, number):
-        self.open_nomination()
-        self.open_stages_tab()
+#         self.open_nomination()
+#         self.open_stages_tab()
         # Create pools
         for i in range(number):
             self.click_button(TournamentPageLocators.ADD_POOL_BUTTON)
@@ -260,7 +274,7 @@ class TournamentPage(BasePage):
         self.open_nomination()
         self.click_button(TournamentPageLocators.REMOVE_NOMINATION_BUTTON)
         self.confirm_alert()
-        self.wait_for_element(TournamentPageLocators.NO_STAGES_TITLE)
+        self.wait_for_element(TournamentPageLocators.GRID_NO_ENTITIES)
 
     def delete_ring(self):
         self.open_rings_tab()

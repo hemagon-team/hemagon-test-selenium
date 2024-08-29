@@ -21,3 +21,8 @@ down:
 logs:
 	@echo "${YELLOW}Start following Hemagon Pytest container logs:Tests...${NC}\n"
 	@docker compose -f dev.docker-compose.yml logs -f pytest
+
+.PHONY: tests
+tests:
+	@echo "${YELLOW}Running:Tests...${NC}\n"
+	@docker compose -f dev.docker-compose.yml exec -iT pytest pytest -vv -s test_case_create_run_tournament.py

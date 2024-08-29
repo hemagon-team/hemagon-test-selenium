@@ -87,12 +87,12 @@ class OrganizerPageLocators:
     TOURNAMENT_BANNERS = (By.CSS_SELECTOR, ".tournaments > div > a > .title")
     TOURNAMENT_OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
     # Delete tournament
-    REMOVE_TOURNAMENT_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament div > div > div:nth-child(2) > button")
+    REMOVE_TOURNAMENT_BUTTON = (By.ID, "btn-tournament-remove")
 
 
 class TournamentPageLocators:
     # Verifying tournament name
-    TOURNAMENT_TITLE = (By.CSS_SELECTOR, "#app > div > div > div > h1")
+    TOURNAMENT_TITLE = (By.CSS_SELECTOR, "#tournament-title")
     # Creating new nomination
     NOMINATIONS_TAB = (By.ID, "tournament-menu-nominations")
     CREATE_NOMINATION_BUTTON = (By.ID, "btn-nomination-add")
@@ -101,15 +101,17 @@ class TournamentPageLocators:
     FIGHT_TIME_INPUT = (By.ID, "input-nomination-time-fight")
     LAST_ROUND_TIME_INPUT = (By.ID, "input-nomination-time-last-round")
     SAVE_NOMINATION_BUTTON = (By.ID, "btn-nomination-save")
+    # Tournament breadcrumbs menu
+    BREADCRUMBS_TOURNAMENT_CATEGORIES = (By.ID, "tournament-breadcrumbs-categories")
     # Opening nomination
-    NOMINATION_LINK = (By.XPATH, "//button[@id='btn-nomination-add']/following-sibling::div[1]//div//a")
+    NOMINATION_LINK = (By.CSS_SELECTOR, "#grid-nomination a")
     # Creating new stage
     STAGES_TAB = (By.ID, "nomination-menu-stages")
     ADD_STAGE_BUTTON = (By.ID, "btn-stage-add")
-    TYPE_RADIO_POOLS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(1)")
-    TYPE_RADIO_PLAYOFF = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(2)")
-    TYPE_RADIO_SWISS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(3)")
-    TYPE_RADIO_SWISS_HITS = (By.CSS_SELECTOR, ".stage.temp > div:nth-of-type(1) > .radio-blocks > label:nth-of-type(4)")
+    TYPE_RADIO_POOLS = (By.ID, "input-stage-type-POOL")
+    TYPE_RADIO_PLAYOFF = (By.ID, "input-stage-type-ELIMINATION")
+    TYPE_RADIO_SWISS = (By.ID, "input-stage-type-SWISS")
+    TYPE_RADIO_SWISS_HITS = (By.ID, "input-stage-type-SWISS_HITS")
     TO_THE_FINALS_TRUE = (By.ID, "input-stage-tillFinals-true")
     TO_THE_FINALS_FALSE = (By.ID, "input-stage-tillFinals-false")
     FIGHT_TIME_FIELD = (By.ID, "input-stage-fightTime")
@@ -136,17 +138,19 @@ class TournamentPageLocators:
     ENROLL_TEST_PARTICIPANTS_BUTTON = (By.ID, "btn-requests-test-enroll")
     PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
-    ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
+    PRESENT_NUMBER = (By.ID, "requests-stats-present")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
     ADD_RING_BUTTON = (By.ID, "btn-area-add")
     RING_TITLE_FIELD = (By.CSS_SELECTOR, "input")
     SAVE_RING_BUTTON = (By.ID, "btn-area-save")
     # Creating new pool
-    ADD_POOL_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(1)")
+    ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
+#     ADD_POOL_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(1)")
     SET_RING_INPUT = (By.CSS_SELECTOR, "#vs1__combobox > div > input")
     # Adding random participants to pool
-    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
+    SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
+#     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
     # Deleting pool
     REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(2)")
     # Deleting playoff
@@ -162,13 +166,12 @@ class TournamentPageLocators:
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     CLOSE_SWISS_SETTINGS_BUTTON = (By.CSS_SELECTOR, 'button.round')
     # Deleting stage
-    REMOVE_POOLS_STAGE_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(1) > button:nth-of-type(1)")
-    # REMOVE_PLAYOFF_STAGE_BUTTON = (By.CSS_SELECTOR, "div.stage-content:nth-of-type(2) > div > button")
+    REMOVE_POOLS_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
     REMOVE_PLAYOFF_STAGE_BUTTON = (By.ID, "btn-stage-1-remove")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
+    GRID_NO_ENTITIES = (By.CSS_SELECTOR, ".grid .no-data")
     # Deleting nomination
-    REMOVE_NOMINATION_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
-                                                 "div:nth-of-type(4) > button")
+    REMOVE_NOMINATION_BUTTON = (By.ID, "btn-nomination-remove")
     # Deleting ring
     ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
