@@ -32,8 +32,14 @@ class TestUserCanCreateTournament:
         page.open()
         start_date = date.today().strftime("%d %B %Y")
         end_date = date.today().strftime("%d %B %Y")
-        page.create_tournament(data["title"], start_date, end_date,
-                               data["country"], data["city"], data["description"])
+        page.create_tournament(
+            data["title"],
+            start_date,
+            end_date,
+            data["country"],
+            data["city"],
+            data["description"]
+        )
 
     def test_user_can_open_tournament(self, browser, data):
         if not ("organizer" in browser.current_url):

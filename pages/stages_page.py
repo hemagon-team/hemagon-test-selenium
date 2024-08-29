@@ -34,9 +34,9 @@ class StagesPage(BasePage):
         pools_list = self.find_multiple_elements_wait(StagePageLocators.POOLS_NUMBER)
         pools_number = len(pools_list)
 
+        # имеет смысл While переписать на for
         for pool in range(pools_number):
-            # Open pool
-            button_locator = (By.ID, 'btn-stage-0-pool-' + str(pool) + '-run')
+            button_locator = StagePageLocators.POOL_START_BUTTON(pool)
             self.click_button(button_locator)
 
             # Run pool (full or random)
