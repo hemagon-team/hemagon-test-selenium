@@ -142,11 +142,24 @@ class TournamentPageLocators:
     SAVE_STAGE_BUTTON = (By.ID, "btn-stage-editing-save")
     # Adding participants
     PARTICIPANTS_TAB = (By.ID, "nomination-menu-participants")
-    # PARTICIPANTS_NUMBER_SELECT = (By.ID, "input-requests-test-enroll-number")
     PARTICIPANTS_NUMBER_INPUT = (By.ID, "input-requests-test-enroll-number-alt")
     ENROLL_TEST_PARTICIPANTS_BUTTON = (By.ID, "btn-requests-test-enroll")
     PARTICIPANT_LINE = (By.CLASS_NAME, "user-tooltip-provider")
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
+    ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
+    # Handling participants
+    PARTICIPANT_HANDLING_BUTTON_FIRST = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                          "td:nth-of-type(9) > button:nth-of-type(1)")
+    PARTICIPANT_HANDLING_BUTTON_SECOND = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                           "td:nth-of-type(9) > button:nth-of-type(2)")
+    PARTICIPANT_HANDLING_BUTTON_THIRD = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                          "td:nth-of-type(9) > button:nth-of-type(3)")
+    PARTICIPANT_HANDLING_BUTTON_FOURTH = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
+                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
+                                                           "td:nth-of-type(9) > button:nth-of-type(4)")
     PRESENT_NUMBER = (By.ID, "requests-stats-present")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
@@ -184,6 +197,31 @@ class TournamentPageLocators:
     # Deleting ring
     ANY_RING_LINE = (By.CSS_SELECTOR, ".grid > table > tbody > tr")
     REMOVE_RING_BUTTON = (By.CLASS_NAME, "svg-inline--fa.fa-xmark")
+    # Changing status
+    STATUS_DEVELOPMENT = (By.ID, "btn-set-status-DEVELOPING")
+    STATUS_UPCOMING = (By.ID, "btn-set-status-UPCOMING")
+    STATUS_REG_OPEN = (By.ID, "btn-set-status-REG_OPEN")
+    STATUS_REG_CLOSED = (By.ID, "btn-set-status-REG_CLOSED")
+    STATUS_ONGOING = (By.ID, "btn-set-status-ONGOING")
+    STATUS_FINISHED = (By.ID, "btn-set-status-FINISHED")
+    STATUS_DEVELOPMENT_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-DEVELOPING.active")
+    STATUS_UPCOMING_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-UPCOMING.active")
+    STATUS_REG_OPEN_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-REG_OPEN.active")
+    STATUS_REG_CLOSED_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-REG_CLOSED.active")
+    STATUS_ONGOING_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-ONGOING.active")
+    STATUS_FINISHED_ACTIVE = (By.CSS_SELECTOR, "#btn-set-status-FINISHED.active")
+    # Registration
+    OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
+    REG_TAB = (By.ID, "tournament-menu-registration")
+    ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
+    SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
+    GO_TO_PUBLIC_PAGE = (By.CSS_SELECTOR, "#app > div > div:nth-of-type(2) > div.flex > div:nth-of-type(3) > a > span")
+    APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
+    CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
+    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div:nth-of-type(3) > button")
+    REG_SUCCESS = (By.CLASS_NAME, "registration-success")
+    GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > a")
+    CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
 
 
 class FightPageLocators:
@@ -216,7 +254,6 @@ class StagePageLocators:
     SWISS_RUN_POOL_BUTTON = (By.CSS_SELECTOR, "#btn-stage-0-pool-0-run[class='small active']")
     LEFT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-0-run-playoff-round.active')
     RIGHT_RUN_BUTTON = (By.CSS_SELECTOR, '#btn-stage-1-side-1-run-playoff-round.active')
-
 
 
 class PoolPageLocators:

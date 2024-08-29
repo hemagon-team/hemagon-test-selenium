@@ -166,3 +166,20 @@ class TestUserCanModifyTournament:
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
         page.delete_ring()
+
+    def test_user_can_open_registration(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.enable_hemagon_reg()
+        page.change_tournament_status(3)
+
+    def test_user_can_register_for_the_tournament(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.register_for_the_tournament()
+
+    def test_user_can_change_application(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.change_application()
+
+    def test_user_can_handle_participants(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.handle_participants()

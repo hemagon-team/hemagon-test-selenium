@@ -42,9 +42,10 @@ class TestUserCanCreateTournament:
         )
 
     def test_user_can_open_tournament(self, browser, data):
-        """page = OrganizerPage(browser, link)
-        page.open()
-        page.open_tournament(data["title"])"""
+        if not ("organizer" in browser.current_url):
+            page = OrganizerPage(browser, link)
+            page.open()
+            page.open_tournament(data["title"])
         tournament_page = TournamentPage(browser, browser.current_url)
         tournament_page.should_be_tournament_title(data["title"])
 

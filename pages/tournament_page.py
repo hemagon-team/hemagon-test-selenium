@@ -2,7 +2,6 @@ import time
 import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from .base_page import BasePage
@@ -138,7 +137,7 @@ class TournamentPage(BasePage):
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
-#         self.open_nomination()
+        # self.open_nomination()
 
         # Open tab Participants
         self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
@@ -283,3 +282,71 @@ class TournamentPage(BasePage):
         # Delete ring
         self.click_button(TournamentPageLocators.REMOVE_RING_BUTTON)
         self.confirm_alert()
+
+    def open_overview_tab(self):
+        self.click_button(TournamentPageLocators.OVERVIEW_TAB)
+
+    def change_tournament_status(self, mode):
+        self.open_overview_tab()
+        if mode == 1:
+            self.click_button(TournamentPageLocators.STATUS_DEVELOPMENT)
+            self.wait_for_element(TournamentPageLocators.STATUS_DEVELOPMENT_ACTIVE)
+        if mode == 2:
+            self.click_button(TournamentPageLocators.STATUS_UPCOMING)
+            self.wait_for_element(TournamentPageLocators.STATUS_UPCOMING_ACTIVE)
+        if mode == 3:
+            self.click_button(TournamentPageLocators.STATUS_REG_OPEN)
+            self.wait_for_element(TournamentPageLocators.STATUS_REG_OPEN_ACTIVE)
+        if mode == 4:
+            self.click_button(TournamentPageLocators.STATUS_REG_CLOSED)
+            self.wait_for_element(TournamentPageLocators.STATUS_REG_CLOSED_ACTIVE)
+        if mode == 5:
+            self.click_button(TournamentPageLocators.STATUS_ONGOING)
+            self.wait_for_element(TournamentPageLocators.STATUS_ONGOING_ACTIVE)
+        if mode == 6:
+            self.click_button(TournamentPageLocators.STATUS_FINISHED)
+            self.wait_for_element(TournamentPageLocators.STATUS_UPCOMING_ACTIVE)
+
+    def open_reg_tab(self):
+        self.click_button(TournamentPageLocators.REG_TAB)
+
+    def enable_hemagon_reg(self):
+        self.open_reg_tab()
+        self.click_button(TournamentPageLocators.ENABLE_HEMAGON_REG)
+        self.click_button(TournamentPageLocators.SAVE_REG_BUTTON)
+
+    def register_for_the_tournament(self):
+        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE)
+        self.click_button(TournamentPageLocators.APPLY_BUTTON)
+        self.click_button(TournamentPageLocators.CATEGORY_RADIO)
+        self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
+        self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
+        self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
+
+    def change_application(self):
+        self.click_button(TournamentPageLocators.CHANGE_APPLICATION_BUTTON)
+        # Here should be some changes, but I currently only create one category per tournament
+        self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
+        self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
+        self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
+
+    def handle_participants(self):
+        self.open_nomination()
+        # Open tab Participants
+        self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
+        # Confirm participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
+        # Set payment
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        # Set presence
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        # Cancel presence
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        # Cancel payment
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        # Refuse participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
+        # Delete participant
+        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FOURTH)
+        self.confirm_alert()
+        time.sleep(0.5)
