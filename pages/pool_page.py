@@ -4,21 +4,31 @@ from .base_page import BasePage
 from .locators import PoolPageLocators
 from .fight_page import FightPage
 
-
 class PoolPage(BasePage):
-
     def run_pool(self):
-        fights_number = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_BUTTON)
-        fights_number = (len(fights_number))
-
+        x = 0
+        numberoffights = self.find_multiple_elements_wait(PoolPageLocators.FIGHT_BUTTON)
+        numberoffights = (len(numberoffights))
         fight_page = FightPage(self.browser, self.url)
+        
+        check_bye = self.is_element_present(PoolPageLocators.BYE_BUTTON)
+        if check_bye:
+            numberoffights = numberoffights - 1
+            self.click_button(PoolPageLocators.BYE_BUTTON)
+            #byebutton.click()
+        for x in range(0, numberoffights):
+            self.click_button(PoolPageLocators.FIGHT_BUTTON)
 
-        for x in range(fights_number):
-            fight_button = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
-            fight_button.click()
             fight_page.fight()
             time.sleep(0.3)
         self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
+        # else:    
+        #     for x in range(0, numberoffights):
+        #         fightbutton = self.browser.find_element(By.CSS_SELECTOR, 'div.row button.small.active')
+        #         fightbutton.click()            
+        #         fight_page.fight()
+        #         time.sleep(1)
+        #     self.click_button(PoolPageLocators.CLOSE_POOL_BUTTON)
 
     def run_pool_with_random_results(self):
         self.click_button(PoolPageLocators.SEED_RANDOM_RESULTS_BUTTON)

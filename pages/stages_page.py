@@ -34,10 +34,19 @@ class StagesPage(BasePage):
         pools_list = self.find_multiple_elements_wait(StagePageLocators.POOLS_NUMBER)
         pools_number = len(pools_list)
 
-        for pool in range(pools_number):
-            # Open pool
-            button_locator = (By.ID, 'btn-stage-0-pool-' + str(pool) + '-run')
-            self.click_button(button_locator)
+        # имеет смысл While переписать на for
+        pool = 0
+        while True:
+            if pool == numberofpools:
+                break
+            buttonlocator = StagePageLocators.POOL_START_BUTTON(pool)
+            #runbutton = self.find_element_wait(buttonlocator)
+            try:
+                self.click_button(buttonlocator)
+            except ElementClickInterceptedException:
+                time.sleep(3)
+                self.click_button(buttonlocator)
+            time.sleep(1)
 
             # Run pool (full or random)
             pool_page = PoolPage(self.browser, self.url)

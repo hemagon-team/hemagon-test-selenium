@@ -64,6 +64,15 @@ class LoginPageLocators:
     EMAIL_FIELD = (By.ID, "input-email")
     PASSWORD_FIELD = (By.ID, "input-password")
     LOGIN_BUTTON = (By.ID, "btn-login")
+    PASSWORD_RECOVERY = (By.CSS_SELECTOR, 'div.sub-link > a')
+    ACCOUNT_REGISTRATION = (By.LINK_TEXT, 'registration')
+    GET_CODE_BUTTON = (By.CSS_SELECTOR, 'form.form > button')
+    PASSWORD_RECOVERY_EMAIL_FIELD = (By.CSS_SELECTOR, 'input#input-email')
+    SEND_CODE_BUTTON = (By.CSS_SELECTOR, 'button.active')
+    ENTER_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new')
+    CONFIRM_NEW_PASSWORD = (By.CSS_SELECTOR, 'input#pass-new-re')
+    SAVE_PASSWORD_BUTTON = (By.CSS_SELECTOR, 'form > button')
+    INCORRECT_CODE_ALERT = (By.XPATH, '//*[text()="Incorrect recovery code"]')
 
 
 class ProfilePageLocators:
@@ -193,6 +202,8 @@ class FightPageLocators:
 
 class StagePageLocators:
     POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
+    def POOL_START_BUTTON(pool):
+        return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
     NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
     NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')
@@ -219,9 +230,16 @@ class PoolPageLocators:
     BYE_BUTTON = (By.CSS_SELECTOR, "#btn-pass-bye")
 
 
-class SwissPoolPageLocators:
-    FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row > div:nth-child(4) > div:nth-child(1) > button')
-    CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
+# class SwissPoolPageLocators:
+#     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row > div:nth-child(4) > div:nth-child(1) > button')
+#     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
 
-    # def asd!!!!!!!!!!!!! (pool):
-    #     return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
+class PostalPageLocators:
+    LOGIN_PAGE_BUTTON = (By.CSS_SELECTOR, 'button#signin')
+    LOGIN_EMAIL = (By.CSS_SELECTOR, 'input#UserID')
+    LOGIN_PASSWORD = (By.CSS_SELECTOR, 'input#Password')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, 'input.btn')
+    LETTERS = (By.CSS_SELECTOR, '#nav-mail > div')
+    LETTER_CHOISE = (By.CLASS_NAME, 'GCSDBRWBCU.GCSDBRWBEU.listUnread.trow')
+    MESSAGE = (By.CLASS_NAME, "GCSDBRWBCRC.mail-html-content.not-dark")
+    MESSAGES_LIST = (By.CSS_SELECTOR, 'div.listSubject')
