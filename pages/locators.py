@@ -215,7 +215,7 @@ class TournamentPageLocators:
     REG_TAB = (By.ID, "tournament-menu-registration")
     ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
     SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
-    GO_TO_PUBLIC_PAGE = (By.CSS_SELECTOR, "#app > div > div:nth-of-type(2) > div.flex > div:nth-of-type(3) > a > span")
+    GO_TO_PUBLIC_PAGE_CATEGORY = (By.ID, "link-go-to-public-view-nomination")
     APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
     CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
     CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div:nth-of-type(3) > button")
