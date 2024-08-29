@@ -14,10 +14,6 @@ link = base_link + "/organizer/tournaments"
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
-# Set user data (modify in data.json)
-"""with open("data.json", "r") as f:
-    data = json.load(f)"""
-
 
 @pytest.fixture(scope="function", autouse=True)
 def setup(browser):

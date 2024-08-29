@@ -17,9 +17,6 @@ current_email = os.environ["TEST_USER_EMAIL"]
 current_password = os.environ["TEST_USER_PASSWORD"]
 postal_password = os.environ["TEST_POSTAL_PASSWORD"]
 
-# Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
 
 @pytest.fixture(scope="function", autouse=True)
 def setup(browser):

@@ -1,0 +1,25 @@
+{
+  "title": "SwissWithFinals",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: swiss system with finals",
+
+  "nomination_title": "Qwerty",
+  "weapon_id": 4,
+  "fight_time": "120",
+  "last_round_time": "0",
+
+  "type_id": 3,
+  "stage_fight_time": 120,
+
+  "go_next_stage": 8,
+  "finals_mode": 1,
+  "third_place": true,
+
+  "swiss_empty_win": true,
+  "swiss_empty_points": 1,
+
+  "participants_number": 10,
+
+  "ring_title": "Ring"
+}

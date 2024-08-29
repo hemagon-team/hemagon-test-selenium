@@ -1,0 +1,21 @@
+{
+  "title": "PoolsWithoutFinals",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: pools without finals",
+
+  "nomination_title": "Qwerty",
+  "weapon_id": 5,
+  "fight_time": "120",
+  "last_round_time": "0",
+
+  "type_id": 1,
+  "stage_fight_time": 120,
+
+  "go_next_stage": null,
+
+  "participants_number": 10,
+  "pools_number": 2,
+
+  "ring_title": "Ring"
+}

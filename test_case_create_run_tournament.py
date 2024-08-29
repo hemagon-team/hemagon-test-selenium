@@ -17,9 +17,16 @@ link = base_link + "/organizer/tournaments"
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
-# Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
+# Set data
+data = []
+with open('data/tournaments/pools-with-finals.json', 'r') as f:
+    data.append(json.load(f))
+with open('data/tournaments/pools-without-finals.json', 'r') as f:
+    data.append(json.load(f))
+with open('data/tournaments/swiss-with-finals.json', 'r') as f:
+    data.append(json.load(f))
+with open('data/tournaments/swiss-without-finals.json', 'r') as f:
+    data.append(json.load(f))
 
 
 class TestCreateRunDeleteTournament:

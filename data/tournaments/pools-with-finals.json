@@ -1,0 +1,23 @@
+{
+  "title": "PoolsWithFinals",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: pools with finals",
+
+  "nomination_title": "Qwerty",
+  "weapon_id": 7,
+  "fight_time": "120",
+  "last_round_time": "0",
+
+  "type_id": 1,
+  "stage_fight_time": 120,
+
+  "go_next_stage": 8,
+  "finals_mode": 1,
+  "third_place": true,
+
+  "participants_number": 10,
+  "pools_number": 2,
+
+  "ring_title": "Ring"
+}

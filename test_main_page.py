@@ -13,10 +13,6 @@ link = os.environ["TEST_BASEURL"]
 email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
-# Set user data (modify in data.json)
-with open("data.json", "r") as f:
-    data = json.load(f)
-
 
 class TestGuestCanGoToDifferentPagesFromMainPage:
     # Add more functions and inherit to User class
