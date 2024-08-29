@@ -16,7 +16,7 @@ def browser(request):
     options_chrome.add_argument("--window-size=1920,1080")
     print("\nstart chrome browser for test...")
     if os.environ["DEV_ENV_MODE"] == 'remote':
-        options_chrome.add_argument("--headless")
+        # options_chrome.add_argument("--headless")
         browser = webdriver.Remote(os.environ["SELENIUM_HUB_URL"], options=options_chrome)
     else:
         browser = webdriver.Chrome(options=options_chrome)

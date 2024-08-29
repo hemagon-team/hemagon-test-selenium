@@ -1,9 +1,9 @@
 import os
-import json
 import pytest
 from pages.organizer_page import OrganizerPage
 from pages.login_page import LoginPage
 from pages.tournament_page import TournamentPage
+from datetime import date
 
 # Set links
 base_link = os.environ["TEST_BASEURL"]
@@ -30,8 +30,16 @@ class TestUserCanCreateTournament:
     def test_user_can_create_tournament(self, browser, data):
         page = OrganizerPage(browser, link)
         page.open()
-        page.create_tournament(data["title"], data["start_date"], data["end_date"],
-                               data["country"], data["city"], data["description"])
+        start_date = date.today().strftime("%d %B %Y")
+        end_date = date.today().strftime("%d %B %Y")
+        page.create_tournament(
+            data["title"],
+            start_date,
+            end_date,
+            data["country"],
+            data["city"],
+            data["description"]
+        )
 
     def test_user_can_open_tournament(self, browser, data):
         """page = OrganizerPage(browser, link)

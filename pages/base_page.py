@@ -36,6 +36,7 @@ class BasePage:
     def fill_input(self, selector, value):
         input_field = self.find_element_wait(selector)
         input_field.clear()
+        time.sleep(0.2)
         input_field.send_keys(value)
 
     def fill_select_by_text(self, selector, value):
