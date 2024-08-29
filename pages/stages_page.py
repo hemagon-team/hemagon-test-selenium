@@ -35,18 +35,9 @@ class StagesPage(BasePage):
         pools_number = len(pools_list)
 
         # имеет смысл While переписать на for
-        pool = 0
-        while True:
-            if pool == numberofpools:
-                break
-            buttonlocator = StagePageLocators.POOL_START_BUTTON(pool)
-            #runbutton = self.find_element_wait(buttonlocator)
-            try:
-                self.click_button(buttonlocator)
-            except ElementClickInterceptedException:
-                time.sleep(3)
-                self.click_button(buttonlocator)
-            time.sleep(1)
+        for pool in range(pools_number):
+            button_locator = StagePageLocators.POOL_START_BUTTON(pool)
+            self.click_button(button_locator)
 
             # Run pool (full or random)
             pool_page = PoolPage(self.browser, self.url)
