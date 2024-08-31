@@ -15,13 +15,13 @@ password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
 data = []
-with open('../data/tournaments/pools-with-finals.json', 'r') as f:
+with open('data/tournaments/pools-with-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-without-finals.json', 'r') as f:
+with open('data/tournaments/pools-without-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/swiss-with-finals.json', 'r') as f:
+with open('data/tournaments/swiss-with-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/swiss-without-finals.json', 'r') as f:
+with open('data/tournaments/swiss-without-finals.json', 'r') as f:
     data.append(json.load(f))
 
 
