@@ -155,8 +155,6 @@ class TournamentPage(BasePage):
         )
 
     def create_ring(self, title):
-        # Go back to the tournament page
-        self.back_to_tournament_categories()
         # Switch to tab Rings
         self.open_rings_tab()
         # Create ring

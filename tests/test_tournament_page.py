@@ -40,7 +40,8 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.create_stage(type_id=data["type_id"], fight_time=data["fight_time"], go_next_stage=data["go_next_stage"])
+        page.create_stage(type_id=data["type_id"], fight_time=data["stage_fight_time"],
+                          go_next_stage=data["go_next_stage"])
 
     def test_user_can_create_swiss_stage(self, browser, data):
         page = TournamentPage(browser, browser.current_url)
@@ -130,7 +131,7 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.create_playoff(data["fight_time"], data["finals_mode"], data["third_place"])
+        page.create_playoff(data["stage_fight_time"], data["finals_mode"], data["third_place"])
 
     def test_user_can_delete_playoffs(self, browser, data):
         """start_page = OrganizerPage(browser, link)
