@@ -137,24 +137,18 @@ class TournamentPage(BasePage):
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
-        # self.open_nomination()
-
+        self.open_nomination()
         # Open tab Participants
         self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
-
         # Choose number of test participants
         self.fill_input(TournamentPageLocators.PARTICIPANTS_NUMBER_INPUT, number)
-
         # Enroll test participants
         self.click_button(TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
-
         # Wait until test participants are added
         self.wait_for_element(TournamentPageLocators.PARTICIPANT_LINE)
-
         # Full approve all participants
         self.click_button(TournamentPageLocators.FULL_APPROVE_BUTTON)
         self.confirm_alert()
-
         # Wait until all test participants are approved
         WebDriverWait(self.browser, 10).until(
             EC.text_to_be_present_in_element(TournamentPageLocators.PRESENT_NUMBER, number)
@@ -163,16 +157,12 @@ class TournamentPage(BasePage):
     def create_ring(self, title):
         # Go back to the tournament page
         self.back_to_tournament_categories()
-
         # Switch to tab Rings
         self.open_rings_tab()
-
         # Create ring
         self.click_button(TournamentPageLocators.ADD_RING_BUTTON)
-
         # Set ring title
         self.fill_input(TournamentPageLocators.RING_TITLE_FIELD, title)
-
         # Save ring
         self.click_button(TournamentPageLocators.SAVE_RING_BUTTON)
 
@@ -311,12 +301,14 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.REG_TAB)
 
     def enable_hemagon_reg(self):
+        self.back_to_tournament_categories()
         self.open_reg_tab()
         self.click_button(TournamentPageLocators.ENABLE_HEMAGON_REG)
+        self.click_button(TournamentPageLocators.ADD_CATEGORY_TO_REG)
         self.click_button(TournamentPageLocators.SAVE_REG_BUTTON)
 
     def register_for_the_tournament(self):
-        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE_CATEGORY)
+        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE_TOURNAMENT)
         self.click_button(TournamentPageLocators.APPLY_BUTTON)
         self.click_button(TournamentPageLocators.CATEGORY_RADIO)
         self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
@@ -332,21 +324,19 @@ class TournamentPage(BasePage):
 
     def handle_participants(self):
         self.open_nomination()
-        # Open tab Participants
-        self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
+        # Open tab Applications
+        self.back_to_tournament_categories()
+        self.click_button(TournamentPageLocators.APPLICATIONS_TAB)
         # Confirm participant
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
+        self.click_button(TournamentPageLocators.PARTICIPANT_APPROVE_BUTTON)
         # Set payment
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        self.click_button(TournamentPageLocators.PARTICIPANT_PAID_BUTTON)
         # Set presence
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        self.click_button(TournamentPageLocators.PARTICIPANT_PRESENT_BUTTON)
         # Cancel presence
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_THIRD)
+        self.click_button(TournamentPageLocators.PARTICIPANT_PRESENT_BUTTON)
         # Cancel payment
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_SECOND)
+        self.click_button(TournamentPageLocators.PARTICIPANT_PAID_BUTTON)
         # Refuse participant
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FIRST)
-        # Delete participant
-        self.click_button(TournamentPageLocators.PARTICIPANT_HANDLING_BUTTON_FOURTH)
-        self.confirm_alert()
+        self.click_button(TournamentPageLocators.PARTICIPANT_BAN_BUTTON)
         time.sleep(0.5)

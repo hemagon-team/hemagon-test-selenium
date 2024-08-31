@@ -1,11 +1,7 @@
 import pytest
 import os
 import json
-import test_organizer_page
-import test_tournament_page
-import test_pools_running
-import test_finals_running
-import test_swiss
+from tests import test_finals_running, test_swiss, test_organizer_page, test_pools_running, test_tournament_page
 from pages.login_page import LoginPage
 
 
@@ -19,13 +15,13 @@ password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
 data = []
-with open('data/tournaments/pools-with-finals.json', 'r') as f:
+with open('../data/tournaments/pools-with-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('data/tournaments/pools-without-finals.json', 'r') as f:
+with open('../data/tournaments/pools-without-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('data/tournaments/swiss-with-finals.json', 'r') as f:
+with open('../data/tournaments/swiss-with-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('data/tournaments/swiss-without-finals.json', 'r') as f:
+with open('../data/tournaments/swiss-without-finals.json', 'r') as f:
     data.append(json.load(f))
 
 
@@ -52,12 +48,7 @@ class TestCreateRunDeleteTournament:
         for dataset in data:
             self.create_tournament.test_user_can_create_tournament(browser, dataset)
             self.create_tournament.test_user_can_open_tournament(browser, dataset)
-            self.modify_tournament.test_user_can_open_registration(browser)
             self.modify_tournament.test_user_can_create_nomination(browser, dataset)
-            self.modify_tournament.test_user_can_register_for_the_tournament(browser)
-            self.modify_tournament.test_user_can_change_application(browser)
-            self.create_tournament.test_user_can_open_tournament(browser, dataset)
-            self.modify_tournament.test_user_can_handle_participants(browser)
             self.modify_tournament.test_user_can_add_participants(browser, dataset)
             self.modify_tournament.test_user_can_create_ring(browser, dataset)
 

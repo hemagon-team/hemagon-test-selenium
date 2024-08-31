@@ -148,18 +148,15 @@ class TournamentPageLocators:
     FULL_APPROVE_BUTTON = (By.ID, "input-requests-test-full-approve")
     ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
     # Handling participants
-    PARTICIPANT_HANDLING_BUTTON_FIRST = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
-                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
-                                                          "td:nth-of-type(9) > button:nth-of-type(1)")
-    PARTICIPANT_HANDLING_BUTTON_SECOND = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
-                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
-                                                           "td:nth-of-type(9) > button:nth-of-type(2)")
-    PARTICIPANT_HANDLING_BUTTON_THIRD = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
-                                                          "div:nth-of-type(3)> div > table > tbody > tr >"
-                                                          "td:nth-of-type(9) > button:nth-of-type(3)")
-    PARTICIPANT_HANDLING_BUTTON_FOURTH = (By.CSS_SELECTOR, ".organizer-tournament-nomination > div > div >"
-                                                           "div:nth-of-type(3)> div > table > tbody > tr >"
-                                                           "td:nth-of-type(9) > button:nth-of-type(4)")
+    APPLICATIONS_TAB = (By.ID, "tournament-menu-applications")
+    PARTICIPANT_APPROVE_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
+                                                   "table > tbody > tr > td > div > div > button:nth-of-type(1)")
+    PARTICIPANT_BAN_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
+                                               "table >tbody > tr > td > div > div > button:nth-of-type(2)")
+    PARTICIPANT_PAID_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
+                                                "table > tbody > tr > td > div > div > button:nth-of-type(3)")
+    PARTICIPANT_PRESENT_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
+                                                   "table > tbody > tr > td > div > div > button:nth-of-type(4)")
     PRESENT_NUMBER = (By.ID, "requests-stats-present")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
@@ -214,13 +211,16 @@ class TournamentPageLocators:
     OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
     REG_TAB = (By.ID, "tournament-menu-registration")
     ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
+    ADD_CATEGORY_TO_REG = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(2) >"
+                                            "div > .radio-blocks > label > input")
     SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
     GO_TO_PUBLIC_PAGE_CATEGORY = (By.ID, "link-go-to-public-view-nomination")
+    GO_TO_PUBLIC_PAGE_TOURNAMENT = (By.ID, "link-go-to-public-view-tournament")
     APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
     CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
-    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div:nth-of-type(3) > button")
+    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div.form-container > div.flex > button")
     REG_SUCCESS = (By.CLASS_NAME, "registration-success")
-    GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > a")
+    GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > div > a")
     CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
 
 
