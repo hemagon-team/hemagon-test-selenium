@@ -26,3 +26,8 @@ logs:
 tests:
 	@echo "${YELLOW}Running:Tests...${NC}\n"
 	@docker compose -f dev.docker-compose.yml exec -iT pytest pytest -vv -s test_cases/test_case_create_run_tournament.py
+
+.PHONY: lint
+lint:
+	@echo "${YELLOW}Running:Tests...${NC}\n"
+	@docker compose -f dev.docker-compose.yml exec -iT pytest pylint conftest.py pages/* test_cases/* test_suits/* tests/*
