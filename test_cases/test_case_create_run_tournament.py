@@ -89,5 +89,7 @@ class TestCreateRunDeleteTournament:
 
                 self.modify_tournament.test_user_can_delete_nomination(browser)
 
+                print("Finished test case", dataset["title"])
+
             self.modify_tournament.test_user_can_delete_ring(browser)
             self.create_tournament.test_user_can_delete_tournament(browser, dataset)
