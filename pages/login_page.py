@@ -17,5 +17,3 @@ class LoginPage(BasePage):
         self.fill_input(LoginPageLocators.EMAIL_FIELD, email)
         self.fill_input(LoginPageLocators.PASSWORD_FIELD, password)
         self.click_button(LoginPageLocators.LOGIN_BUTTON)
-        print(self.is_element_present(LoginPageLocators.LOGIN_BUTTON))
-

@@ -23,4 +23,4 @@ jobs:
       - run: |
           pip install -r requirements.txt
       - run: |
-          pytest -vv -s tests/test_main_page.py
+          pytest -vv -s tests/test_case_create_run_tournament.py
