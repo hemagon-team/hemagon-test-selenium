@@ -6,6 +6,8 @@ services:
     environment:
       TEST_BASEURL: ${TEST_BASEURL}
       SELENIUM_HUB_URL: ${SELENIUM_HUB_URL}
+      TEST_USER_EMAIL: ${TEST_USER_EMAIL}
+      TEST_USER_PASSWORD: ${TEST_USER_PASSWORD}
     depends_on:
       - selenium-chrome
     volumes:
