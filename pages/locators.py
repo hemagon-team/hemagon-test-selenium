@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
+    MAIN_PAGE_BUTTON = (By.CSS_SELECTOR, ".app-title > a")
+    MAIN_PAGE_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
     # User popover
     USER_NAME = (By.CLASS_NAME, "name")
@@ -78,7 +80,7 @@ class LoginPageLocators:
 class ProfilePageLocators:
     USER_NAME = (By.CLASS_NAME, "user-view__title")
     USER_CLUB = (By.CSS_SELECTOR, ".user-view__club > a")
-    FIGHTERS_HEADER = (By.CSS_SELECTOR, ".breadcrumbs > a")
+    SUMMARY_TAB = (By.ID, "users")
 
 
 class OrganizerPageLocators:

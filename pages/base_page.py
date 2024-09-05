@@ -99,6 +99,11 @@ class BasePage:
     def should_be_authorized_user(self):
         assert self.is_element_present(BasePageLocators.USER_NAME), "User is not authorized"
 
+    def go_to_main_page(self):
+        self.click_button(BasePageLocators.MAIN_PAGE_BUTTON)
+        assert self.is_element_present(BasePageLocators.MAIN_PAGE_TITLE), "Main page not opened"
+
+
     def go_to_profile(self):
         self.click_dropdown_element(BasePageLocators.USER_NAME, BasePageLocators.USER_POPOVER,
                                     BasePageLocators.PROFILE_BUTTON)
