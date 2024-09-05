@@ -86,6 +86,7 @@ class TestCreateRunDeleteTournament:
                     if stage_data["type_id"] == 3:
                         self.modify_tournament.test_user_can_delete_swiss_rounds(browser)
                         self.modify_tournament.test_user_can_delete_pools_stage(browser)
+                self.modify_tournament.test_should_be_no_stages_title(browser)
 
                 self.modify_tournament.test_user_can_delete_nomination(browser)
 

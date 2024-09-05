@@ -1,8 +1,8 @@
 {
-  "title": "TinyStandardSwissWithoutFinals",
+  "title": "TinyOddSwissWithoutFinals",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: swiss without finals, tiny standard size",
+  "description": "Test tournament: swiss without finals, tiny odd size",
 
   "nominations": [
     {

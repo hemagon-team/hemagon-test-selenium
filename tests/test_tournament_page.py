@@ -138,7 +138,7 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_playoff_stages(data["go_next_stage"])
+        page.delete_playoff_stages(data["participants_number"])
 
     def test_user_can_delete_pools_stage(self, browser):
         """start_page = OrganizerPage(browser, link)
@@ -153,6 +153,10 @@ class TestUserCanModifyTournament:
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
         page.delete_playoff()
+
+    def test_should_be_no_stages_title(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.check_deleted_all_stages()
 
     def test_user_can_delete_nomination(self, browser):
         """start_page = OrganizerPage(browser, link)

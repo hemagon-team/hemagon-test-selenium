@@ -1,8 +1,8 @@
 {
-  "title": "TinyStandardPoolsFinals",
+  "title": "MediumOddPoolsFinals",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: pools with finals, tiny standard size",
+  "description": "Test tournament: pools with finals, medium odd size",
 
   "nominations": [
     {
@@ -23,7 +23,8 @@
           "type_id": 2,
           "stage_fight_time": 120,
           "finals_mode": 1,
-          "third_place": true
+          "third_place": true,
+          "participants_number": 35
         }
       ]
     }

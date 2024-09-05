@@ -185,8 +185,7 @@ class TournamentPageLocators:
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     CLOSE_SWISS_SETTINGS_BUTTON = (By.CSS_SELECTOR, 'button.round')
     # Deleting stage
-    REMOVE_POOLS_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
-    REMOVE_PLAYOFF_STAGE_BUTTON = (By.ID, "btn-stage-1-remove")
+    REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     GRID_NO_ENTITIES = (By.CSS_SELECTOR, ".grid .no-data")
     # Deleting nomination

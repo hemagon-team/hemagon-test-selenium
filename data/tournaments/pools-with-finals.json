@@ -23,7 +23,8 @@
           "type_id": 2,
           "stage_fight_time": 120,
           "finals_mode": 1,
-          "third_place": true
+          "third_place": true,
+          "participants_number": 8
         }
       ]
     }
