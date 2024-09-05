@@ -13,8 +13,7 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
-# CHANGE TO SPECIFIC DATA FOR THIS TEST CASE
-with open('../data/tournaments/pools-with-finals.json', 'r') as f:
+with open('../data/tournaments/participants-handling.json', 'r') as f:
     data = json.load(f)
 
 class TestAddHandleRemoveParticipant:
@@ -36,7 +35,8 @@ class TestAddHandleRemoveParticipant:
     def test_add_handle_remove_participants(self, browser):
         self.create_tournament.test_user_can_create_tournament(browser, data)
         self.create_tournament.test_user_can_open_tournament(browser, data)
-        self.modify_tournament.test_user_can_create_nomination(browser, data)
+        for nomination_data in data["nominations"]:
+            self.modify_tournament.test_user_can_create_nomination(browser, nomination_data)
         self.modify_tournament.test_user_can_open_registration(browser)
         self.modify_tournament.test_user_can_register_for_the_tournament(browser)
         self.modify_tournament.test_user_can_change_application(browser)

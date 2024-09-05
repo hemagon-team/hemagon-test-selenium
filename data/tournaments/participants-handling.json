@@ -1,0 +1,15 @@
+{
+  "title": "ParticipantsHandling",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: participants handling (not runnable)",
+
+  "nominations": [
+    {
+      "nomination_title": "Qwerty",
+      "weapon_id": 17,
+      "fight_time": 120,
+      "last_round_time": 0
+    }
+  ]
+}
