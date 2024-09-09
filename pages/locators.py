@@ -294,3 +294,17 @@ class RegistrationPageLocators:
     PROFILE_BUTTON = (By.CSS_SELECTOR, 'div.name')
     LOG_OUT_BUTTON = (By.CLASS_NAME, 'svg-inline--fa.fa-right-from-bracket')
     SETTINGS_BUTTON = (By.CLASS_NAME, 'svg-inline--fa.fa-gear.fa-fw')
+
+class ProfileSettingsLocators:
+    FIRST_NAME_FIELD = (By.CSS_SELECTOR, 'input#reg-firstname')
+    LAST_NAME_FIELD = (By.CSS_SELECTOR, 'input#reg-lastname')
+    USERNAME_FIELD = (By.CSS_SELECTOR, 'input#reg-username')
+    EMAIL_FIELD = (By.CSS_SELECTOR, 'input#reg-email')
+    COUNTRY_FIELD = (By.CSS_SELECTOR, '#vs1__combobox > div.vs__selected-options > input')
+    CITY_FIELD = (By.CSS_SELECTOR, '#vs2__combobox > div.vs__selected-options > input')
+    CLUB_FIELD = (By.CSS_SELECTOR, '#vs3__combobox > div.vs__selected-options > input')
+    CLEAR_COUNTRY_BUTTON = (By.CSS_SELECTOR, '#vs1__combobox > div.vs__actions > button')
+    CLEAR_CITY_BUTTON = (By.CSS_SELECTOR, '#vs2__combobox > div.vs__actions > button')
+    CLEAR_CLUB_BUTTON = (By.CSS_SELECTOR, '#vs3__combobox > div.vs__actions > button')
+    CHANGE_PASSWORD_BUTTON = (By.CSS_SELECTOR, 'div.form > div:nth-child(5) > button')
+    SAVE_BUTTON = (By.CSS_SELECTOR, 'button.active')

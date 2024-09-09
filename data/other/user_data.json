@@ -6,5 +6,13 @@
   "trial": "no",
 
   "country": "Serbia",
-  "city": "Belgrade"
+  "city": "Belgrade",
+
+  "first_name1": "Sebastian",
+  "last_name1": "Pereira",
+  "email1": "sebas.pere@blabla.com",
+  "password1": "Imnotnegoro",
+
+  "country1": "France",
+  "city1": "Paris"
 }

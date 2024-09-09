@@ -1,6 +1,6 @@
 import time
 import json
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.by import By
 from .base_page import BasePage
 from .locators import LoginPageLocators
 from .locators import RegistrationPageLocators
@@ -8,7 +8,7 @@ from .locators import OrganizerPageLocators
 from selenium.webdriver.common.keys import Keys
 
 # Set user data (modify in data.json)
-with open("/home/thatsme/Git_working/hemagon-test-selenium/data/other/user_data.json", "r") as f:
+with open("/home/thatsme/git/hemagon-test-selenium/data/other/user_data.json", "r") as f:
     data = json.load(f)
 
 test_organizer = data['trial']
@@ -59,9 +59,9 @@ class RegistrationPage(BasePage):
         self.click_button(RegistrationPageLocators.PROFILE_BUTTON)
         self.click_button(RegistrationPageLocators.LOG_OUT_BUTTON)
     
-    def user_can_log_in(self):
-        self.fill_input(LoginPageLocators.EMAIL_FIELD, data["email"])
-        self.fill_input(LoginPageLocators.PASSWORD_FIELD, data["password"])
+    def user_can_log_in(self, email, password):
+        self.fill_input(LoginPageLocators.EMAIL_FIELD, email)
+        self.fill_input(LoginPageLocators.PASSWORD_FIELD, password)
         self.click_button(LoginPageLocators.LOGIN_BUTTON)
         
         prof_btn = self.find_element_wait(RegistrationPageLocators.PROFILE_BUTTON)
