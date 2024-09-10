@@ -243,6 +243,10 @@ class StagePageLocators:
     POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
     def POOL_START_BUTTON(pool):
         return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
+    def STAGE_SHOW_BUTTON(stage):
+        return (By.ID, 'btn-stage-' + str(stage) + '-print')
+    def STAGE_SHOW_BUTTON_ARROW_DOWN(stage):
+        return (By.CSS_SELECTOR, '#btn-stage-' + str(stage) + '-print > svg.fa-caret-down')
     NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
     NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')

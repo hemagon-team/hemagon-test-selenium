@@ -92,7 +92,7 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_pools(data["pools_number"])
+        page.delete_pools(data["pools_number"], data["stage_number"])
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
     def test_user_can_add_participants_to_swiss(self, browser):
@@ -103,12 +103,12 @@ class TestUserCanModifyTournament:
         page.add_participants_to_swiss()
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
-    def test_user_can_delete_swiss_rounds(self, browser):
+    def test_user_can_delete_swiss_rounds(self, browser, stage_number):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_swiss_rounds()
+        page.delete_swiss_rounds(stage_number)
 
     # @pytest.mark.skipif(data["type_id"] != 3 and data["type_id"] != 4, reason="Stage type is not swiss system")
     def test_user_can_set_ring_for_swiss_round(self, browser):
@@ -138,21 +138,21 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_playoff_stages(data["participants_number"])
+        page.delete_playoff_stages(data["participants_number"], data["stage_number"])
 
-    def test_user_can_delete_pools_stage(self, browser):
+    def test_user_can_delete_pools_stage(self, browser, stage_number):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_pools_stage()
+        page.delete_pools_stage(stage_number)
 
-    def test_user_can_delete_playoff_stage(self, browser):
+    def test_user_can_delete_playoff_stage(self, browser, stage_number):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_playoff()
+        page.delete_playoff(stage_number)
 
     def test_should_be_no_stages_title(self, browser):
         page = TournamentPage(browser, browser.current_url)
