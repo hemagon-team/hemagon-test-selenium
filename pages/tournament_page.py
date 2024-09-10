@@ -146,6 +146,7 @@ class TournamentPage(BasePage):
         # Enroll test participants
         self.click_button(TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
         # Wait until test participants are added
+        time.sleep(2)
         self.wait_for_element(TournamentPageLocators.PARTICIPANT_LINE)
         # Full approve all participants
         self.click_button(TournamentPageLocators.FULL_APPROVE_BUTTON)

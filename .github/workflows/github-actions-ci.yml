@@ -2,6 +2,8 @@ name: Tests
 on: [workflow_dispatch]
 env:
   TEST_BASEURL: 'https://hemagon.com'
+  TEST_USER_EMAIL: 'lomastius@test.com'
+  TEST_USER_PASSWORD: 'lolwut1A!'
   SELENIUM_HUB_URL: 'http://127.0.0.1:4444/wd/hub'
   DEV_ENV_MODE: 'remote'
 jobs:
@@ -9,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       selenium-hub:
-        image: selenium/standalone-chromium:4.23
+        image: selenium/standalone-chrome:4.24
         options: --shm-size=2gb
         ports:
           - '4444:4444'
@@ -21,4 +23,4 @@ jobs:
       - run: |
           pip install -r requirements.txt
       - run: |
-          pytest -vv -s test_main_page.py
+          pytest -vv -s test_cases/test_case_create_run_tournament.py
