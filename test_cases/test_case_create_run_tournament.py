@@ -38,7 +38,7 @@ with open('data/tournaments/pools-medium-odd.json', 'r') as f:
     data.append(json.load(f))
 with open('../data/tournaments/pools-large-odd.json', 'r') as f:
     data.append(json.load(f))"""
-with open('../data/tournaments/swiss-without-finals-odd.json') as f:
+with open('data/tournaments/swiss-without-finals-odd.json') as f:
     data.append(json.load(f))
 
 
