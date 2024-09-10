@@ -9,7 +9,6 @@ from webdriver_manager.core.os_manager import ChromeType
 
 load_dotenv()
 
-
 @pytest.fixture(scope="function")
 def browser(request):
     options_chrome = OptionsChrome()

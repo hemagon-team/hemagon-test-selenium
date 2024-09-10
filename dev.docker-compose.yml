@@ -5,7 +5,10 @@ services:
     restart: no
     environment:
       TEST_BASEURL: ${TEST_BASEURL}
+      TEST_USER_EMAIL: ${TEST_USER_EMAIL}
+      TEST_USER_PASSWORD: ${TEST_USER_PASSWORD}
       SELENIUM_HUB_URL: ${SELENIUM_HUB_URL}
+      DEV_ENV_MODE: ${DEV_ENV_MODE}
     depends_on:
       - selenium-chrome
     volumes:
@@ -13,7 +16,7 @@ services:
     working_dir: /var/www/app
 
   selenium-chrome:
-    image: selenium/node-chromium:${SELENIUM_VERSION}
+    image: selenium/node-chrome:${SELENIUM_VERSION}
     restart: unless-stopped
     shm_size: 2gb
     depends_on:

@@ -1,23 +1,23 @@
 {
-  "title": "SwissWithFinals",
+  "title": "PoolsTinyOdd",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: swiss with finals, tiny standard size",
+  "description": "Test tournament: pools with finals, tiny standard size",
 
   "nominations": [
     {
       "nomination_title": "Qwerty",
-      "weapon_id": 19,
+      "weapon_id": 11,
       "fight_time": 120,
       "last_round_time": 0,
-      "participants_number": 16,
+      "participants_number": 6,
 
       "stages": [
         {
           "type_id": 1,
           "stage_fight_time": 120,
           "pools_number": 2,
-          "go_next_stage": 16
+          "go_next_stage": 6
         },
         {
           "type_id": 2,

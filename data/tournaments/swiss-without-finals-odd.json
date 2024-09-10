@@ -1,8 +1,8 @@
 {
-  "title": "SwissWithFinals",
+  "title": "SwissWithoutFinalsOdd",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: swiss with finals, tiny standard size",
+  "description": "Test tournament: swiss without finals, tiny standard size",
 
   "nominations": [
     {
@@ -10,20 +10,14 @@
       "weapon_id": 19,
       "fight_time": 120,
       "last_round_time": 0,
-      "participants_number": 16,
+      "participants_number": 9,
 
       "stages": [
         {
           "type_id": 1,
           "stage_fight_time": 120,
           "pools_number": 2,
-          "go_next_stage": 16
-        },
-        {
-          "type_id": 2,
-          "stage_fight_time": 120,
-          "finals_mode": 1,
-          "third_place": true
+          "go_next_stage": null
         }
       ]
     }

@@ -2,22 +2,35 @@
   "title": "PoolsWithFinals",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: pools with finals",
+  "description": "Test tournament: pools with finals, tiny standard size",
 
-  "nomination_title": "Qwerty",
-  "weapon_id": 7,
-  "fight_time": "120",
-  "last_round_time": "0",
+  "nominations": [
+    {
+      "nomination_title": "Qwerty",
+      "weapon_id": 11,
+      "fight_time": 120,
+      "last_round_time": 0,
+      "participants_number": 10,
 
-  "type_id": 1,
-  "stage_fight_time": 120,
-
-  "go_next_stage": 8,
-  "finals_mode": 1,
-  "third_place": true,
-
-  "participants_number": 10,
-  "pools_number": 2,
-
-  "ring_title": "Ring"
+      "stages": [
+        {
+          "type_id": 1,
+          "stage_fight_time": 120,
+          "pools_number": 2,
+          "go_next_stage": 8
+        },
+        {
+          "type_id": 2,
+          "stage_fight_time": 120,
+          "finals_mode": 1,
+          "third_place": true
+        }
+      ]
+    }
+  ],
+  "rings": [
+    {
+      "ring_title": "Ring"
+    }
+  ]
 }

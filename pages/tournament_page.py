@@ -145,6 +145,7 @@ class TournamentPage(BasePage):
         # Enroll test participants
         self.click_button(TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
         # Wait until test participants are added
+        time.sleep(2)
         self.wait_for_element(TournamentPageLocators.PARTICIPANT_LINE)
         # Full approve all participants
         self.click_button(TournamentPageLocators.FULL_APPROVE_BUTTON)
@@ -155,8 +156,6 @@ class TournamentPage(BasePage):
         )
 
     def create_ring(self, title):
-        # Go back to the tournament page
-        self.back_to_tournament_categories()
         # Switch to tab Rings
         self.open_rings_tab()
         # Create ring

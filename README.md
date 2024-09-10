@@ -20,7 +20,7 @@
    ```shell
    pytest -vv -s %test_name%
    ```
-   *replace `%test_name%` with path to tests, like: `test_main_page.py`
+   *replace `%test_name%` with path to tests, like: `tests/test_main_page.py`
 
 
 ## Usage - Docker
@@ -49,7 +49,7 @@
    ```shell
    docker compose -f dev.docker-compose.yml exec -iT pytest pytest -vv -s %test_name%
    ```
-   *replace `%test_name%` with path to tests, like: `test_main_page.py`  
+   *replace `%test_name%` with path to tests, like: `tests/test_main_page.py`  
 
 6. After all things are done call:
    ```shell
