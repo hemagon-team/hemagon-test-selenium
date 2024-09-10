@@ -141,6 +141,7 @@ class TournamentPage(BasePage):
         # Open tab Participants
         self.click_button(TournamentPageLocators.PARTICIPANTS_TAB)
         # Choose number of test participants
+        time.sleep(0.5)
         self.fill_input(TournamentPageLocators.PARTICIPANTS_NUMBER_INPUT, number)
         # Enroll test participants
         self.click_button(TournamentPageLocators.ENROLL_TEST_PARTICIPANTS_BUTTON)
@@ -185,14 +186,19 @@ class TournamentPage(BasePage):
         # Set ring
         self.fill_input(TournamentPageLocators.RING_TITLE_FIELD, "Ring" + Keys.ENTER)
 
-    def delete_pools(self, number):
+    def show_stage(self, stage_number):
+        if self.is_element_present(StagePageLocators.STAGE_SHOW_BUTTON_ARROW_DOWN(stage_number)):
+            self.click_button(StagePageLocators.STAGE_SHOW_BUTTON(stage_number))
+
+    def delete_pools(self, number, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
+        self.show_stage(stage_number)
         for i in range(number):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
             time.sleep(0.3)
-        self.wait_for_element(TournamentPageLocators.REMOVE_POOLS_STAGE_BUTTON)
+        self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
     def create_playoff(self, fight_time, finals_mode, third_place):
         """self.open_nomination()
@@ -200,20 +206,24 @@ class TournamentPage(BasePage):
         self.create_stage(type_id=2, fight_time=fight_time,
                           playoff_finals_mode=finals_mode, playoff_third_place=third_place)
 
-    def delete_playoff_stages(self, number):
+    def delete_playoff_stages(self, number, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
+        self.show_stage(stage_number)
         fights_number = 2 ** math.ceil(math.log2(number))
         for i in range(fights_number):
             self.click_button(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)
             self.confirm_alert()
             time.sleep(0.3)
-        self.wait_for_element(TournamentPageLocators.REMOVE_PLAYOFF_STAGE_BUTTON)
+        self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
-    def delete_playoff(self):
+    def delete_playoff(self, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.click_button(TournamentPageLocators.REMOVE_PLAYOFF_STAGE_BUTTON)
+        time.sleep(0.3)
+        self.show_stage(stage_number)
+        time.sleep(0.3)
+        self.click_button(TournamentPageLocators.REMOVE_STAGE_BUTTON)
         self.confirm_alert()
 
     def add_participants_to_swiss(self):
@@ -241,21 +251,25 @@ class TournamentPage(BasePage):
         actions.drag_and_drop(drag_items[0], drag_zones[1]).perform()
         self.click_button(TournamentPageLocators.CLOSE_SWISS_SETTINGS_BUTTON)
 
-    def delete_swiss_rounds(self):
+    def delete_swiss_rounds(self, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
+        self.show_stage(stage_number)
         number = int(self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER).text)
         for i in range(number):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
             time.sleep(0.3)
-        self.wait_for_element(TournamentPageLocators.REMOVE_POOLS_STAGE_BUTTON)
+        self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
-    def delete_pools_stage(self):
+    def delete_pools_stage(self, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.click_button(TournamentPageLocators.REMOVE_POOLS_STAGE_BUTTON)
+        self.show_stage(stage_number)
+        self.click_button(TournamentPageLocators.REMOVE_STAGE_BUTTON)
         self.confirm_alert()
+
+    def check_deleted_all_stages(self):
         self.wait_for_element(TournamentPageLocators.NO_STAGES_TITLE)
 
     def delete_nomination(self):

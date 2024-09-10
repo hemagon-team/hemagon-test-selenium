@@ -23,6 +23,23 @@ with open('data/tournaments/swiss-with-finals.json', 'r') as f:
     data.append(json.load(f))
 with open('data/tournaments/swiss-without-finals.json', 'r') as f:
     data.append(json.load(f))
+with open('../data/tournaments/pools-tiny-odd.json', 'r') as f:
+    data.append(json.load(f))
+with open('../data/tournaments/pools-small-standard.json', 'r') as f:
+    data.append(json.load(f))
+with open('../data/tournaments/pools-small-odd.json', 'r') as f:
+    data.append(json.load(f))
+with open('../data/tournaments/pools-medium-standard.json', 'r') as f:
+    data.append(json.load(f))
+with open('../data/tournaments/pools-medium-odd.json', 'r') as f:
+    data.append(json.load(f))
+# Large tournaments are commented because it's impossible to enroll more than 64 participants, while 80 needed
+"""with open('../data/tournaments/pools-large-standard.json', 'r') as f:
+    data.append(json.load(f))
+with open('../data/tournaments/pools-large-odd.json', 'r') as f:
+    data.append(json.load(f))"""
+with open('../data/tournaments/swiss-without-finals-odd.json') as f:
+    data.append(json.load(f))
 
 
 class TestCreateRunDeleteTournament:
@@ -63,29 +80,30 @@ class TestCreateRunDeleteTournament:
                         self.modify_tournament.test_user_can_create_pools(browser, stage_data)
                         self.modify_tournament.test_user_can_add_participants_to_pool(browser)
                         self.modify_tournament.test_user_can_set_ring_for_pool(browser)
-                        self.run_pools.test_user_can_run_pools_stage(browser, full_mode=False)
+                        self.run_pools.test_user_can_run_pools_stage(browser, full_mode=False, stage_number=stage_data["stage_number"])
 
                     if stage_data["type_id"] == 2:
                         self.modify_tournament.test_user_can_create_playoff_stage(browser, stage_data)
-                        self.run_playoff.test_user_can_run_finals_stage(browser, full_mode=False)
+                        self.run_playoff.test_user_can_run_finals_stage(browser, full_mode=False, stage_number=stage_data["stage_number"])
 
                     if stage_data["type_id"] == 3:
                         self.modify_tournament.test_user_can_create_swiss_stage(browser, stage_data)
                         self.modify_tournament.test_user_can_add_participants_to_swiss(browser)
                         self.modify_tournament.test_user_can_set_ring_for_swiss_round(browser)
                         self.modify_tournament.test_user_can_set_pairs_for_swiss_round(browser)
-                        self.run_swiss.test_user_can_run_swiss_stage(browser, full_mode=False)
+                        self.run_swiss.test_user_can_run_swiss_stage(browser, full_mode=False, stage_number=stage_data["stage_number"])
 
                 for stage_data in nomination_data["stages"]:
                     if stage_data["type_id"] == 1:
                         self.modify_tournament.test_user_can_delete_pools(browser, stage_data)
-                        self.modify_tournament.test_user_can_delete_pools_stage(browser)
+                        self.modify_tournament.test_user_can_delete_pools_stage(browser, stage_number=stage_data["stage_number"])
                     if stage_data["type_id"] == 2:
                         self.modify_tournament.test_user_can_delete_playoffs(browser, stage_data)
-                        self.modify_tournament.test_user_can_delete_playoff_stage(browser)
+                        self.modify_tournament.test_user_can_delete_playoff_stage(browser, stage_number=stage_data["stage_number"])
                     if stage_data["type_id"] == 3:
-                        self.modify_tournament.test_user_can_delete_swiss_rounds(browser)
-                        self.modify_tournament.test_user_can_delete_pools_stage(browser)
+                        self.modify_tournament.test_user_can_delete_swiss_rounds(browser, stage_number=stage_data["stage_number"])
+                        self.modify_tournament.test_user_can_delete_pools_stage(browser, stage_number=stage_data["stage_number"])
+                self.modify_tournament.test_should_be_no_stages_title(browser)
 
                 self.modify_tournament.test_user_can_delete_nomination(browser)
 

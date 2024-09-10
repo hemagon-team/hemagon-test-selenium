@@ -29,7 +29,7 @@ def setup(browser):
 
 
 class TestRunningPools:
-    def test_user_can_run_pools_stage(self, browser, full_mode=True):
+    def test_user_can_run_pools_stage(self, browser, stage_number, full_mode=True):
         """page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
@@ -43,4 +43,4 @@ class TestRunningPools:
         if full_mode:
             stage.check_fight_pool_buttons()
 
-        stage.pools_running(full_mode)
+        stage.pools_running(full_mode, stage_number)

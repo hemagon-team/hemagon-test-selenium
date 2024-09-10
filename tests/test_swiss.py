@@ -28,7 +28,7 @@ def setup(browser):
 
 
 class TestRunningSwissSystem:
-    def test_user_can_run_swiss_stage(self, browser, full_mode=True):
+    def test_user_can_run_swiss_stage(self, browser, stage_number, full_mode=True):
         """page = OrganizerPage(browser, link)
         page.open()
         page.open_tournament(data["title"])
@@ -43,4 +43,4 @@ class TestRunningSwissSystem:
         if full_mode:
             stage.check_fight_swiss_buttons()
 
-        stage.swiss_running(full_mode)
+        stage.swiss_running(full_mode, stage_number)

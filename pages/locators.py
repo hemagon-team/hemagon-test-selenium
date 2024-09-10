@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
+    MAIN_PAGE_BUTTON = (By.CSS_SELECTOR, ".app-title > a")
+    MAIN_PAGE_TITLE = (By.CLASS_NAME, "tournaments-status-title")
     LOGIN_BUTTON = (By.CSS_SELECTOR, ".user-block .btn.small")
     # User popover
     USER_NAME = (By.CLASS_NAME, "name")
@@ -78,7 +80,7 @@ class LoginPageLocators:
 class ProfilePageLocators:
     USER_NAME = (By.CLASS_NAME, "user-view__title")
     USER_CLUB = (By.CSS_SELECTOR, ".user-view__club > a")
-    FIGHTERS_HEADER = (By.CSS_SELECTOR, ".breadcrumbs > a")
+    SUMMARY_TAB = (By.ID, "users")
 
 
 class OrganizerPageLocators:
@@ -185,8 +187,7 @@ class TournamentPageLocators:
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
     CLOSE_SWISS_SETTINGS_BUTTON = (By.CSS_SELECTOR, 'button.round')
     # Deleting stage
-    REMOVE_POOLS_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
-    REMOVE_PLAYOFF_STAGE_BUTTON = (By.ID, "btn-stage-1-remove")
+    REMOVE_STAGE_BUTTON = (By.ID, "btn-stage-0-remove")
     NO_STAGES_TITLE = (By.CLASS_NAME, "empty-state")
     GRID_NO_ENTITIES = (By.CSS_SELECTOR, ".grid .no-data")
     # Deleting nomination
@@ -242,6 +243,10 @@ class StagePageLocators:
     POOLS_NUMBER = (By.CSS_SELECTOR, 'div.pool')
     def POOL_START_BUTTON(pool):
         return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
+    def STAGE_SHOW_BUTTON(stage):
+        return (By.ID, 'btn-stage-' + str(stage) + '-print')
+    def STAGE_SHOW_BUTTON_ARROW_DOWN(stage):
+        return (By.CSS_SELECTOR, '#btn-stage-' + str(stage) + '-print > svg.fa-caret-down')
     NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
     NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')

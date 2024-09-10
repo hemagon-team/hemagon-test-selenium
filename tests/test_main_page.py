@@ -46,6 +46,7 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         profile_page = ProfilePage(browser, browser.current_url)
         time.sleep(1)
         profile_page.should_be_profile_page()
+        profile_page.go_to_main_page()
 
     @pytest.mark.issue
     def test_user_can_go_to_organizer_page(self, browser):
@@ -55,6 +56,7 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         organizer_page = OrganizerPage(browser, browser.current_url)
         time.sleep(1)
         organizer_page.should_be_organizer_url()
+        organizer_page.go_to_main_page()
 
     def test_user_can_open_tournaments_tab(self, browser):
         page = MainPage(browser, link)
@@ -107,11 +109,13 @@ class TestUserCanGoToDifferentPagesFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.open_rating_about()
+        page.go_to_main_page()
 
     def test_user_can_open_import_rating(self, browser):
         page = MainPage(browser, link)
         page.open()
         page.open_rating_import()
+        page.go_to_main_page()
 
     # I don't know where are these functions
     """def test_user_can_open_contact_tab_from_footer(self, browser):

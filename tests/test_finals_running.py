@@ -26,7 +26,7 @@ def setup(browser):
 
 
 class TestRunningPlayoff:
-    def test_user_can_run_finals_stage(self, browser, full_mode=True):
+    def test_user_can_run_finals_stage(self, browser, stage_number, full_mode=True):
         stage = StagesPage(browser, browser.current_url)
         stage.playoff_create()
-        stage.playoff_running(full_mode)
+        stage.playoff_running(full_mode, stage_number)

@@ -17,13 +17,16 @@
           "type_id": 1,
           "stage_fight_time": 120,
           "pools_number": 2,
-          "go_next_stage": 8
+          "go_next_stage": 8,
+          "stage_number": 0
         },
         {
           "type_id": 2,
           "stage_fight_time": 120,
           "finals_mode": 1,
-          "third_place": true
+          "third_place": true,
+          "participants_number": 8,
+          "stage_number": 1
         }
       ]
     }

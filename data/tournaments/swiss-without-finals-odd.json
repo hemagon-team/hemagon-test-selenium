@@ -1,8 +1,8 @@
 {
-  "title": "SwissWithoutFinalsOdd",
+  "title": "TinyOddSwissWithoutFinals",
   "country": "Spain",
   "city": "Barcelona",
-  "description": "Test tournament: swiss without finals, tiny standard size",
+  "description": "Test tournament: swiss without finals, tiny odd size",
 
   "nominations": [
     {
@@ -17,7 +17,8 @@
           "type_id": 1,
           "stage_fight_time": 120,
           "pools_number": 2,
-          "go_next_stage": null
+          "go_next_stage": null,
+          "stage_number": 0
         }
       ]
     }
