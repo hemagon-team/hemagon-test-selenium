@@ -23,15 +23,15 @@ with open('data/tournaments/swiss-with-finals.json', 'r') as f:
     data.append(json.load(f))
 with open('data/tournaments/swiss-without-finals.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-tiny-odd.json', 'r') as f:
+with open('data/tournaments/pools-tiny-odd.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-small-standard.json', 'r') as f:
+with open('data/tournaments/pools-small-standard.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-small-odd.json', 'r') as f:
+with open('data/tournaments/pools-small-odd.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-medium-standard.json', 'r') as f:
+with open('data/tournaments/pools-medium-standard.json', 'r') as f:
     data.append(json.load(f))
-with open('../data/tournaments/pools-medium-odd.json', 'r') as f:
+with open('data/tournaments/pools-medium-odd.json', 'r') as f:
     data.append(json.load(f))
 # Large tournaments are commented because it's impossible to enroll more than 64 participants, while 80 needed
 """with open('../data/tournaments/pools-large-standard.json', 'r') as f:

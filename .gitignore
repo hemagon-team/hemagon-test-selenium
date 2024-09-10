@@ -2,4 +2,4 @@
 .env
 /source/
 /__pycache__/
-pages/__pycache__/
+*/__pycache__/
