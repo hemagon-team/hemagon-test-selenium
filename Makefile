@@ -29,5 +29,5 @@ tests:
 
 .PHONY: lint
 lint:
-	@echo "${YELLOW}Running:Tests...${NC}\n"
+	@echo "${YELLOW}Lint check:Tests...${NC}\n"
 	@docker compose -f dev.docker-compose.yml exec -iT pytest pylint conftest.py pages/* test_cases/* test_suits/* tests/*
