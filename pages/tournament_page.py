@@ -184,7 +184,7 @@ class TournamentPage(BasePage):
         """self.open_nomination()
         self.open_stages_tab()"""
         # Set ring
-        self.fill_input(TournamentPageLocators.RING_TITLE_FIELD, "Ring" + Keys.ENTER)
+        self.fill_input(TournamentPageLocators.RING_FOR_POOL_FIELD, "Ring" + Keys.ENTER)
 
     def show_stage(self, stage_number):
         if self.is_element_present(StagePageLocators.STAGE_SHOW_BUTTON_ARROW_DOWN(stage_number)):
@@ -194,6 +194,7 @@ class TournamentPage(BasePage):
         """self.open_nomination()
         self.open_stages_tab()"""
         self.show_stage(stage_number)
+        time.sleep(0.5)
         for i in range(number):
             self.click_button(TournamentPageLocators.REMOVE_POOL_BUTTON)
             self.confirm_alert()
@@ -217,11 +218,9 @@ class TournamentPage(BasePage):
             time.sleep(0.3)
         self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
-    def delete_playoff(self, stage_number):
+    def delete_playoff(self):
         """self.open_nomination()
         self.open_stages_tab()"""
-        time.sleep(0.3)
-        self.show_stage(stage_number)
         time.sleep(0.3)
         self.click_button(TournamentPageLocators.REMOVE_STAGE_BUTTON)
         self.confirm_alert()
@@ -262,20 +261,21 @@ class TournamentPage(BasePage):
             time.sleep(0.3)
         self.wait_for_element(TournamentPageLocators.REMOVE_STAGE_BUTTON)
 
-    def delete_pools_stage(self, stage_number):
+    def delete_pools_stage(self):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.show_stage(stage_number)
         self.click_button(TournamentPageLocators.REMOVE_STAGE_BUTTON)
         self.confirm_alert()
 
     def check_deleted_all_stages(self):
         self.wait_for_element(TournamentPageLocators.NO_STAGES_TITLE)
 
-    def delete_nomination(self):
-        self.open_nomination()
-        self.click_button(TournamentPageLocators.REMOVE_NOMINATION_BUTTON)
-        self.confirm_alert()
+    def delete_nomination(self, number):
+        for i in range(number):
+            self.open_nomination()
+            self.click_button(TournamentPageLocators.REMOVE_NOMINATION_BUTTON)
+            self.confirm_alert()
+            time.sleep(0.3)
         self.wait_for_element(TournamentPageLocators.GRID_NO_ENTITIES)
 
     def delete_ring(self):
@@ -314,32 +314,38 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.REG_TAB)
 
     def enable_hemagon_reg(self):
-        self.back_to_tournament_categories()
         self.open_reg_tab()
         self.click_button(TournamentPageLocators.ENABLE_HEMAGON_REG)
-        self.click_button(TournamentPageLocators.ADD_CATEGORY_TO_REG)
+        self.click_button(TournamentPageLocators.ADD_FIRST_CATEGORY_TO_REG)
+        self.click_button(TournamentPageLocators.ADD_SECOND_CATEGORY_TO_REG)
         self.click_button(TournamentPageLocators.SAVE_REG_BUTTON)
 
     def register_for_the_tournament(self):
         self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE_TOURNAMENT)
         self.click_button(TournamentPageLocators.APPLY_BUTTON)
-        self.click_button(TournamentPageLocators.CATEGORY_RADIO)
+        self.click_button(TournamentPageLocators.CATEGORY_ONE_RADIO)
         self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
         self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
         self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
 
     def change_application(self):
         self.click_button(TournamentPageLocators.CHANGE_APPLICATION_BUTTON)
-        # Here should be some changes, but I currently only create one category per tournament
+        self.click_button(TournamentPageLocators.CATEGORY_TWO_RADIO)
         self.click_button(TournamentPageLocators.CONFIRM_APPLICATION)
         self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
         self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
 
+    def cancel_application(self):
+        self.click_button(TournamentPageLocators.CHANGE_APPLICATION_BUTTON)
+        self.click_button(TournamentPageLocators.CANCEL_APPLICATION)
+        self.confirm_alert()
+        self.wait_for_element(TournamentPageLocators.REG_SUCCESS)
+
     def handle_participants(self):
-        self.open_nomination()
         # Open tab Applications
-        self.back_to_tournament_categories()
         self.click_button(TournamentPageLocators.APPLICATIONS_TAB)
+        # Add participant to waiting list
+        self.click_button(TournamentPageLocators.PARTICIPANT_WAITING_LIST_BUTTON)
         # Confirm participant
         self.click_button(TournamentPageLocators.PARTICIPANT_APPROVE_BUTTON)
         # Set payment

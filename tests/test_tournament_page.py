@@ -140,30 +140,30 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.delete_playoff_stages(data["participants_number"], data["stage_number"])
 
-    def test_user_can_delete_pools_stage(self, browser, stage_number):
+    def test_user_can_delete_pools_stage(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_pools_stage(stage_number)
+        page.delete_pools_stage()
 
-    def test_user_can_delete_playoff_stage(self, browser, stage_number):
+    def test_user_can_delete_playoff_stage(self, browser):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_playoff(stage_number)
+        page.delete_playoff()
 
     def test_should_be_no_stages_title(self, browser):
         page = TournamentPage(browser, browser.current_url)
         page.check_deleted_all_stages()
 
-    def test_user_can_delete_nomination(self, browser):
+    def test_user_can_delete_nomination(self, browser, number=1):
         """start_page = OrganizerPage(browser, link)
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.delete_nomination()
+        page.delete_nomination(number)
 
     def test_user_can_delete_ring(self, browser):
         """start_page = OrganizerPage(browser, link)
@@ -185,6 +185,14 @@ class TestUserCanModifyTournament:
         page = TournamentPage(browser, browser.current_url)
         page.change_application()
 
+    def test_user_can_cancel_application(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.cancel_application()
+
     def test_user_can_handle_participants(self, browser):
         page = TournamentPage(browser, browser.current_url)
         page.handle_participants()
+
+    def test_user_can_go_to_tournament_from_categories(self, browser):
+        page = TournamentPage(browser, browser.current_url)
+        page.back_to_tournament_categories()

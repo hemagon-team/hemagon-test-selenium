@@ -151,19 +151,21 @@ class TournamentPageLocators:
     ACCEPTED_NUMBER = (By.ID, "requests-stats-accepted")
     # Handling participants
     APPLICATIONS_TAB = (By.ID, "tournament-menu-applications")
-    PARTICIPANT_APPROVE_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
-                                                   "table > tbody > tr > td > div > div > button:nth-of-type(1)")
-    PARTICIPANT_BAN_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
-                                               "table >tbody > tr > td > div > div > button:nth-of-type(2)")
-    PARTICIPANT_PAID_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
-                                                "table > tbody > tr > td > div > div > button:nth-of-type(3)")
-    PARTICIPANT_PRESENT_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) >"
-                                                   "table > tbody > tr > td > div > div > button:nth-of-type(4)")
+    PARTICIPANT_APPROVE_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) > table > tbody >"
+                                                   "tr > td > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)")
+    PARTICIPANT_BAN_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) > table > tbody >"
+                                               "tr > td > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)")
+    PARTICIPANT_WAITING_LIST_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) > table > tbody >"
+                                                        "tr > td > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)")
+    PARTICIPANT_PAID_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) > table > tbody >"
+                                                "tr > td > div:nth-of-type(1) > div:nth-of-type(3) > button:nth-of-type(1)")
+    PARTICIPANT_PRESENT_BUTTON = (By.CSS_SELECTOR, ".organizer-tournament > div > div > div > div:nth-of-type(2) > table > tbody >"
+                                                   "tr > td > div:nth-of-type(1) > div:nth-of-type(3) > button:nth-of-type(2)")
     PRESENT_NUMBER = (By.ID, "requests-stats-present")
     # Creating new ring
     RINGS_TAB = (By.ID, "tournament-menu-areas")
     ADD_RING_BUTTON = (By.ID, "btn-area-add")
-    RING_TITLE_FIELD = (By.CSS_SELECTOR, "input")
+    RING_TITLE_FIELD = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(1) > input")
     SAVE_RING_BUTTON = (By.ID, "btn-area-save")
     # Creating new pool
     ADD_POOL_BUTTON = (By.ID, "btn-stage-0-add-pool")
@@ -172,6 +174,8 @@ class TournamentPageLocators:
     # Adding random participants to pool
     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.ID, "btn-stage-0-seed")
 #     SEED_RANDOM_PARTICIPANTS_BUTTON = (By.CSS_SELECTOR, ".stage-content > div:nth-of-type(5) > button:nth-of-type(2)")
+    # Setting ring for pool
+    RING_FOR_POOL_FIELD = (By.CSS_SELECTOR, ".pool > div > div > div > div > div > input")
     # Deleting pool
     REMOVE_POOL_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(2) > button:nth-of-type(2)")
     # Deleting playoff
@@ -212,14 +216,18 @@ class TournamentPageLocators:
     OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
     REG_TAB = (By.ID, "tournament-menu-registration")
     ENABLE_HEMAGON_REG = (By.CSS_SELECTOR, "div.radio-inlines > label:nth-of-type(1) > input")
-    ADD_CATEGORY_TO_REG = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(2) >"
-                                            "div > .radio-blocks > label > input")
+    ADD_FIRST_CATEGORY_TO_REG = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(2) >"
+                                            "div > .radio-blocks > label:nth-of-type(1) > input")
+    ADD_SECOND_CATEGORY_TO_REG = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(2) >"
+                                            "div > .radio-blocks > label:nth-of-type(2) > input")
     SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
     GO_TO_PUBLIC_PAGE_CATEGORY = (By.ID, "link-go-to-public-view-nomination")
     GO_TO_PUBLIC_PAGE_TOURNAMENT = (By.ID, "link-go-to-public-view-tournament")
     APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
-    CATEGORY_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label > input")
-    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div.form-container > div.flex > button")
+    CATEGORY_ONE_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label:nth-of-type(1) > input")
+    CATEGORY_TWO_RADIO = (By.CSS_SELECTOR, ".radio-blocks > label:nth-of-type(2) > input")
+    CONFIRM_APPLICATION = (By.CSS_SELECTOR, ".container > div.form-container > div.flex > button.active")
+    CANCEL_APPLICATION = (By.CSS_SELECTOR, ".container > div.form-container > div.flex > button.danger")
     REG_SUCCESS = (By.CLASS_NAME, "registration-success")
     GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > div > a")
     CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
@@ -244,9 +252,9 @@ class StagePageLocators:
     def POOL_START_BUTTON(pool):
         return (By.ID, 'btn-stage-0-pool-' + str(pool) +'-run')
     def STAGE_SHOW_BUTTON(stage):
-        return (By.ID, 'btn-stage-' + str(stage) + '-print')
+        return (By.ID, 'btn-stage-' + str(stage) + '-toggle')
     def STAGE_SHOW_BUTTON_ARROW_DOWN(stage):
-        return (By.CSS_SELECTOR, '#btn-stage-' + str(stage) + '-print > svg.fa-caret-down')
+        return (By.CSS_SELECTOR, '#btn-stage-' + str(stage) + '-toggle > svg.fa-caret-down')
     NEXT_STAGE_BUTTON = (By.ID, 'btn-stage-0-build-next-stage')
     NEXT_PLAYOFF_STAGE_BUTTON = (By.ID, 'btn-stage-1-build-next-round-playoff')
     LEFT_BRANCH_RUN_BUTTON = (By.ID, 'btn-stage-1-side-0-build-next-playoff-round')

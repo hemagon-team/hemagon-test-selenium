@@ -37,10 +37,12 @@ class TestAddHandleRemoveParticipant:
         self.create_tournament.test_user_can_open_tournament(browser, data)
         for nomination_data in data["nominations"]:
             self.modify_tournament.test_user_can_create_nomination(browser, nomination_data)
+            self.modify_tournament.test_user_can_go_to_tournament_from_categories(browser)
         self.modify_tournament.test_user_can_open_registration(browser)
         self.modify_tournament.test_user_can_register_for_the_tournament(browser)
         self.modify_tournament.test_user_can_change_application(browser)
+        # self.modify_tournament.test_user_can_cancel_application(browser)
         self.create_tournament.test_user_can_open_tournament(browser, data)
         self.modify_tournament.test_user_can_handle_participants(browser)
-        self.modify_tournament.test_user_can_delete_nomination(browser)
+        self.modify_tournament.test_user_can_delete_nomination(browser, number=2)
         self.create_tournament.test_user_can_delete_tournament(browser, data)
