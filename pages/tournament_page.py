@@ -336,6 +336,7 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.GO_TO_TOURNAMENT)
 
     def cancel_application(self):
+        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE_TOURNAMENT)
         self.click_button(TournamentPageLocators.CHANGE_APPLICATION_BUTTON)
         self.click_button(TournamentPageLocators.CANCEL_APPLICATION)
         self.confirm_alert()
