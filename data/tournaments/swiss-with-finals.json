@@ -14,10 +14,12 @@
 
       "stages": [
         {
-          "type_id": 1,
+          "type_id": 3,
           "stage_fight_time": 120,
           "pools_number": 2,
           "go_next_stage": 16,
+          "swiss_empty_win": true,
+          "swiss_empty_points": 1,
           "stage_number": 0
         },
         {

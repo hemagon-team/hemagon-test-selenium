@@ -45,7 +45,7 @@ class TestUserCanModifyTournament:
 
     def test_user_can_create_swiss_stage(self, browser, data):
         page = TournamentPage(browser, browser.current_url)
-        page.create_stage(data["type_id"], data["fight_time"], data["go_next_stage"],
+        page.create_stage(data["type_id"], data["stage_fight_time"], data["go_next_stage"],
                           swiss_empty_win=data["swiss_empty_win"], swiss_win_points=data["swiss_empty_points"])
 
     def test_user_can_add_participants(self, browser, data):
