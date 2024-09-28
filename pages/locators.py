@@ -80,7 +80,9 @@ class LoginPageLocators:
 class ProfilePageLocators:
     USER_NAME = (By.CLASS_NAME, "user-view__title")
     USER_CLUB = (By.CSS_SELECTOR, ".user-view__club > a")
-    SUMMARY_TAB = (By.ID, "users")
+    USER_CLUB1 = (By.CSS_SELECTOR, "div.mb-24 div.text-center > a")
+    FIGHTERS_HEADER = (By.CSS_SELECTOR, ".breadcrumbs > a")
+
 
 
 class OrganizerPageLocators:
@@ -311,6 +313,7 @@ class RegistrationPageLocators:
     PROFILE_BUTTON = (By.CSS_SELECTOR, 'div.name')
     LOG_OUT_BUTTON = (By.CLASS_NAME, 'svg-inline--fa.fa-right-from-bracket')
     SETTINGS_BUTTON = (By.CLASS_NAME, 'svg-inline--fa.fa-gear.fa-fw')
+    OPEN_PROFILE_BUTTON = (By.CSS_SELECTOR, "div.user-block > div > div.body > ul > li:nth-child(1) > a")
 
 class ProfileSettingsLocators:
     FIRST_NAME_FIELD = (By.CSS_SELECTOR, 'input#reg-firstname')

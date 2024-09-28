@@ -7,6 +7,7 @@
 
   "country": "Serbia",
   "city": "Belgrade",
+  "club": "TestClub1",
 
   "first_name1": "Sebastian",
   "last_name1": "Pereira",
@@ -14,5 +15,6 @@
   "password1": "Imnotnegoro",
 
   "country1": "France",
-  "city1": "Paris"
+  "city1": "Paris",
+  "club1": "TestClub2"
 }

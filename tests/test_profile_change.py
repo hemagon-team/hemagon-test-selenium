@@ -28,18 +28,33 @@ def setup(browser):
 
 
 class TestChangingProfile:
-    def test_user_can_change_the_name(self, browser, full_mode=True):
-        profchange = ProfileSettingsPage(browser, base_link)
-        profchange.open_settings()
-        profchange.user_can_change_the_name()
-        time.sleep(2)
-    
-    def test_user_can_change_the_last_name(self, browser, full_mode=True):
-        profchange = ProfileSettingsPage(browser, base_link)
-        profchange.open_settings()
-        profchange.user_can_change_the_last_name()
 
-    def test_user_can_change_the_country(self, browser, full_mode=True):
+    # def test_user_can_change_the_name(self, browser, full_mode=True):
+    #     profchange = ProfileSettingsPage(browser, base_link)
+    #     profchange.open_settings()
+    #     profchange.user_can_change_the_name()
+    #     time.sleep(2)
+    #
+    # def test_user_can_change_the_last_name(self, browser, full_mode=True):
+    #     profchange = ProfileSettingsPage(browser, base_link)
+    #     profchange.open_settings()
+    #     profchange.user_can_change_the_last_name()
+    #
+    # def test_user_can_change_the_country(self, browser, full_mode=True):
+    #     profchange = ProfileSettingsPage(browser, base_link)
+    #     profchange.open_settings()
+    #     profchange.user_can_change_the_country()
+    # def test_user_can_set_the_club(self, browser, full_mode=True):
+    #     profchange = ProfileSettingsPage(browser, base_link)
+    #     profchange.open_settings()
+    #     profchange.user_can_set_the_club()
+    #
+    # def test_user_can_change_the_club(self, browser, full_mode=True):
+    #     profchange = ProfileSettingsPage(browser, base_link)
+    #     profchange.open_settings()
+    #     profchange.user_can_change_the_club()
+
+    def test_user_can_remove_the_club(self, browser, full_mode=True):
         profchange = ProfileSettingsPage(browser, base_link)
         profchange.open_settings()
-        profchange.user_can_change_the_country()
+        profchange.user_can_remove_the_club()

@@ -3,7 +3,7 @@ import json
 #from selenium.webdriver.common.by import By
 from .base_page import BasePage
 #from .locators import LoginPageLocators
-from .locators import RegistrationPageLocators
+from .locators import RegistrationPageLocators, ProfilePageLocators
 from .locators import ProfileSettingsLocators
 #from .locators import OrganizerPageLocators
 from selenium.webdriver.common.keys import Keys
@@ -65,4 +65,43 @@ class ProfileSettingsPage(BasePage):
         field.send_keys(Keys.CONTROL + 'a')
         field.send_keys(Keys.BACKSPACE)
         self.fill_input(ProfileSettingsLocators.EMAIL_FIELD, data["email1"])
+        self.click_button(ProfileSettingsLocators.SAVE_BUTTON)
+
+    def user_can_set_the_club(self):
+        club = data["club"]
+        field = self.find_element_wait(ProfileSettingsLocators.CLUB_FIELD)
+        field.send_keys(Keys.CONTROL + 'a')
+        field.send_keys(Keys.BACKSPACE)
+        self.fill_input(ProfileSettingsLocators.CLUB_FIELD, club)
+        field.send_keys(Keys.ENTER)
+        self.click_button(ProfileSettingsLocators.SAVE_BUTTON)
+        self.click_button(RegistrationPageLocators.PROFILE_BUTTON)
+        self.click_button(RegistrationPageLocators.OPEN_PROFILE_BUTTON)
+        club_name = self.find_element_wait(ProfilePageLocators.USER_CLUB1)
+        assert club in club_name.text
+
+    def user_can_change_the_club(self):
+        club = data["club1"]
+        field = self.find_element_wait(ProfileSettingsLocators.CLUB_FIELD)
+        field.send_keys(Keys.CONTROL + 'a')
+        field.send_keys(Keys.BACKSPACE)
+        self.fill_input(ProfileSettingsLocators.CLUB_FIELD, club)
+        field.send_keys(Keys.ENTER)
+        self.click_button(ProfileSettingsLocators.SAVE_BUTTON)
+        self.click_button(RegistrationPageLocators.PROFILE_BUTTON)
+        self.click_button(RegistrationPageLocators.OPEN_PROFILE_BUTTON)
+        club_name = self.find_element_wait(ProfilePageLocators.USER_CLUB1)
+        assert club in club_name.text
+
+    def user_can_remove_the_club(self):
+        field = self.find_element_wait(ProfileSettingsLocators.CLUB_FIELD)
+        field.send_keys(Keys.CONTROL + 'a')
+        field.send_keys(Keys.ESCAPE)
+        self.click_button(ProfileSettingsLocators.SAVE_BUTTON)
+        self.click_button(RegistrationPageLocators.PROFILE_BUTTON)
+        self.click_button(RegistrationPageLocators.OPEN_PROFILE_BUTTON)
+        club = self.is_element_present(ProfilePageLocators.USER_CLUB1)
+        assert club == False
+
+
 
