@@ -13,8 +13,21 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
-with open('../data/tournaments/participants-handling.json', 'r') as f:
-    data = json.load(f)
+# Set data
+DATA_DIR = "../data/tournaments/"
+
+FILENAMES = [
+    "participants-handling.json"
+]
+
+def pytest_generate_tests(metafunc):
+    if "data" in metafunc.fixturenames:
+        data = []
+        for filename in FILENAMES:
+            with open(os.path.join(DATA_DIR, filename)) as f:
+                dataset = json.load(f)
+                data.append(dataset)
+        metafunc.parametrize("data", data)
 
 class TestAddHandleRemoveParticipant:
     @pytest.fixture(autouse=True)
@@ -32,7 +45,7 @@ class TestAddHandleRemoveParticipant:
         login_page.should_be_authorized_user()
         page.close_cookies()
 
-    def test_add_handle_remove_participants(self, browser):
+    def test_add_handle_remove_participants(self, browser, data):
         self.create_tournament.test_user_can_create_tournament(browser, data)
         self.create_tournament.test_user_can_open_tournament(browser, data)
         for nomination_data in data["nominations"]:
