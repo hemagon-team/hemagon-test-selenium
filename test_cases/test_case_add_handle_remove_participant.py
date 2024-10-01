@@ -13,8 +13,11 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
-# Set data
-DATA_DIR = "../data/tournaments/"
+
+if os.environ["DEV_ENV_MODE"] == 'remote':
+    DATA_DIR = "data/tournaments/"
+else:
+    DATA_DIR = "../data/tournaments/"
 
 FILENAMES = [
     "participants-handling.json"
