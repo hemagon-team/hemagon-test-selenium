@@ -40,12 +40,12 @@ class TestUserCanModifyTournament:
         start_page.open()
         start_page.open_tournament(data["title"])"""
         page = TournamentPage(browser, browser.current_url)
-        page.create_stage(type_id=data["type_id"], fight_time=data["stage_fight_time"],
+        page.create_stage(type=data["type"], fight_time=data["stage_fight_time"],
                           go_next_stage=data["go_next_stage"])
 
     def test_user_can_create_swiss_stage(self, browser, data):
         page = TournamentPage(browser, browser.current_url)
-        page.create_stage(data["type_id"], data["stage_fight_time"], data["go_next_stage"],
+        page.create_stage(data["type"], data["stage_fight_time"], data["go_next_stage"],
                           swiss_empty_win=data["swiss_empty_win"], swiss_win_points=data["swiss_empty_points"])
 
     def test_user_can_add_participants(self, browser, data):
@@ -196,3 +196,9 @@ class TestUserCanModifyTournament:
     def test_user_can_go_to_tournament_from_categories(self, browser):
         page = TournamentPage(browser, browser.current_url)
         page.back_to_tournament_categories()
+
+    def test_should_be_correct_nominations(self, browser, data):
+        nominations = [nomination["nomination_title"] for nomination in data["nominations"]]
+        stages = [stage["type"] for nom in data["nominations"] for stage in nom["stages"]]
+        page = TournamentPage(browser, browser.current_url)
+        page.check_nominations(nominations, stages)

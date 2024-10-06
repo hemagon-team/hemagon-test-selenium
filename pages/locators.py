@@ -231,6 +231,9 @@ class TournamentPageLocators:
     REG_SUCCESS = (By.CLASS_NAME, "registration-success")
     GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > div > a")
     CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
+    PUBLIC_NOMINATIONS = (By.CSS_SELECTOR, "div.nomination > a > div:nth-of-type(1)")
+    PUBLIC_STAGES = (By.CSS_SELECTOR, "div.stage > h3")
+    RETURN_TO_PUBLIC_NOMINATIONS = (By.CSS_SELECTOR, ".tournament-title > a")
 
 
 class FightPageLocators:
