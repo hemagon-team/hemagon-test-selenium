@@ -7,6 +7,7 @@ class OrganizerPage(BasePage):
 
     def should_be_organizer_url(self):
         assert "organizer" in self.browser.current_url, "No 'organizer' in page URL"
+        time.sleep(0.2)
 
     def create_tournament(self, title, start_date, end_date, country, city, description):
         # Create a new tournament

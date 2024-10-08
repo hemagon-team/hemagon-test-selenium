@@ -13,8 +13,24 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
-with open('../data/tournaments/participants-handling.json', 'r') as f:
-    data = json.load(f)
+
+if os.environ["DEV_ENV_MODE"] == 'remote':
+    DATA_DIR = "data/tournaments/"
+else:
+    DATA_DIR = "../data/tournaments/"
+
+FILENAMES = [
+    "participants-handling.json"
+]
+
+def pytest_generate_tests(metafunc):
+    if "data" in metafunc.fixturenames:
+        data = []
+        for filename in FILENAMES:
+            with open(os.path.join(DATA_DIR, filename)) as f:
+                dataset = json.load(f)
+                data.append(dataset)
+        metafunc.parametrize("data", data)
 
 class TestAddHandleRemoveParticipant:
     @pytest.fixture(autouse=True)
@@ -32,15 +48,18 @@ class TestAddHandleRemoveParticipant:
         login_page.should_be_authorized_user()
         page.close_cookies()
 
-    def test_add_handle_remove_participants(self, browser):
+    def test_add_handle_remove_participants(self, browser, data):
         self.create_tournament.test_user_can_create_tournament(browser, data)
         self.create_tournament.test_user_can_open_tournament(browser, data)
         for nomination_data in data["nominations"]:
             self.modify_tournament.test_user_can_create_nomination(browser, nomination_data)
+            self.modify_tournament.test_user_can_go_to_tournament_from_categories(browser)
         self.modify_tournament.test_user_can_open_registration(browser)
         self.modify_tournament.test_user_can_register_for_the_tournament(browser)
         self.modify_tournament.test_user_can_change_application(browser)
         self.create_tournament.test_user_can_open_tournament(browser, data)
         self.modify_tournament.test_user_can_handle_participants(browser)
-        self.modify_tournament.test_user_can_delete_nomination(browser)
+        self.modify_tournament.test_user_can_cancel_application(browser)
+        self.create_tournament.test_user_can_open_tournament(browser, data)
+        self.modify_tournament.test_user_can_delete_nomination(browser, number=2)
         self.create_tournament.test_user_can_delete_tournament(browser, data)

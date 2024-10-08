@@ -29,15 +29,13 @@ class StagesPage(BasePage):
         fight_page = FightPage(self.browser, self.url)
         fight_page.swiss_button_checking()
 
-    def pools_running(self, full_mode, stage_number):
-        self.show_stage(stage_number)
+    def pools_running(self, full_mode):
         # Determine number of pools
         pools_list = self.find_multiple_elements_wait(StagePageLocators.POOLS_NUMBER)
         pools_number = len(pools_list)
 
         # имеет смысл While переписать на for
         for pool in range(pools_number):
-            self.show_stage(stage_number)
             button_locator = StagePageLocators.POOL_START_BUTTON(pool)
             self.click_button(button_locator)
 
@@ -51,11 +49,9 @@ class StagesPage(BasePage):
     def playoff_create(self):
         self.click_button(StagePageLocators.NEXT_STAGE_BUTTON)
 
-    def left_branch_running(self, full_mode, stage_number):
-        self.show_stage(stage_number)
+    def left_branch_running(self, full_mode):
         pool_page = PoolPage(self.browser, self.url)
         while True:
-            self.show_stage(stage_number)
             check_run = self.is_element_present(StagePageLocators.LEFT_RUN_BUTTON)
             # Run stage (full or random) if there is an active run button
             if check_run:
@@ -72,11 +68,9 @@ class StagesPage(BasePage):
                 else:
                     break
 
-    def right_branch_running(self, full_mode, stage_number):
-        self.show_stage(stage_number)
+    def right_branch_running(self, full_mode):
         pool_page = PoolPage(self.browser, self.url)
         while True:
-            self.show_stage(stage_number)
             check_run = self.is_element_present(StagePageLocators.RIGHT_RUN_BUTTON)
             # Run stage (full or random) if there is an active run button
             if check_run:
@@ -93,19 +87,17 @@ class StagesPage(BasePage):
                 else:
                     break
 
-    def branches_order(self, full_mode, stage_number):
+    def branches_order(self, full_mode):
         choose_branch = randint(0, 1)
-        self.show_stage(stage_number)
         if choose_branch == 0:
-            self.left_branch_running(full_mode, stage_number)
-            self.right_branch_running(full_mode, stage_number)
+            self.left_branch_running(full_mode)
+            self.right_branch_running(full_mode)
         else:
-            self.right_branch_running(full_mode, stage_number)
-            self.left_branch_running(full_mode, stage_number)
+            self.right_branch_running(full_mode)
+            self.left_branch_running(full_mode)
         self.click_button(StagePageLocators.NEXT_PLAYOFF_STAGE_BUTTON)
 
-    def finals_running(self, full_mode, stage_number):
-        self.show_stage(stage_number)
+    def finals_running(self, full_mode):
         # Define selector for finals run button
         finals_buttons_list = self.find_multiple_elements_wait(StagePageLocators.FINALS_RUN_BUTTON)
         finals_buttons_number = len(finals_buttons_list)
@@ -122,23 +114,17 @@ class StagesPage(BasePage):
         else:
             pool_page.run_pool_with_random_results()
 
-    def show_stage(self, stage_number):
-        if self.is_element_present(StagePageLocators.STAGE_SHOW_BUTTON_ARROW_DOWN(stage_number)):
-            self.click_button(StagePageLocators.STAGE_SHOW_BUTTON(stage_number))
-
-    def playoff_running(self, full_mode, stage_number):
-        self.branches_order(full_mode, stage_number)
+    def playoff_running(self, full_mode):
+        self.branches_order(full_mode)
         time.sleep(1)
-        self.finals_running(full_mode, stage_number)
+        self.finals_running(full_mode)
 
-    def swiss_running(self, full_mode, stage_number):
+    def swiss_running(self, full_mode):
         # Define rounds number based on the recommended value from the website
         rounds_number = self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER)
         rounds_number = int(rounds_number.text)
 
         pool_page = PoolPage(self.browser, self.url)
-
-        self.show_stage(stage_number)
 
         # Run every round (full or random)
         for x in range(rounds_number):
