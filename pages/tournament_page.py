@@ -65,7 +65,7 @@ class TournamentPage(BasePage):
     def open_rings_tab(self):
         self.click_button(TournamentPageLocators.RINGS_TAB)
 
-    def create_stage(self, type_id=1, fight_time=120, go_next_stage=None,
+    def create_stage(self, type="pools", fight_time=120, go_next_stage=None,
                      playoff_finals_mode=None, playoff_third_place=None,
                      swiss_empty_win=None, swiss_win_points=None, hits_initial_hp=None, hits_limit_hp=None):
 
@@ -76,16 +76,16 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.ADD_STAGE_BUTTON)
 
         # Choose type: pools, playoff, swiss system or swiss system with hits
-        if type_id == 1:
+        if type == "pools":
             self.click_button(TournamentPageLocators.TYPE_RADIO_POOLS)
-        elif type_id == 2:
+        elif type == "playoff":
             self.click_button(TournamentPageLocators.TYPE_RADIO_PLAYOFF)
-        elif type_id == 3:
+        elif type == "swiss system":
             self.click_button(TournamentPageLocators.TYPE_RADIO_SWISS)
-        elif type_id == 4:
+        elif type == "swiss system with hits":
             self.click_button(TournamentPageLocators.TYPE_RADIO_SWISS_HITS)
         else:
-            raise Exception("No such option: type id can only be 1 / 2 / 3 / 4")
+            raise Exception("No such option: type can only be pools / playoff / swiss system / swiss system with hits")
 
         # Choose option: to the finals or not
         if not go_next_stage:
@@ -103,7 +103,7 @@ class TournamentPage(BasePage):
         # Only for pools: unlimited pool option
         # ADD SLIDER HANDLING
 
-        if type_id == 2:
+        if type == "playoff":
             # Choose finals mode: best of 1 or best of 3
             if playoff_finals_mode == 1:
                 self.click_button(TournamentPageLocators.PLAYOFF_FINALS_MODE_1)
@@ -118,7 +118,7 @@ class TournamentPage(BasePage):
                 self.click_button(TournamentPageLocators.PLAYOFF_THIRD_PLACE_FALSE)
 
         # Only for Swiss system and Swiss system with hits: choose how to handle an empty fight
-        if type_id == 3 or type_id == 4:
+        if type == "swiss system" or type == "swiss system with hits":
             if swiss_empty_win:
                 self.click_button(TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_WIN)
                 self.fill_input(TournamentPageLocators.SWISS_EMPTY_WIN_POINTS, swiss_win_points)
@@ -126,14 +126,14 @@ class TournamentPage(BasePage):
                 self.click_button(TournamentPageLocators.SWISS_EMPTY_FIGHT_RESULT_DRAW)
 
         # Only for Swiss system with hits: set initial value and limit of HP
-        if type_id == 4:
+        if type == "swiss system with hits":
             self.fill_input(TournamentPageLocators.HITS_INITIAL_HP, hits_initial_hp)
             self.fill_input(TournamentPageLocators.HITS_LIMIT_HP, hits_limit_hp)
 
         # Save stage
         self.click_button(TournamentPageLocators.SAVE_STAGE_BUTTON)
 
-        if type_id == 3 or type_id == 4:
+        if type == "swiss system" or type == "swiss system with hits":
             self.wait_for_element(TournamentPageLocators.ENROLL_ALL_TO_SWISS)
 
     def add_participants(self, number):
@@ -191,8 +191,8 @@ class TournamentPage(BasePage):
             self.click_button(StagePageLocators.STAGE_SHOW_BUTTON(stage_number))
 
     def delete_pools(self, number, stage_number):
-        """self.open_nomination()
-        self.open_stages_tab()"""
+        self.open_nomination()
+        self.open_stages_tab()
         self.show_stage(stage_number)
         time.sleep(0.5)
         for i in range(number):
@@ -204,7 +204,7 @@ class TournamentPage(BasePage):
     def create_playoff(self, fight_time, finals_mode, third_place):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.create_stage(type_id=2, fight_time=fight_time,
+        self.create_stage(type="playoff", fight_time=fight_time,
                           playoff_finals_mode=finals_mode, playoff_third_place=third_place)
 
     def delete_playoff_stages(self, number, stage_number):
@@ -360,3 +360,33 @@ class TournamentPage(BasePage):
         # Refuse participant
         self.click_button(TournamentPageLocators.PARTICIPANT_BAN_BUTTON)
         time.sleep(0.5)
+
+    def check_nominations(self, nominations_should_be, stages_should_be):
+        self.back_to_tournament_categories()
+        self.click_button(TournamentPageLocators.GO_TO_PUBLIC_PAGE_TOURNAMENT)
+        nominations_titles = self.find_multiple_elements_wait(TournamentPageLocators.PUBLIC_NOMINATIONS)
+        i = 0
+        for nomination_title in nominations_titles:
+            nomination = nomination_title.text
+            nomination_should_be = nominations_should_be[i]
+            assert nomination == nomination_should_be, f"Nomination is {nomination}, should be {nomination_should_be}"
+            nomination_title.click()
+            self.check_stages(stages_should_be)
+            self.click_button(TournamentPageLocators.RETURN_TO_PUBLIC_NOMINATIONS)
+            i += 1
+
+    def check_stages(self, stages_should_be):
+        stages_titles = self.find_multiple_elements_wait(TournamentPageLocators.PUBLIC_STAGES)
+        i = 0
+        for stage_title in stages_titles:
+            stage = stage_title.text.lower().split()[2]
+            stage_should_be = stages_should_be[i]
+            assert stage == stage_should_be, f"Stage is {stage}, should be {stage_should_be}"
+            i += 1
+
+    def check_tournament_title(self, title_should_be):
+        title = self.find_element_wait(TournamentPageLocators.PUBLIC_TOURNAMENT_TITLE).text
+        assert title == title_should_be, f"Title is {title}, should be {title_should_be}"
+
+    def check_tournament_url(self, url_should_be):
+        assert url_should_be in self.browser.current_url, f"No {url_should_be} in tournament URL"

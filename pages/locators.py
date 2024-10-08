@@ -88,12 +88,14 @@ class OrganizerPageLocators:
     CREATE_TOURNAMENT_BUTTON = (By.ID, "btn-create-tournament")
     TEST_TOURNAMENT_INPUT = (By.ID, "input-tournament-test-true")
     TITLE_FIELD = (By.ID, "input-tournament-title")
+    URL_FIELD = (By.ID, "input-tournament-id-string")
     START_DATE_PICKER = (By.CSS_SELECTOR, ".advanced-datepicker:nth-of-type(1)")
     END_DATE_PICKER = (By.CSS_SELECTOR, ".advanced-datepicker:nth-of-type(2)")
     COUNTRY_FIELD = (By.CSS_SELECTOR, "#vs1__combobox > .vs__selected-options > input")
     CITY_FIELD = (By.CSS_SELECTOR, "#vs2__combobox > div.vs__selected-options > input")
     DESCRIPTION_FIELD = (By.ID, "input-tournament-description")
     SAVE_BUTTON = (By.ID, "btn-tournament-save")
+    SAVE_BUTTON_DISABLED = (By.CSS_SELECTOR, "button:disabled#btn-tournament-save")
     # Open tournament
     TOURNAMENT_BANNERS = (By.CSS_SELECTOR, ".tournaments > div > a > .title")
     TOURNAMENT_OVERVIEW_TAB = (By.ID, "tournament-menu-overview")
@@ -221,6 +223,7 @@ class TournamentPageLocators:
     ADD_SECOND_CATEGORY_TO_REG = (By.CSS_SELECTOR, ".organizer-tournament > div > div:nth-of-type(2) > div:nth-of-type(2) >"
                                             "div > .radio-blocks > label:nth-of-type(2) > input")
     SAVE_REG_BUTTON = (By.CSS_SELECTOR, "div.organizer-tournament > div > div:nth-of-type(3) > button")
+    # Public page: registration
     GO_TO_PUBLIC_PAGE_CATEGORY = (By.ID, "link-go-to-public-view-nomination")
     GO_TO_PUBLIC_PAGE_TOURNAMENT = (By.ID, "link-go-to-public-view-tournament")
     APPLY_BUTTON = (By.CSS_SELECTOR, ".application-actions > button")
@@ -231,6 +234,11 @@ class TournamentPageLocators:
     REG_SUCCESS = (By.CLASS_NAME, "registration-success")
     GO_TO_TOURNAMENT = (By.CSS_SELECTOR, ".registration-success > div > a")
     CHANGE_APPLICATION_BUTTON = (By.CSS_SELECTOR, ".application-actions > a:nth-of-type(1)")
+    # Public page: check data
+    PUBLIC_NOMINATIONS = (By.CSS_SELECTOR, "div.nomination > a > div:nth-of-type(1)")
+    PUBLIC_STAGES = (By.CSS_SELECTOR, "div.stage > h3")
+    RETURN_TO_PUBLIC_NOMINATIONS = (By.CSS_SELECTOR, ".tournament-title > a")
+    PUBLIC_TOURNAMENT_TITLE = (By.CSS_SELECTOR, ".container > h1")
 
 
 class FightPageLocators:

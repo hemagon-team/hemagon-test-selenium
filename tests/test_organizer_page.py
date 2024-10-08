@@ -34,6 +34,7 @@ class TestUserCanCreateTournament:
         end_date = date.today().strftime("%d %B %Y")
         page.create_tournament(
             data["title"],
+            data["url"],
             start_date,
             end_date,
             data["country"],

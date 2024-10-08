@@ -9,7 +9,7 @@ class OrganizerPage(BasePage):
         assert "organizer" in self.browser.current_url, "No 'organizer' in page URL"
         time.sleep(0.2)
 
-    def create_tournament(self, title, start_date, end_date, country, city, description):
+    def create_tournament(self, title, url, start_date, end_date, country, city, description):
         # Create a new tournament
         self.click_button(OrganizerPageLocators.CREATE_TOURNAMENT_BUTTON)
 
@@ -18,6 +18,9 @@ class OrganizerPage(BasePage):
 
         # Enter a title of the tournament
         self.fill_input(OrganizerPageLocators.TITLE_FIELD, title)
+
+        # Enter URL of the tournament
+        self.fill_input(OrganizerPageLocators.URL_FIELD, url)
 
         # FIX WORKING WITH DATE PICKERS
         '''

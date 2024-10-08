@@ -1,5 +1,6 @@
 {
   "title": "PoolsWithFinals",
+  "url": "tournament-tiny-standard-pools-finals",
   "country": "Spain",
   "city": "Barcelona",
   "description": "Test tournament: pools with finals, tiny standard size",
@@ -14,14 +15,14 @@
 
       "stages": [
         {
-          "type_id": 1,
+          "type": "pools",
           "stage_fight_time": 120,
           "pools_number": 2,
           "go_next_stage": 8,
           "stage_number": 0
         },
         {
-          "type_id": 2,
+          "type": "playoff",
           "stage_fight_time": 120,
           "finals_mode": 1,
           "third_place": true,
