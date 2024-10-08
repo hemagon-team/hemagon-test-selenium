@@ -73,32 +73,35 @@ class TestCreateRunDeleteTournament:
 
             for stage_data in nomination_data["stages"]:
 
-                if stage_data["type_id"] == 1:
+                if stage_data["type"] == "pools":
                     self.modify_tournament.test_user_can_create_pools_stage(browser, stage_data)
                     self.modify_tournament.test_user_can_create_pools(browser, stage_data)
                     self.modify_tournament.test_user_can_add_participants_to_pool(browser)
                     self.modify_tournament.test_user_can_set_ring_for_pool(browser)
                     self.run_pools.test_user_can_run_pools_stage(browser, full_mode=False)
 
-                if stage_data["type_id"] == 2:
+                if stage_data["type"] == "playoff":
                     self.modify_tournament.test_user_can_create_playoff_stage(browser, stage_data)
                     self.run_playoff.test_user_can_run_finals_stage(browser, full_mode=False)
 
-                if stage_data["type_id"] == 3:
+                if stage_data["type"] == "swiss system":
                     self.modify_tournament.test_user_can_create_swiss_stage(browser, stage_data)
                     self.modify_tournament.test_user_can_add_participants_to_swiss(browser)
                     self.modify_tournament.test_user_can_set_ring_for_swiss_round(browser)
                     self.modify_tournament.test_user_can_set_pairs_for_swiss_round(browser)
                     self.run_swiss.test_user_can_run_swiss_stage(browser, full_mode=False)
 
+            self.modify_tournament.test_should_be_correct_nominations(browser, data)
+            self.create_tournament.test_user_can_open_tournament(browser, data)
+
             for stage_data in nomination_data["stages"]:
-                if stage_data["type_id"] == 1:
+                if stage_data["type"] == "pools":
                     self.modify_tournament.test_user_can_delete_pools(browser, stage_data)
                     self.modify_tournament.test_user_can_delete_pools_stage(browser)
-                if stage_data["type_id"] == 2:
+                if stage_data["type"] == "playoff":
                     self.modify_tournament.test_user_can_delete_playoffs(browser, stage_data)
                     self.modify_tournament.test_user_can_delete_playoff_stage(browser)
-                if stage_data["type_id"] == 3:
+                if stage_data["type"] == "swiss system":
                     self.modify_tournament.test_user_can_delete_swiss_rounds(browser, stage_number=stage_data["stage_number"])
                     self.modify_tournament.test_user_can_delete_pools_stage(browser)
             self.modify_tournament.test_should_be_no_stages_title(browser)
