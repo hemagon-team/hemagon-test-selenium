@@ -210,7 +210,12 @@ class TournamentPage(BasePage):
     def delete_playoff_stages(self, number, stage_number):
         """self.open_nomination()
         self.open_stages_tab()"""
-        self.show_stage(stage_number)
+
+        # stage number comes from data, but that is static
+        # and as we remove the pools first, the playoffs from 1 becomes 0
+        # self.show_stage(stage_number)
+        self.show_stage(0)
+
         fights_number = 2 ** math.ceil(math.log2(number))
         for i in range(fights_number):
             self.click_button(TournamentPageLocators.REMOVE_PLAYOFF_BUTTON)

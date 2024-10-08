@@ -19,15 +19,15 @@ DATA_DIR = "../data/tournaments/"
 FILENAMES = [
     "pools-with-finals.json",
     "pools-without-finals.json",
-    # "swiss-with-finals.json",
-    # "swiss-without-finals.json",
+    "swiss-with-finals.json",
+    "swiss-without-finals.json",
     "pools-tiny-odd.json",
     "pools-small-standard.json",
-    # "pools-small-odd.json",
+    "pools-small-odd.json",
     "pools-medium-standard.json",
     "pools-medium-odd.json",
-    # "pools-large-standard.json",
-    # "pools-large-odd.json",
+    "pools-large-standard.json",
+    "pools-large-odd.json",
     "swiss-without-finals-odd.json"
 ]
 

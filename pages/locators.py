@@ -184,8 +184,8 @@ class TournamentPageLocators:
     # Adding all participants to swiss system
     ENROLL_ALL_TO_SWISS = (By.CSS_SELECTOR, ".pool > button")
     # Pairs and rings for swiss system
-    ALLOCATE_RINGS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(1)")
-    CHANGE_PAIRS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button:nth-of-type(2)")
+    ALLOCATE_RINGS_BUTTON = (By.CSS_SELECTOR, ".pool [data-test-class=btn-distribute-fights-to-areas]")
+    CHANGE_PAIRS_BUTTON = (By.CSS_SELECTOR, ".pool [data-test-class=btn-change-fight-pairs]")
     DRAG_ZONES = (By.CLASS_NAME, "drag-zone")
     DRAG_ITEMS = (By.CLASS_NAME, "drag-item")
     ADD_UNALLOCATED_TO_RING = (By.CSS_SELECTOR, ".areas > div:nth-of-type(2) > button")
@@ -275,7 +275,8 @@ class StagePageLocators:
 class PoolPageLocators:
     FIGHT_ROW = (By.CSS_SELECTOR, 'div.pool > div.row')
     FIGHT_BUTTON = (By.CSS_SELECTOR, 'div.row button.small.active')
-    CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
+#     CLOSE_POOL_BUTTON = (By.CSS_SELECTOR, 'button.round')
+    CLOSE_POOL_BUTTON = (By.ID, 'tournament-breadcrumbs-category-stages')
     SEED_RANDOM_RESULTS_BUTTON = (By.CSS_SELECTOR, ".pool > div:nth-of-type(3) > button")
     SUCCESS_NOTIFICATION = (By.CLASS_NAME, "notification-content")
     RUN_FIGHT_BUTTON_ACTIVE = (By.CSS_SELECTOR, ".row > div:nth-of-type(3) > div > button.active")
