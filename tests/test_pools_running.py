@@ -3,6 +3,9 @@ import pytest
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.stages_page import StagesPage
+from pages.organizer_page import OrganizerPage
+from pages.locators import TournamentPageLocators
+import time
 
 
 # Set links
@@ -25,8 +28,19 @@ def setup(browser):
     page.close_cookies()
 
 
-class TestRunningPlayoff:
-    def test_user_can_run_finals_stage(self, browser, full_mode=True):
+class TestRunningPools:
+    def test_user_can_run_pools_stage(self, browser, full_mode=True):
+        """page = OrganizerPage(browser, link)
+        page.open()
+        page.open_tournament(data["title"])
+
+        page.click_button(TournamentPageLocators.NOMINATIONS_TAB)
+        page.click_button(TournamentPageLocators.NOMINATION_LINK)
+        page.click_button(TournamentPageLocators.STAGES_TAB)"""
+
         stage = StagesPage(browser, browser.current_url)
-        stage.playoff_create()
-        stage.playoff_running(full_mode)
+
+        if full_mode:
+            stage.check_fight_pool_buttons()
+
+        stage.pools_running(full_mode)

@@ -1,0 +1,39 @@
+{
+  "title": "SmallOddPoolsFinals",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: pools with finals, small odd size",
+
+  "nominations": [
+    {
+      "nomination_title": "Qwerty",
+      "weapon_id": 11,
+      "fight_time": 120,
+      "last_round_time": 0,
+      "participants_number": 17,
+
+      "stages": [
+        {
+          "type": "pools",
+          "stage_fight_time": 120,
+          "pools_number": 4,
+          "go_next_stage": 17,
+          "stage_number": 0
+        },
+        {
+          "type": "playoff",
+          "stage_fight_time": 120,
+          "finals_mode": 1,
+          "third_place": true,
+          "participants_number": 17,
+          "stage_number": 1
+        }
+      ]
+    }
+  ],
+  "rings": [
+    {
+      "ring_title": "Ring"
+    }
+  ]
+}

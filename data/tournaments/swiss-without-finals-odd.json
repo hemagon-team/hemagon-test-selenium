@@ -1,0 +1,33 @@
+{
+  "title": "TinyOddSwissWithoutFinals",
+  "country": "Spain",
+  "city": "Barcelona",
+  "description": "Test tournament: swiss without finals, tiny odd size",
+
+  "nominations": [
+    {
+      "nomination_title": "Qwerty",
+      "weapon_id": 19,
+      "fight_time": 120,
+      "last_round_time": 0,
+      "participants_number": 9,
+
+      "stages": [
+        {
+          "type": "swiss system",
+          "stage_fight_time": 120,
+          "pools_number": 2,
+          "go_next_stage": null,
+          "swiss_empty_win": true,
+          "swiss_empty_points": 1,
+          "stage_number": 0
+        }
+      ]
+    }
+  ],
+  "rings": [
+    {
+      "ring_title": "Ring"
+    }
+  ]
+}
