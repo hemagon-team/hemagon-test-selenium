@@ -256,8 +256,8 @@ class TournamentPage(BasePage):
         self.click_button(TournamentPageLocators.CLOSE_SWISS_SETTINGS_BUTTON)
 
     def delete_swiss_rounds(self, stage_number):
-        """self.open_nomination()
-        self.open_stages_tab()"""
+        self.open_nomination()
+        self.open_stages_tab()
         self.show_stage(stage_number)
         number = int(self.find_element_wait(StagePageLocators.RECOMMEND_SWISS_ROUNDS_NUMBER).text)
         for i in range(number):
