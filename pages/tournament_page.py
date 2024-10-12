@@ -384,7 +384,7 @@ class TournamentPage(BasePage):
         stages_titles = self.find_multiple_elements_wait(TournamentPageLocators.PUBLIC_STAGES)
         i = 0
         for stage_title in stages_titles:
-            stage = stage_title.text.lower().split()[2]
+            stage = stage_title.text.lower()
             stage_should_be = stages_should_be[i]
-            assert stage == stage_should_be, f"Stage is {stage}, should be {stage_should_be}"
+            assert stage_should_be in stage, f"Stage is {stage}, should be {stage_should_be}"
             i += 1
