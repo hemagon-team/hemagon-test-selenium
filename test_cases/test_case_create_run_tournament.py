@@ -14,13 +14,13 @@ email = os.environ["TEST_USER_EMAIL"]
 password = os.environ["TEST_USER_PASSWORD"]
 
 # Set data
-DATA_DIR = "../data/tournaments/"
+DATA_DIR = ('' if os.environ["DEV_ENV_MODE"] == 'remote' else '../') + 'data/tournaments/'
 
 FILENAMES = [
     "pools-with-finals.json",
     "pools-without-finals.json",
-    "swiss-with-finals.json", #
-    "swiss-without-finals.json", #
+    "swiss-with-finals.json",
+    "swiss-without-finals.json",
     "pools-tiny-odd.json",
     "pools-small-standard.json",
     "pools-small-odd.json",
@@ -28,7 +28,7 @@ FILENAMES = [
     "pools-medium-odd.json",
     "pools-large-standard.json",
     "pools-large-odd.json",
-    "swiss-without-finals-odd.json" #
+    "swiss-without-finals-odd.json"
 ]
 
 def pytest_generate_tests(metafunc):

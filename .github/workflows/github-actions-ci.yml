@@ -1,8 +1,8 @@
 name: Tests
 on: [workflow_dispatch]
 env:
-  TEST_BASEURL: 'https://hemagon.com'
-  TEST_USER_EMAIL: 'lomastius@test.com'
+  TEST_BASEURL: 'https://stage.hemagon.com'
+  TEST_USER_EMAIL: 'organizer@hemagon.com'
   TEST_USER_PASSWORD: 'lolwut1A!'
   SELENIUM_HUB_URL: 'http://127.0.0.1:4444/wd/hub'
   DEV_ENV_MODE: 'remote'
