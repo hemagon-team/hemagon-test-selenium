@@ -61,6 +61,8 @@ class TestCreateRunDeleteTournament:
         page.close_cookies()
 
     def test_create_run_delete_tournament(self, browser, data):
+        print("Starting test case", data["title"])
+
         self.create_tournament.test_user_can_create_tournament(browser, data)
         self.create_tournament.test_user_can_open_tournament(browser, data)
 
@@ -72,7 +74,6 @@ class TestCreateRunDeleteTournament:
             self.modify_tournament.test_user_can_add_participants(browser, nomination_data)
 
             for stage_data in nomination_data["stages"]:
-
                 if stage_data["type"] == "pools":
                     self.modify_tournament.test_user_can_create_pools_stage(browser, stage_data)
                     self.modify_tournament.test_user_can_create_pools(browser, stage_data)
@@ -108,7 +109,6 @@ class TestCreateRunDeleteTournament:
 
             self.modify_tournament.test_user_can_delete_nomination(browser)
 
-            print("Finished test case", data["title"])
-
         self.modify_tournament.test_user_can_delete_ring(browser)
         self.create_tournament.test_user_can_delete_tournament(browser, data)
+        print("Finished test case", data["title"])
