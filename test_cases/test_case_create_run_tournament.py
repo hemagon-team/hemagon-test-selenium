@@ -21,7 +21,7 @@ FILENAMES = [
     "pools-without-finals.json",
     "swiss-with-finals.json",
     "swiss-without-finals.json",
-    "swiss-without-finals-odd.json"
+    "swiss-without-finals-odd.json",
     "pools-tiny-odd.json",
     "pools-small-standard.json",
     "pools-small-odd.json",
